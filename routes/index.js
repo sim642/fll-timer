@@ -14,4 +14,9 @@ router.get('/table2', function(req, res) {
 	res.render('table2');
 });
 
+router.get('/admin', function(req, res) {
+	res.render('admin');
+});
+
+
 module.exports = router;
