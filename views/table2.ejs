@@ -23,23 +23,36 @@
 			.teamname {
 				width: 50%;
 				text-align: center;
+
+				word-break: break-all;
+				word-break: break-word;
+				-webkit-hyphens: auto;
+				-moz-hyphers: auto;
+				hyphens: auto;
 			}
 		</style>
 
 		<script>
 			var teams = [];
+			var showteams = [];
 
 			var socket = io({
 				'sync disconnect on unload': true
 			});
 
+			function renderTeams() {
+				$('#leftteam').text(teams[showteams[0]]);
+				$('#rightteam').text(teams[showteams[1]]);
+			}
+
 			socket.on('teams', function(data) {
 				teams = data;
+				renderTeams();
 			});
 
 			socket.on('showteams', function(data) {
-				$('#leftteam').text(teams[data[0]]);
-				$('#rightteam').text(teams[data[1]]);
+				showteams = data;
+				renderTeams();
 			});
 
 			$(function() {

@@ -1,6 +1,10 @@
 var io = require('socket.io')();
+var fs = require('fs');
 
-var teams = ['Superkarud', 'Robogängstad', 'Team Villu Pillu', 'Karu põder lehm ja mäger'];
+var teams = [];
+var rounds = [];
+
+/*var teams = ['Superkarud', 'Robogängstad', 'Team Villu Pillu', 'Karu põder lehm ja mäger'];
 var rounds = [
 	{
 		name: '1. voor',
@@ -36,7 +40,7 @@ var rounds = [
 			}
 		]
 	}
-];
+];*/
 
 io.on('connection', function(socket) {
 	console.log('client connected');
@@ -52,13 +56,35 @@ io.on('connection', function(socket) {
 		teams = newTeams;
 		fn();
 		socket.broadcast.emit('teams', teams);
+		saveData();
 	});
 
 	socket.on('rounds', function(newRounds, fn) {
 		rounds = newRounds;
 		fn();
 		socket.broadcast.emit('rounds', rounds);
+		saveData();
 	})
 });
+
+fs.readFile('data.json', function(err, data) {
+	if (err)
+		throw err;
+
+	data = JSON.parse(data);
+	teams = data.teams;
+	rounds = data.rounds;
+
+	io.sockets.emit('teams', teams);
+	io.sockets.emit('rounds', rounds);
+});
+
+function saveData() {
+	var data = {
+		'teams': teams,
+		'rounds': rounds
+	};
+	fs.writeFile('data.json', JSON.stringify(data, null, 4));
+}
 
 module.exports = io;
