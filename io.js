@@ -6,6 +6,8 @@ var tables = [];
 var rounds = [];
 var current = {ri: 0, mi: 0};
 
+var logos = ['swedbank.png', 'nutilabor.jpg', 'riigikaitse.png', 'hitsa.png'];
+
 /*var teams = ['Superkarud', 'Robogängstad', 'Team Villu Pillu', 'Karu põder lehm ja mäger'];
 var rounds = [
 	{
@@ -50,6 +52,7 @@ io.on('connection', function(socket) {
 	socket.emit('tables', tables);
 	socket.emit('rounds', rounds);
 	socket.emit('current', current);
+	socket.emit('logos', logos);
 
 	socket.on('disconnect', function() {
 		console.log('client disconnected');

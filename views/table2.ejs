@@ -14,6 +14,7 @@
 			html, body, table {
 				height: 100%;
 				width: 100%;
+				overflow: hidden;
 			}
 
 			.minimize-row {
@@ -77,9 +78,22 @@
 				height: 20vh !important;
 			}
 
-			/*#topbanner img {
+			#topbanner .sideimg {
 				max-height: 20vh;
-			}*/
+				margin-top: 5vh;
+			}
+
+			#topbanner #midimg {
+				max-height: 15vh;
+			}
+
+			#matchtime {
+				font-size: 10vh;
+			}
+
+			#roundname {
+				font-size: 5vh;
+			}
 		</style>
 
 		<script>
@@ -88,6 +102,7 @@
 			var rounds = [];
 			var current = {ri: 0, mi: 0};
 			var showtables = null;
+			var logos = [];
 
 			var socket = io({
 				'sync disconnect on unload': true
@@ -111,12 +126,19 @@
 				if (showtables !== null) {
 					$('#lefttable').text(tables[showtables[0]]);
 					$('#righttable').text(tables[showtables[1]]);
+
+					renderLogos();
 				}
 			}
 
 			function renderTop() {
 				$('#matchtime').text(rounds[current.ri].matches[current.mi].time);
 				$('#roundname').text(rounds[current.ri].name);
+			}
+
+			function renderLogos() {
+				$('#leftlogo img').attr('src', '/img/' + logos[showtables[0]]);
+				$('#rightlogo img').attr('src', '/img/' + logos[showtables[1]]);
 			}
 
 			socket.on('teams', function(data) {
@@ -144,6 +166,10 @@
 				renderTeams();
 			});
 
+			socket.on('logos', function(data) {
+				logos = data;
+			});
+
 			$(function() {
 				$('#select').click(function() {
 					showtables = [-1, -1];
@@ -156,8 +182,8 @@
 					$('#teamnames').show();
 					renderTeams();
 
-					$('.tablename').fitText(1.0);
-					$('.teamname').fitText(0.8);
+					$('.tablename').fitText(1.1);
+					$('.teamname').fitText(1.2);
 				});
 			})
 		</script>
@@ -168,15 +194,15 @@
 				<td colspan="2">
 					<div class="container-fluid text-center">
 						<div class="row">
-							<div class="col-sm-4"><img class="img-responsive" src="/img/fll.jpg"></img></div>
+							<div class="col-sm-4"><img class="sideimg" src="/img/fll.jpg"></img></div>
 							<div class="col-sm-4">
 								<div class="container-fluid">
-									<div class="row"><!--<img src="/img/robootika.png"></img>--></div>
+									<div class="row"><img id="midimg" src="/img/robootika.png"></img></div>
 									<div id="matchtime" class="row"></div>
 									<div id="roundname" class="row"></div>
 								</div>
 							</div>
-							<div class="col-sm-4"><img class="img-responsive" src="/img/fll.jpg"></img></div>
+							<div class="col-sm-4"><img class="sideimg" src="/img/fll.jpg"></img></div>
 						</div>
 					</div>
 				</td>
