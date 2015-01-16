@@ -96,6 +96,13 @@ function renderTables() {
 	});
 }
 
+var emitCurrent = function(params) {
+	current.ri = params.ri;
+	current.mi = params.mi;
+
+	socket.emit('current', current, function(){});
+	renderRounds();
+};
 
 function renderRounds() {
 	var matchesHeader = $('<tr></tr>');
@@ -138,14 +145,7 @@ function renderRounds() {
 		});
 		return D.promise();
 	};
-
-	var emitCurrent = function(params) {
-		current.ri = params.ri;
-		current.mi = params.mi;
-
-		socket.emit('current', current, function(){});
-		renderRounds();
-	};
+	
 
 	var teams2 = [];
 	teams.forEach(function(team, ti) {
@@ -205,6 +205,24 @@ function renderRounds() {
 		panel.append(table);
 		$('#roundlist').append(panel);
 	});
-
-
 }
+
+$(function() {
+	$('#next').click(function() {
+		current.mi++;
+		if (current.mi == rounds[current.ri].matches.length) {
+			current.mi = 0;
+			current.ri++;
+		}
+		emitCurrent(current);
+	});
+
+	$('#prev').click(function() {
+		current.mi--;
+		if (current.mi == -1) {
+			current.ri--;
+			current.mi = rounds[current.ri].matches.length - 1;
+		}
+		emitCurrent(current);
+	});
+});
