@@ -30,10 +30,15 @@
 				-moz-hyphers: auto;
 				hyphens: auto;
 			}
+
+			#teamnames {
+				display: none;
+			}
 		</style>
 
 		<script>
 			var teams = [];
+			var showtables = [0, 0];
 			var showteams = [];
 
 			var socket = io({
@@ -41,8 +46,8 @@
 			});
 
 			function renderTeams() {
-				$('#leftteam').text(teams[showteams[0]]);
-				$('#rightteam').text(teams[showteams[1]]);
+				$('#leftteam').text(teams[showteams[showtables[0]]]);
+				$('#rightteam').text(teams[showteams[showtables[1]]]);
 			}
 
 			socket.on('teams', function(data) {
@@ -56,7 +61,16 @@
 			});
 
 			$(function() {
-				$('.teamname').fitText(0.8);
+				$('#select').click(function() {
+					showtables[0] = parseInt($('#leftselect option:selected').first().val());
+					showtables[1] = parseInt($('#rightselect option:selected').first().val());
+
+					renderTeams();
+
+					$('#tableselect').hide();
+					$('#teamnames').show();
+					$('.teamname').fitText(0.8);
+				});
 			})
 		</script>
 	</head>
@@ -69,7 +83,26 @@
 					</div>
 				</td>
 			</tr>
-			<tr>
+			<tr id="tableselect">
+				<td colspan="2">
+					<select id="leftselect">
+						<option value="0">1. laud</option>
+						<option value="1">2. laud</option>
+						<option value="2">3. laud</option>
+						<option value="3">4. laud</option>
+					</select>
+
+					<select id="rightselect">
+						<option value="0">1. laud</option>
+						<option value="1">2. laud</option>
+						<option value="2">3. laud</option>
+						<option value="3">4. laud</option>
+					</select>
+
+					<button id="select">Select</button>
+				</td>
+			</tr>
+			<tr id="teamnames">
 				<td id="leftteam" class="teamname"></td>
 				<td id="rightteam" class="teamname"></td>
 			</tr>
