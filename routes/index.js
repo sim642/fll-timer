@@ -18,5 +18,8 @@ router.get('/admin', function(req, res) {
 	res.render('admin');
 });
 
+router.get('/timer', function(req, res) {
+	res.render('timer');
+});
 
 module.exports = router;

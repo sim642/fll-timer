@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Table</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bootstrap-cols.css" />
+		
+		<script src="/js/jquery-2.1.3.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/jquery.fittext.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+
+		<style>
+			html, body, #timer {
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+
+			body {
+				background-color: black;
+			}
+		</style>
+
+		<script>
+			var socket = io({
+				'sync disconnect on unload': true
+			});
+
+			var endtime = null;
+			var stepper = null;
+
+			$(function() {
+				$('#timer').fitText(0.35);
+
+				$('body').click(function() {
+					endtime = Date.now() + (2 * 60 + 30) * 1000;
+
+					stepper = setInterval(function() {
+						var d = endtime - Date.now();
+						var str = '0:00.0';
+
+						if (d > 0) {
+							var dd = d;
+							var ms = Math.floor(d % 1000 / 100);
+							d = Math.floor(d / 1000);
+							var s = d % 60;
+							d = Math.floor(d / 60);
+							var m = d;
+
+							str = m.toString() + ':' + (s < 10 ? '0' : '') + s.toString() + '.' + ms.toString();
+
+							var x = Math.floor(255 * dd / ((2 * 60 + 30) * 1000)).toString();
+							$('#timer').css('color', 'rgb(255, ' + x + ', ' + x + ')');
+						}
+						else {
+							endtime = null;
+							clearInterval(stepper);
+							stepper = null;
+						}
+
+						$('#timer').text(str);
+					}, 100);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="timer" class="text-center">2:30.0</div>
+	</body>
+</html>
