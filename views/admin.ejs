@@ -13,6 +13,7 @@
 		<script src="/js/select2.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="/js/admin.js"></script>
+		<script src="/js/timer.js"></script>
 
 		<style>
 			/* http://stackoverflow.com/a/24985857 */
@@ -41,13 +42,29 @@
 				</ol>
 			</div>
 
-			<div class="row">
-				<div class="col-md-6">
-					<button id="prev" class="btn btn-danger btn-lg btn-block">Eelmine</button>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<button id="prev" class="btn btn-danger btn-lg btn-block">Eelmine</button>
+					</div>
+
+					<div class="col-md-6">
+						<button id="next" class="btn btn-success btn-lg btn-block">Järgmine</button>
+					</div>
 				</div>
 
-				<div class="col-md-6">
-					<button id="next" class="btn btn-success btn-lg btn-block">Järgmine</button>
+				<div class="row">
+					<div class="col-md-4">
+						<button id="reset" class="btn btn-danger btn-lg btn-block">Reset</button>
+					</div>
+
+					<div id="timer" class="col-md-4 text-center">
+						<span id="min">2</span>:<span id="sec">30</span>.<span id="ms">0</span>
+					</div>
+
+					<div class="col-md-4">
+						<button id="start" class="btn btn-success btn-lg btn-block">Start</button>
+					</div>
 				</div>
 			</div>
 

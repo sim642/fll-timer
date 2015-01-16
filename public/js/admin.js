@@ -213,6 +213,8 @@ $(function() {
 		if (current.mi == rounds[current.ri].matches.length) {
 			current.mi = 0;
 			current.ri++;
+			if (current.ri == rounds.length)
+				current.ri = 0;
 		}
 		emitCurrent(current);
 	});
@@ -221,8 +223,20 @@ $(function() {
 		current.mi--;
 		if (current.mi == -1) {
 			current.ri--;
+			if (current.ri == -1)
+				current.ri = rounds.length - 1;
 			current.mi = rounds[current.ri].matches.length - 1;
 		}
 		emitCurrent(current);
+	});
+
+	$('#reset').click(function() {
+		resetTimer();
+		socket.emit('resettimer');
+	});
+
+	$('#start').click(function() {
+		startTimer();
+		socket.emit('starttimer');
 	});
 });

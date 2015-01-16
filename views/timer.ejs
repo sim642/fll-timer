@@ -9,6 +9,7 @@
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/jquery.fittext.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
+		<script src="/js/timer.js"></script>
 
 		<style>
 			html, body, #timer {
@@ -27,45 +28,24 @@
 				'sync disconnect on unload': true
 			});
 
-			var endtime = null;
-			var stepper = null;
+			socket.on('resettimer', function() {
+				resetTimer();
+			});
+
+			socket.on('starttimer', function() {
+				startTimer();
+			});
 
 			$(function() {
 				$('#timer').fitText(0.35);
 
 				$('body').click(function() {
-					endtime = Date.now() + (2 * 60 + 30) * 1000;
-
-					stepper = setInterval(function() {
-						var d = endtime - Date.now();
-						var str = '0:00.0';
-
-						if (d > 0) {
-							var dd = d;
-							var ms = Math.floor(d % 1000 / 100);
-							d = Math.floor(d / 1000);
-							var s = d % 60;
-							d = Math.floor(d / 60);
-							var m = d;
-
-							str = m.toString() + ':' + (s < 10 ? '0' : '') + s.toString() + '.' + ms.toString();
-
-							var x = Math.floor(255 * dd / ((2 * 60 + 30) * 1000)).toString();
-							$('#timer').css('color', 'rgb(255, ' + x + ', ' + x + ')');
-						}
-						else {
-							endtime = null;
-							clearInterval(stepper);
-							stepper = null;
-						}
-
-						$('#timer').text(str);
-					}, 100);
+					//startTimer();
 				});
 			});
 		</script>
 	</head>
 	<body>
-		<div id="timer" class="text-center">2:30.0</div>
+		<div id="timer" class="text-center"><span id="min">2</span>:<span id="sec">30</span>.<span id="ms">0</span></div>
 	</body>
 </html>

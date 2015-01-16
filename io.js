@@ -84,6 +84,14 @@ io.on('connection', function(socket) {
 		fn();
 		socket.broadcast.emit('current', current);
 	});
+
+	socket.on('starttimer', function() {
+		socket.broadcast.emit('starttimer');
+	});
+
+	socket.on('resettimer', function() {
+		socket.broadcast.emit('resettimer');
+	})
 });
 
 fs.readFile('data.json', function(err, data) {
