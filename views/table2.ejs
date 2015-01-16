@@ -114,6 +114,11 @@
 				}
 			}
 
+			function renderTop() {
+				$('#matchtime').text(rounds[current.ri].matches[current.mi].time);
+				$('#roundname').text(rounds[current.ri].name);
+			}
+
 			socket.on('teams', function(data) {
 				teams = data;
 				renderTeams();
@@ -129,14 +134,13 @@
 
 			socket.on('rounds', function(data) {
 				rounds = data;
+				renderTop();
 				renderTeams();
 			});
 
 			socket.on('current', function(data) {
 				current = data;
-
-				$('#matchtime').text(rounds[current.ri].matches[current.mi].time);
-				$('#roundname').text(rounds[current.ri].name);
+				renderTop();
 				renderTeams();
 			});
 

@@ -106,7 +106,33 @@ function renderRounds() {
 
 	var editRounds = function(params) {
 		var D = new $.Deferred;
-		rounds[params.pk.ri].matches[params.pk.mi].tables[params.pk.i] = params.value;
+
+		if (params.delete) {
+			rounds[params.pk.ri].matches.splice(params.pk.mi, 1);
+			renderRounds();
+		}
+		else if (params.pk.mi != -1) 
+			rounds[params.pk.ri].matches[params.pk.mi].tables[params.pk.i] = params.value;
+		else {
+			var arr = [];
+			for (var i = 0; i < tables.length; i++)
+				arr.push(null);
+			rounds[params.pk.ri].matches.push({
+				time: '00:00-00:00',
+				tables: arr
+			});
+			renderRounds();
+		}
+
+		socket.emit('rounds', rounds, function() {
+			D.resolve();
+		});
+		return D.promise();
+	};
+
+	var editTime = function(params) {
+		var D = new $.Deferred;
+		rounds[params.pk.ri].matches[params.pk.mi].time = params.value;
 		socket.emit('rounds', rounds, function() {
 			D.resolve();
 		});
@@ -143,7 +169,18 @@ function renderRounds() {
 				emitCurrent({'ri': ri, 'mi': mi});
 			});
 
-			tr.append($('<td></td>').text(match.time).append(setCurrent));
+			var deletable = $('<a></a>').addClass('pull-right glyphicon glyphicon-trash').click(function() {
+				editRounds({pk: {'ri': ri, 'mi': mi}, delete: true});
+			});
+
+			var timeeditable = $('<a></a>').editable({
+				type: 'text',
+				pk: {'ri': ri, 'mi': mi},
+				value: match.time,
+				url: editTime
+			});
+
+			tr.append($('<td></td>').append(timeeditable).append(setCurrent).append(deletable));
 
 			match.tables.forEach(function(ti, i) {
 				var editable = $('<a></a>').editable({
@@ -156,10 +193,18 @@ function renderRounds() {
 				tr.append($('<td></td>').append(editable));
 			});
 
+
 			table.append(tr);
 		});
+
+		var addable = $('<a></a>').addClass('glyphicon glyphicon-plus').click(function() {
+			editRounds({pk: {'ri': ri, 'mi': -1}});
+		});
+		table.append($('<tr></tr>').addClass('info').append($('<td></td>').attr('colspan', tables.length + 1).append(addable)));
 
 		panel.append(table);
 		$('#roundlist').append(panel);
 	});
+
+
 }
