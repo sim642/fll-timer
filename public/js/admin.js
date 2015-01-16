@@ -1,4 +1,5 @@
 var teams = [];
+var tables = [];
 var rounds = [];
 
 var socket = io({
@@ -13,6 +14,11 @@ socket.on('teams', function(newTeams) {
 	renderRounds();
 });
 
+socket.on('tables', function(newTables) {
+	tables = newTables;
+	renderTables();
+	renderRounds();
+})
 
 socket.on('rounds', function(newRounds) {
 	rounds = newRounds;
@@ -22,7 +28,17 @@ socket.on('rounds', function(newRounds) {
 function renderTeams() {
 	var emitTeams = function(params) {
 		var D = new $.Deferred;
-		teams[params.pk] = params.value;
+
+		if (params.delete) {
+			teams.splice(params.pk, 1);
+			renderTeams();
+		}
+		else if (params.pk != -1)
+			teams[params.pk] = params.value;
+		else {
+			teams.push(params.value);
+			renderTeams();
+		}
 		socket.emit('teams', teams, function() {
 			D.resolve();
 		});
@@ -37,18 +53,51 @@ function renderTeams() {
 			pk: ti,
 			url: emitTeams
 		});
-		$('#teamlist').append($('<li></li>').addClass('list-group-item').append(editable));
+		var deletable = $('<a></a>').addClass('pull-right glyphicon glyphicon-trash').click(function() {
+			emitTeams({pk: ti, delete: true});
+		});
+
+		$('#teamlist').append($('<li></li>').addClass('list-group-item').append(editable).append(deletable));
+	});
+
+	var editable = $('<a></a>').text('Lisa meeskond').editable({
+		type: 'text',
+		pk: -1,
+		url: emitTeams
+	});
+	$('#teamlist').append($('<li></li>').addClass('list-group-item list-group-item-info').append(editable));
+}
+
+function renderTables() {
+	var emitTables = function(params) {
+		var D = new $.Deferred;
+		tables[params.pk] = params.value;
+		socket.emit('tables', tables, function() {
+			D.resolve();
+		});
+		renderRounds();
+		return D.promise();
+	};
+
+	$('#tablelist').empty();
+	tables.forEach(function(table, i) {
+		var editable = $('<a></a>').text(table).editable({
+			type: 'text',
+			pk: i,
+			url: emitTables
+		});
+		$('#tablelist').append($('<li></li>').addClass('list-group-item').append(editable));
 	});
 }
 
-var matchesHeader = $('<tr></tr>');
-matchesHeader.append($('<th></th>').text('Aeg'));
-matchesHeader.append($('<th></th>').text('1. laud'));
-matchesHeader.append($('<th></th>').text('2. laud'));
-matchesHeader.append($('<th></th>').text('3. laud'));
-matchesHeader.append($('<th></th>').text('4. laud'));
 
 function renderRounds() {
+	var matchesHeader = $('<tr></tr>');
+	matchesHeader.append($('<th></th>').text('Aeg'));
+	tables.forEach(function(table) {
+		matchesHeader.append($('<th></th>').text(table));
+	});
+
 	var editRounds = function(params) {
 		var D = new $.Deferred;
 		rounds[params.pk.ri].matches[params.pk.mi].tables[params.pk.i] = params.value;

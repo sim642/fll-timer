@@ -31,6 +31,10 @@
 				hyphens: auto;
 			}
 
+			#tableselect {
+				display: none;
+			}
+
 			#teamnames {
 				display: none;
 			}
@@ -38,6 +42,7 @@
 
 		<script>
 			var teams = [];
+			var tables = [];
 			var showtables = [0, 0];
 			var showteams = [];
 
@@ -50,9 +55,22 @@
 				$('#rightteam').text(teams[showteams[showtables[1]]]);
 			}
 
+			function renderTables() {
+				$('#tableselect select').empty();
+				tables.forEach(function(table, i) {
+					$('#tableselect select').append($('<option></option>').val(i).text(table));
+				});
+			}
+
 			socket.on('teams', function(data) {
 				teams = data;
 				renderTeams();
+			});
+
+			socket.on('tables', function(data) {
+				tables = data;
+				renderTables();
+				$('#tableselect').show();
 			});
 
 			socket.on('showteams', function(data) {
@@ -78,28 +96,29 @@
 		<table>
 			<tr class="minimize-row">
 				<td colspan="2">
-					<div class="container-fluid">
+					<div class="container-fluid text-center">
 						<h1>some banners</h1>
 					</div>
 				</td>
 			</tr>
 			<tr id="tableselect">
 				<td colspan="2">
-					<select id="leftselect">
-						<option value="0">1. laud</option>
-						<option value="1">2. laud</option>
-						<option value="2">3. laud</option>
-						<option value="3">4. laud</option>
-					</select>
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<select id="leftselect" class="form-control input-lg"></select>
+							</div>
+							<div class="col-sm-6 form-group">
+								<select id="rightselect" class="form-control input-lg"></select>
+							</div>
+						</div>
 
-					<select id="rightselect">
-						<option value="0">1. laud</option>
-						<option value="1">2. laud</option>
-						<option value="2">3. laud</option>
-						<option value="3">4. laud</option>
-					</select>
-
-					<button id="select">Select</button>
+						<div class="row">
+							<div class="col-md-12 form-group text-center">
+								<button id="select" class="btn btn-primary btn-lg">Select</button>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
 			<tr id="teamnames">
@@ -108,7 +127,7 @@
 			</tr>
 			<tr class="minimize-row">
 				<td colspan="2">
-					<div class="container-fluid">
+					<div class="container-fluid text-center">
 						footer text can go here
 					</div>
 				</td>

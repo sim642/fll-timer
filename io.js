@@ -2,6 +2,7 @@ var io = require('socket.io')();
 var fs = require('fs');
 
 var teams = [];
+var tables = [];
 var rounds = [];
 
 /*var teams = ['Superkarud', 'Robogängstad', 'Team Villu Pillu', 'Karu põder lehm ja mäger'];
@@ -45,6 +46,7 @@ var rounds = [
 io.on('connection', function(socket) {
 	console.log('client connected');
 	socket.emit('teams', teams);
+	socket.emit('tables', tables);
 	socket.emit('rounds', rounds);
 	socket.emit('showteams', [0, 1, 2, 3]);
 
@@ -56,6 +58,13 @@ io.on('connection', function(socket) {
 		teams = newTeams;
 		fn();
 		socket.broadcast.emit('teams', teams);
+		saveData();
+	});
+
+	socket.on('tables', function(newTables, fn) {
+		tables = newTables;
+		fn();
+		socket.broadcast.emit('tables', tables);
 		saveData();
 	});
 
@@ -73,15 +82,18 @@ fs.readFile('data.json', function(err, data) {
 
 	data = JSON.parse(data);
 	teams = data.teams;
+	tables = data.tables;
 	rounds = data.rounds;
 
 	io.sockets.emit('teams', teams);
+	io.sockets.emit('tables', tables);
 	io.sockets.emit('rounds', rounds);
 });
 
 function saveData() {
 	var data = {
 		'teams': teams,
+		'tables': tables,
 		'rounds': rounds
 	};
 	fs.writeFile('data.json', JSON.stringify(data, null, 4));
