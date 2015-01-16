@@ -29,15 +29,57 @@
 				-webkit-hyphens: auto;
 				-moz-hyphers: auto;
 				hyphens: auto;
+
+				background-color: rgb(208, 216, 232);
+				color: black;
+				border-left: solid white 1vw;
+				border-right: solid white 1vw;
+			}
+
+
+			.tablename {
+				width: 50%;
+				text-align: center;
+
+				word-break: break-all;
+				word-break: break-word;
+				-webkit-hyphens: auto;
+				-moz-hyphers: auto;
+				hyphens: auto;
+
+				background-color: rgb(79, 129, 179);
+				color: white;
+				border-left: solid white 1vw;
+				border-right: solid white 1vw;
 			}
 
 			#tableselect {
 				display: none;
 			}
 
+			#tablenames {
+				display: none;
+			}
+
 			#teamnames {
 				display: none;
 			}
+
+			#tablelogos {
+				height: 20vh !important;
+			}
+
+			#tablelogos img {
+				height: 20vh;
+			}
+
+			#topbanner {
+				height: 20vh !important;
+			}
+
+			/*#topbanner img {
+				max-height: 20vh;
+			}*/
 		</style>
 
 		<script>
@@ -45,7 +87,7 @@
 			var tables = [];
 			var rounds = [];
 			var current = {ri: 0, mi: 0};
-			var showtables = [0, 0];
+			var showtables = null;
 
 			var socket = io({
 				'sync disconnect on unload': true
@@ -65,6 +107,11 @@
 				tables.forEach(function(table, i) {
 					$('#tableselect select').append($('<option></option>').val(i).text(table));
 				});
+
+				if (showtables !== null) {
+					$('#lefttable').text(tables[showtables[0]]);
+					$('#righttable').text(tables[showtables[1]]);
+				}
 			}
 
 			socket.on('teams', function(data) {
@@ -75,7 +122,9 @@
 			socket.on('tables', function(data) {
 				tables = data;
 				renderTables();
-				$('#tableselect').show();
+
+				if (showtables == null)
+					$('#tableselect').show();
 			});
 
 			socket.on('rounds', function(data) {
@@ -85,18 +134,25 @@
 
 			socket.on('current', function(data) {
 				current = data;
+
+				$('#matchtime').text(rounds[current.ri].matches[current.mi].time);
+				$('#roundname').text(rounds[current.ri].name);
 				renderTeams();
 			});
 
 			$(function() {
 				$('#select').click(function() {
+					showtables = [-1, -1];
 					showtables[0] = parseInt($('#leftselect option:selected').first().val());
 					showtables[1] = parseInt($('#rightselect option:selected').first().val());
 
 					$('#tableselect').hide();
+					$('#tablenames').show();
+					renderTables();
 					$('#teamnames').show();
 					renderTeams();
 
+					$('.tablename').fitText(1.0);
 					$('.teamname').fitText(0.8);
 				});
 			})
@@ -104,10 +160,20 @@
 	</head>
 	<body>
 		<table>
-			<tr class="minimize-row">
+			<tr id="topbanner" class="minimize-row">
 				<td colspan="2">
 					<div class="container-fluid text-center">
-						<h1>some banners</h1>
+						<div class="row">
+							<div class="col-sm-4"><img class="img-responsive" src="/img/fll.jpg"></img></div>
+							<div class="col-sm-4">
+								<div class="container-fluid">
+									<div class="row"><!--<img src="/img/robootika.png"></img>--></div>
+									<div id="matchtime" class="row"></div>
+									<div id="roundname" class="row"></div>
+								</div>
+							</div>
+							<div class="col-sm-4"><img class="img-responsive" src="/img/fll.jpg"></img></div>
+						</div>
 					</div>
 				</td>
 			</tr>
@@ -131,16 +197,17 @@
 					</div>
 				</td>
 			</tr>
+			<tr id="tablenames" class="minimize-row">
+				<td id="lefttable" class="tablename"></td>
+				<td id="righttable" class="tablename"></td>
+			</tr>
 			<tr id="teamnames">
 				<td id="leftteam" class="teamname"></td>
 				<td id="rightteam" class="teamname"></td>
 			</tr>
-			<tr class="minimize-row">
-				<td colspan="2">
-					<div class="container-fluid text-center">
-						footer text can go here
-					</div>
-				</td>
+			<tr id="tablelogos" class="minimize-row">
+				<td id="leftlogo" class="tablelogo text-center"><img src="/img/hitsa.png"></img></td>
+				<td id="rightlogo" class="tablelogo text-center"><img src="/img/nutilabor.jpg"></img></td>
 			</tr>
 		</table>
 	</body>
