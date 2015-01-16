@@ -1,6 +1,7 @@
 var teams = [];
 var tables = [];
 var rounds = [];
+var current = {ri: 0, mi: 0};
 
 var socket = io({
 	'sync disconnect on unload': true
@@ -24,6 +25,11 @@ socket.on('rounds', function(newRounds) {
 	rounds = newRounds;
 	renderRounds();
 });
+
+socket.on('current', function(newCurrent) {
+	current = newCurrent;
+	renderRounds();
+})
 
 function renderTeams() {
 	var emitTeams = function(params) {
@@ -107,11 +113,18 @@ function renderRounds() {
 		return D.promise();
 	};
 
+	var emitCurrent = function(params) {
+		current.ri = params.ri;
+		current.mi = params.mi;
+
+		socket.emit('current', current, function(){});
+		renderRounds();
+	};
+
 	var teams2 = [];
 	teams.forEach(function(team, ti) {
 		teams2.push({'value': ti, 'text': team});
 	});
-	console.log(teams2);
 
 	$('#roundlist').empty();
 	rounds.forEach(function(round, ri) {
@@ -123,7 +136,14 @@ function renderRounds() {
 
 		round.matches.forEach(function(match, mi) {
 			var tr = $('<tr></tr>');
-			tr.append($('<td></td>').text(match.time));
+			if (ri == current.ri && mi == current.mi)
+				tr.addClass('success');
+
+			var setCurrent = $('<a></a>').addClass('glyphicon glyphicon-play').click(function() {
+				emitCurrent({'ri': ri, 'mi': mi});
+			});
+
+			tr.append($('<td></td>').text(match.time).append(setCurrent));
 
 			match.tables.forEach(function(ti, i) {
 				var editable = $('<a></a>').editable({

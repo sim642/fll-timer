@@ -43,16 +43,21 @@
 		<script>
 			var teams = [];
 			var tables = [];
+			var rounds = [];
+			var current = {ri: 0, mi: 0};
 			var showtables = [0, 0];
-			var showteams = [];
 
 			var socket = io({
 				'sync disconnect on unload': true
 			});
 
 			function renderTeams() {
-				$('#leftteam').text(teams[showteams[showtables[0]]]);
-				$('#rightteam').text(teams[showteams[showtables[1]]]);
+				if ($('#teamnames').is(':visible')) {
+					var ri = current.ri;
+					var mi = current.mi;
+					$('#leftteam').text(teams[rounds[ri].matches[mi].tables[showtables[0]]]);
+					$('#rightteam').text(teams[rounds[ri].matches[mi].tables[showtables[1]]]);
+				}
 			}
 
 			function renderTables() {
@@ -73,8 +78,13 @@
 				$('#tableselect').show();
 			});
 
-			socket.on('showteams', function(data) {
-				showteams = data;
+			socket.on('rounds', function(data) {
+				rounds = data;
+				renderTeams();
+			});
+
+			socket.on('current', function(data) {
+				current = data;
 				renderTeams();
 			});
 
@@ -83,10 +93,10 @@
 					showtables[0] = parseInt($('#leftselect option:selected').first().val());
 					showtables[1] = parseInt($('#rightselect option:selected').first().val());
 
-					renderTeams();
-
 					$('#tableselect').hide();
 					$('#teamnames').show();
+					renderTeams();
+
 					$('.teamname').fitText(0.8);
 				});
 			})

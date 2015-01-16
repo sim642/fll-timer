@@ -4,6 +4,7 @@ var fs = require('fs');
 var teams = [];
 var tables = [];
 var rounds = [];
+var current = {ri: 0, mi: 0};
 
 /*var teams = ['Superkarud', 'Robogängstad', 'Team Villu Pillu', 'Karu põder lehm ja mäger'];
 var rounds = [
@@ -48,7 +49,7 @@ io.on('connection', function(socket) {
 	socket.emit('teams', teams);
 	socket.emit('tables', tables);
 	socket.emit('rounds', rounds);
-	socket.emit('showteams', [0, 1, 2, 3]);
+	socket.emit('current', current);
 
 	socket.on('disconnect', function() {
 		console.log('client disconnected');
@@ -73,7 +74,13 @@ io.on('connection', function(socket) {
 		fn();
 		socket.broadcast.emit('rounds', rounds);
 		saveData();
-	})
+	});
+
+	socket.on('current', function(newCurrent, fn) {
+		current = newCurrent;
+		fn();
+		socket.broadcast.emit('current', current);
+	});
 });
 
 fs.readFile('data.json', function(err, data) {
