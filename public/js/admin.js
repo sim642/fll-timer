@@ -106,6 +106,7 @@ var emitCurrent = function(params) {
 
 function renderRounds() {
 	var matchesHeader = $('<tr></tr>');
+	matchesHeader.append($('<th></th>').text('#'));
 	matchesHeader.append($('<th></th>').text('Aeg'));
 	tables.forEach(function(table) {
 		matchesHeader.append($('<th></th>').text(table));
@@ -145,6 +146,15 @@ function renderRounds() {
 		});
 		return D.promise();
 	};
+
+	var editName = function(params) {
+		var D = new $.Deferred;
+		rounds[params.pk].name = params.value;
+		socket.emit('rounds', rounds, function() {
+			D.resolve();
+		});
+		return D.promise();
+	};
 	
 
 	var teams2 = [];
@@ -155,7 +165,13 @@ function renderRounds() {
 	$('#roundlist').empty();
 	rounds.forEach(function(round, ri) {
 		var panel = $('<div></div>').addClass('panel panel-default');
-		panel.append($('<div></div>').addClass('panel-heading').text(round.name));
+		var nameeditable = $('<a></a>').editable({
+			type: 'text',
+			pk: ri,
+			value: round.name,
+			url: editName
+		});
+		panel.append($('<div></div>').addClass('panel-heading').append(nameeditable));
 
 		var table = $('<table></table>').addClass('table table-hover');
 		matchesHeader.clone().appendTo(table);
@@ -164,6 +180,8 @@ function renderRounds() {
 			var tr = $('<tr></tr>');
 			if (ri == current.ri && mi == current.mi)
 				tr.addClass('success');
+
+			tr.append($('<td></td>').text(mi + 1));
 
 			var setCurrent = $('<a></a>').addClass('glyphicon glyphicon-play').click(function() {
 				emitCurrent({'ri': ri, 'mi': mi});
@@ -197,10 +215,12 @@ function renderRounds() {
 			table.append(tr);
 		});
 
-		var addable = $('<a></a>').addClass('glyphicon glyphicon-plus').click(function() {
+		var addable = $('<a></a>').addClass('glyphicon glyphicon-plus');
+		var addable2 = $('<tr></tr>').addClass('info').append($('<td></td>').addClass('text-center').attr('colspan', tables.length + 2).append(addable)).click(function() {
 			editRounds({pk: {'ri': ri, 'mi': -1}});
 		});
-		table.append($('<tr></tr>').addClass('info').append($('<td></td>').attr('colspan', tables.length + 1).append(addable)));
+
+		table.append(addable2);
 
 		panel.append(table);
 		$('#roundlist').append(panel);
@@ -229,7 +249,7 @@ $(function() {
 		}
 		emitCurrent(current);
 	});
-	
+
 	$('#reset').click(function() {
 		resetTimer();
 		socket.emit('resettimer');
