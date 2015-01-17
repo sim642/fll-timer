@@ -1,0 +1,163 @@
+{
+    "teams": [
+        "Loteh",
+        "RoboCraft",
+        "Black Brids",
+        "Südalinna",
+        "TG NXT",
+        "Space Pandas",
+        "Nõmme Noortemaja",
+        "GAGEV3",
+        "Tallinna Lilleküla Gümnaasium",
+        "MASTER",
+        "VICTORY",
+        "Jakobi",
+        "L & B",
+        "Mäetaguse",
+        "Rakke Robootikud",
+        "Vinni Roboring",
+        "Vunts",
+        "Jokker",
+        "Öökullid",
+        "Heron",
+        "Reaalirobootika",
+        "Triblox",
+        "TSG",
+        "Robotimehhaanikud",
+        "Kuubik",
+        "Termin@tors",
+        "Homer",
+        "Rakke Uued Tulijad",
+        "KG Paadad",
+        "Girls & Co",
+        "Prototype",
+        "KG Lõvid"
+    ],
+    "tables": [
+        "Swedbank",
+        "Nutilabor",
+        "Riigikaitseõpetus",
+        "HITSA"
+    ],
+    "rounds": [
+        {
+            "name": "Robotidisain",
+            "matches": [
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "2",
+                        "3",
+                        "4",
+                        "1"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "1. voor",
+            "matches": [
+                {
+                    "time": "12:00-12:10",
+                    "tables": [
+                        "4",
+                        "6",
+                        "14",
+                        "20"
+                    ]
+                },
+                {
+                    "time": "12:10-12:20",
+                    "tables": [
+                        "29",
+                        "23",
+                        "26",
+                        "3"
+                    ]
+                },
+                {
+                    "time": "12:20-12:30",
+                    "tables": [
+                        "21",
+                        "16",
+                        "7",
+                        "30"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "11",
+                        "12",
+                        "1",
+                        "18"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "10",
+                        "28",
+                        "17",
+                        "2"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "0",
+                        "27",
+                        "9",
+                        "13"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "8",
+                        "19",
+                        "28",
+                        "5"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "15",
+                        "22",
+                        "25",
+                        "24"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "2. voor",
+            "matches": [
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "2",
+                        "3",
+                        "4",
+                        "1"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "3. voor",
+            "matches": [
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "2",
+                        "3",
+                        "4",
+                        "1"
+                    ]
+                }
+            ]
+        }
+    ]
+}

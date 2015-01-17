@@ -31,8 +31,7 @@
         "KG Paadad",
         "Girls & Co",
         "Prototype",
-        "KG Lõvid",
-        " "
+        "KG Lõvid"
     ],
     "tables": [
         "Swedbank",
@@ -345,20 +344,6 @@
                         "25",
                         "20",
                         "8"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Robotimängude lõpp",
-            "matches": [
-                {
-                    "time": "The End",
-                    "tables": [
-                        "32",
-                        "32",
-                        "32",
-                        "32"
                     ]
                 }
             ]
