@@ -9,7 +9,11 @@ var current = {ri: 0, mi: 0};
 var logos = ['swedbank.png', 'nutilabor.jpg', 'riigikaitse.png', 'hitsa.png'];
 var songs = [
 	'tsunami.mp3',
-	'mario.mp3'
+	'mario.mp3',
+	'booyah.mp3',
+	'mammoth.mp3',
+	'ready.mp3',
+	'sandstorm.mp3'
 ];
 
 /*var teams = ['Superkarud', 'Robogängstad', 'Team Villu Pillu', 'Karu põder lehm ja mäger'];
@@ -49,6 +53,10 @@ var rounds = [
 		]
 	}
 ];*/
+
+/*setInterval(function() {
+
+}, 30 * 1000);*/
 
 io.on('connection', function(socket) {
 	console.log('client connected');

@@ -12,7 +12,7 @@
 		<script src="/js/timer.js"></script>
 
 		<style>
-			html, body, #timer {
+			html, body, table {
 				height: 100%;
 				width: 100%;
 				overflow: hidden;
@@ -20,6 +20,20 @@
 
 			body {
 				background-color: black;
+			}
+
+
+			.minimize-row {
+				height: 1px;
+			}
+
+			#bannerrow {
+				background-color: white;
+			}
+
+			#banner {
+				padding: 0.5vh;
+				max-height: 25vh;
 			}
 
 			#timer {
@@ -70,6 +84,13 @@
 			}
 
 			socket.on('starttimer', function() {
+				resetTimer();
+
+				if (audio) {
+					audio.pause();
+					audio.currentTime = 0;
+				}
+
 				startTimer(tween);
 
 				audio = new Audio('/audio/' + songs[songi]);
@@ -85,7 +106,6 @@
 			$(function() {
 				$('#timer').fitText(0.35);
 				resetTimer(tween);
-				audio = $('#music').get(0);
 
 				$('body').click(function() {
 					//startTimer();
@@ -94,10 +114,18 @@
 		</script>
 	</head>
 	<body>
-		<div id="timer" class="text-center"><span id="min">2</span>:<span id="sec">30</span>.<span id="ms">0</span></div>
-		<audio id="music">
-			<source src="/audio/tsunami.mp3" type="audio/mpeg" />
-			Shit happens!
-		</audio>
+		<table>
+			<tr id="bannerrow" class="minimize-row">
+				<td class="text-center">
+					<img id="banner" src="/img/fll.jpg"></img>
+				</td>
+			</tr>
+			<tr id="timer" class="text-center">
+				<td>
+					<span id="min">2</span>:<span id="sec">30</span>.<span id="ms">0</span>
+				</td>
+			</tr> 
+		</table>
+		<div </div>
 	</body>
 </html>
