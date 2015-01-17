@@ -28,16 +28,22 @@
 				'sync disconnect on unload': true
 			});
 
+			var audio;
+
 			socket.on('resettimer', function() {
 				resetTimer();
+				audio.pause();
+				audio.currentTime = 0;
 			});
 
 			socket.on('starttimer', function() {
 				startTimer();
+				audio.play();
 			});
 
 			$(function() {
 				$('#timer').fitText(0.35);
+				audio = $('#music').get(0);
 
 				$('body').click(function() {
 					//startTimer();
@@ -47,5 +53,9 @@
 	</head>
 	<body>
 		<div id="timer" class="text-center"><span id="min">2</span>:<span id="sec">30</span>.<span id="ms">0</span></div>
+		<audio id="music">
+			<source src="/audio/tsunami.mp3" type="audio/mpeg" />
+			Shit happens!
+		</audio>
 	</body>
 </html>
