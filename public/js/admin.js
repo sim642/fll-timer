@@ -253,6 +253,8 @@ $(function() {
 				current.ri = 0;
 		}
 		emitCurrent(current);
+		resetTimer();
+		socket.emit('resettimer');
 	});
 
 	$('#prev').click(function() {
@@ -264,6 +266,8 @@ $(function() {
 			current.mi = rounds[current.ri].matches.length - 1;
 		}
 		emitCurrent(current);
+		resetTimer();
+		socket.emit('resettimer');
 	});
 
 	$('#reset').click(function() {

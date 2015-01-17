@@ -62,11 +62,6 @@
 				return o;
 			};
 
-			socket.on('resettimer', function() {
-				resetTimer();
-				audio.pause();
-				audio.currentTime = 0;
-			});
 
 			function tween(d) {
 				var t = 1 - d / defaulttime;
@@ -84,6 +79,12 @@
 				$('#timer').css('color', 'rgb(' + Math.floor(256 * r) + ', ' + Math.floor(256 * g) + ', 0)');
 			}
 
+			socket.on('resettimer', function() {
+				resetTimer(tween);
+				audio.pause();
+				audio.currentTime = 0;
+			});
+			
 			socket.on('starttimer', function() {
 				resetTimer();
 
