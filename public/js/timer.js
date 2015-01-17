@@ -2,7 +2,7 @@ var endtime = null;
 var stepper = null;
 var defaulttime = (2 * 60 + 30) * 1000;
 
-function displayTime(d) {
+function displayTime(d, func) {
 	var min = 0, sec = 0, ms = 0;
 
 	if (d > 0) {
@@ -25,13 +25,15 @@ function displayTime(d) {
 	$('#timer #min').text(min);
 	$('#timer #sec').text((sec < 10 ? '0' : '') + sec);
 	$('#timer #ms').text(ms);
+
+	(func || function(){})(d);
 }
 
-function startTimer() {
+function startTimer(func) {
 	endtime = Date.now() + defaulttime;
 
 	stepper = setInterval(function() {
-		displayTime(endtime - Date.now());
+		displayTime(endtime - Date.now(), func);
 	}, 100);
 }
 

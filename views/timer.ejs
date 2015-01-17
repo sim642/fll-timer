@@ -37,7 +37,21 @@
 			});
 
 			socket.on('starttimer', function() {
-				startTimer();
+				startTimer(function(d) {
+					var t = 1 - d / defaulttime;
+
+					var r, g;
+					if (t < 0.5) {
+						g = 1.0;
+						r = 2 * t;
+					}
+					else {
+						r = 1.0;
+						g = 1 - 2 * (t - 0.5);
+					}
+
+					$('#timer').css('color', 'rgb(' + Math.floor(256 * r) + ', ' + Math.floor(256 * g) + ', 0)');
+				});
 				audio.play();
 			});
 
