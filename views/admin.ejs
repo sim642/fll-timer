@@ -21,6 +21,10 @@
 				list-style: decimal inside;
 				display: list-item;
 			}
+
+			#timer {
+				font-size: 3em;
+			}
 		</style>
 	</head>
 	<body>
@@ -42,8 +46,12 @@
 				</ol>
 			</div>
 
-			<div class="container">
-				<div class="row">
+			<div id="roundlist">
+			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">Matš</div>
+				<div class="panel-body">
 					<div class="col-md-6">
 						<button id="prev" class="btn btn-danger btn-lg btn-block">Eelmine</button>
 					</div>
@@ -52,8 +60,12 @@
 						<button id="next" class="btn btn-success btn-lg btn-block">Järgmine</button>
 					</div>
 				</div>
+			</div>
 
-				<div class="row">
+			
+			<div class="panel panel-primary">
+				<div class="panel-heading">Timer</div>
+				<div class="panel-body">
 					<div class="col-md-4">
 						<button id="reset" class="btn btn-danger btn-lg btn-block">Reset</button>
 					</div>
@@ -66,9 +78,6 @@
 						<button id="start" class="btn btn-success btn-lg btn-block">Start</button>
 					</div>
 				</div>
-			</div>
-
-			<div id="roundlist">
 			</div>
 		</div>
 

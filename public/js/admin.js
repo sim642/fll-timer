@@ -229,7 +229,7 @@ $(function() {
 		}
 		emitCurrent(current);
 	});
-
+	
 	$('#reset').click(function() {
 		resetTimer();
 		socket.emit('resettimer');

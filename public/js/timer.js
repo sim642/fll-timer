@@ -37,8 +37,8 @@ function startTimer(func) {
 	}, 100);
 }
 
-function resetTimer() {
-	displayTime(defaulttime);
+function resetTimer(func) {
+	displayTime(defaulttime, func);
 
 	endtime = null;
 	clearInterval(stepper);

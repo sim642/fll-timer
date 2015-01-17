@@ -21,6 +21,14 @@
 			body {
 				background-color: black;
 			}
+
+			#timer {
+				text-shadow: 0 0 0.1em;
+			}
+
+			#timer #ms {
+				font-size: 0.6em;
+			}
 		</style>
 
 		<script>
@@ -29,6 +37,15 @@
 			});
 
 			var audio;
+			var songs = [];
+			var songi = 0;
+
+			//+ Jonas Raoni Soares Silva
+			//@ http://jsfromhell.com/array/shuffle [v1.0]
+			function shuffle(o){ //v1.0
+				for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+				return o;
+			};
 
 			socket.on('resettimer', function() {
 				resetTimer();
@@ -36,27 +53,38 @@
 				audio.currentTime = 0;
 			});
 
+			function tween(d) {
+				var t = 1 - d / defaulttime;
+
+				var r, g;
+				if (t < 0.5) {
+					g = 1.0;
+					r = 2 * t;
+				}
+				else {
+					r = 1.0;
+					g = 1 - 2 * (t - 0.5);
+				}
+
+				$('#timer').css('color', 'rgb(' + Math.floor(256 * r) + ', ' + Math.floor(256 * g) + ', 0)');
+			}
+
 			socket.on('starttimer', function() {
-				startTimer(function(d) {
-					var t = 1 - d / defaulttime;
+				startTimer(tween);
 
-					var r, g;
-					if (t < 0.5) {
-						g = 1.0;
-						r = 2 * t;
-					}
-					else {
-						r = 1.0;
-						g = 1 - 2 * (t - 0.5);
-					}
-
-					$('#timer').css('color', 'rgb(' + Math.floor(256 * r) + ', ' + Math.floor(256 * g) + ', 0)');
-				});
+				audio = new Audio('/audio/' + songs[songi]);
+				songi++;
+				songi %= songs.length;
 				audio.play();
+			});
+
+			socket.on('songs', function(data) {
+				songs = shuffle(data);
 			});
 
 			$(function() {
 				$('#timer').fitText(0.35);
+				resetTimer(tween);
 				audio = $('#music').get(0);
 
 				$('body').click(function() {
