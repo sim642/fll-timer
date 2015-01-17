@@ -155,7 +155,23 @@ function renderRounds() {
 		});
 		return D.promise();
 	};
-	
+
+	if (rounds[current.ri]) {
+		$('#currentround').text(rounds[current.ri].name);
+		$('#currenttables').empty();
+		matchesHeader.clone().appendTo($('#currenttables'));
+
+		var tr = $('<tr></tr>').addClass('success');
+
+		tr.append($('<td></td>').text(current.mi + 1));
+		tr.append($('<td></td>').text(rounds[current.ri].matches[current.mi].time));
+
+		rounds[current.ri].matches[current.mi].tables.forEach(function(ti, i) {
+			tr.append($('<td></td>').text(teams[ti]));
+		});
+
+		$('#currenttables').append(tr);
+	}
 
 	var teams2 = [];
 	teams.forEach(function(team, ti) {
