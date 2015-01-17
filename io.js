@@ -17,7 +17,8 @@ var songs = [
 	'sandstorm2.mp3',
 	'shots2.mp3',
 	'tsunami2.mp3',
-	'turndown2.mp3'
+	'turndown2.mp3',
+	'mortal2.mp3'
 ];
 
 /*var teams = ['Superkarud', 'Robogängstad', 'Team Villu Pillu', 'Karu põder lehm ja mäger'];
