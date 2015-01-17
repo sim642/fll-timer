@@ -8,12 +8,16 @@ var current = {ri: 0, mi: 0};
 
 var logos = ['swedbank.png', 'nutilabor.jpg', 'riigikaitse.png', 'hitsa.png'];
 var songs = [
-	'tsunami.mp3',
-	'mario.mp3',
-	'booyah.mp3',
-	'mammoth.mp3',
-	'ready.mp3',
-	'sandstorm.mp3'
+	'booyah2.mp3',
+	'bullit2.mp3',
+	'cmon2.mp3',
+	'mammoth2.mp3',
+	'mario2.mp3',
+	'ready2.mp3',
+	'sandstorm2.mp3',
+	'shots2.mp3',
+	'tsunami2.mp3',
+	'turndown2.mp3'
 ];
 
 /*var teams = ['Superkarud', 'Robogängstad', 'Team Villu Pillu', 'Karu põder lehm ja mäger'];
