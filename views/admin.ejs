@@ -16,6 +16,10 @@
 		<script src="/js/timer.js"></script>
 
 		<style>
+			body {
+				padding-top: 70px;
+			}
+
 			/* http://stackoverflow.com/a/24985857 */
 			ol li.list-group-item { 
 				list-style: decimal inside;
@@ -28,62 +32,77 @@
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<div class="page-header">
-				<h1>fll-timer <small>admin</small></h1>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<span class="navbar-brand">fll-timer <small>admin</small></span>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a data-toggle="tab" href="#tab-teams">Meeskonnad</a></li>
+						<li><a data-toggle="tab" href="#tab-tables">Lauad</a></li>
+						<li><a data-toggle="tab" href="#tab-rounds">Voorud</a></li>
+						<li class="active"><a data-toggle="tab" href="#tab-control">Juhtimine</a></li>
+					</ul>
+				</div>
 			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">Meeskonnad</div>
+		</nav>
 
-				<ol id="teamlist" class="list-group">
-				</ol>
-			</div>
-
-			<div class="panel panel-default">
-				<div class="panel-heading">Lauad</div>
-
-				<ol id="tablelist" class="list-group">
-				</ol>
-			</div>
-
-			<div id="roundlist">
-			</div>
-
-			<div class="panel panel-primary">
-				<div class="panel-heading">Matš</div>
-				<div class="panel-body">
-					<div class="col-md-6">
-						<button id="prev" class="btn btn-danger btn-lg btn-block">Eelmine</button>
-					</div>
-
-					<div class="col-md-6">
-						<button id="next" class="btn btn-success btn-lg btn-block">Järgmine</button>
-					</div>
+		<div class="tab-content">
+			<div id="tab-teams" class="tab-pane">
+				<div class="container">
+					<ol id="teamlist" class="list-group"></ol>
 				</div>
 			</div>
 
-			
-			<div class="panel panel-primary">
-				<div class="panel-heading">Timer</div>
-				<div class="panel-body">
-					<div class="col-md-4">
-						<button id="reset" class="btn btn-danger btn-lg btn-block">Reset</button>
-					</div>
-
-					<div id="timer" class="col-md-4 text-center">
-						<span id="min">2</span>:<span id="sec">30</span>.<span id="ms">0</span>
-					</div>
-
-					<div class="col-md-4">
-						<button id="start" class="btn btn-success btn-lg btn-block">Start</button>
-					</div>
+			<div id="tab-tables" class="tab-pane">
+				<div class="container">
+					<ol id="tablelist" class="list-group"></ol>
 				</div>
 			</div>
 
-			<div class="panel panel-default">
-				<div id="currentround" class="panel-heading"></div>
+			<div id="tab-rounds" class="tab-pane">
+				<div id="roundlist" class="container"></div>
+			</div>
 
-				<table id="currenttables" class="table"></table>
+			<div id="tab-control" class="tab-pane active">
+				<div class="container">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Matš</div>
+						<div class="panel-body">
+							<div class="col-md-6">
+								<button id="prev" class="btn btn-danger btn-lg btn-block">Eelmine</button>
+							</div>
+
+							<div class="col-md-6">
+								<button id="next" class="btn btn-success btn-lg btn-block">Järgmine</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-primary">
+						<div class="panel-heading">Timer</div>
+						<div class="panel-body">
+							<div class="col-md-4">
+								<button id="reset" class="btn btn-danger btn-lg btn-block">Reset</button>
+							</div>
+
+							<div id="timer" class="col-md-4 text-center">
+								<span id="min">2</span>:<span id="sec">30</span>.<span id="ms">0</span>
+							</div>
+
+							<div class="col-md-4">
+								<button id="start" class="btn btn-success btn-lg btn-block">Start</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div id="currentround" class="panel-heading"></div>
+
+						<table id="currenttables" class="table"></table>
+					</div>
+				</div>
 			</div>
 		</div>
 
