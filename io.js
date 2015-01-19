@@ -59,9 +59,9 @@ var rounds = [
 	}
 ];*/
 
-/*setInterval(function() {
-
-}, 30 * 1000);*/
+setInterval(function() {
+	io.sockets.emit('clocktime', Date.now());
+}, 15 * 1000);
 
 io.on('connection', function(socket) {
 	console.log('client connected');
@@ -71,6 +71,7 @@ io.on('connection', function(socket) {
 	socket.emit('current', current);
 	socket.emit('logos', logos);
 	socket.emit('songs', songs);
+	socket.emit('clocktime', Date.now());
 
 	socket.on('disconnect', function() {
 		console.log('client disconnected');

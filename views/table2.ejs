@@ -170,6 +170,13 @@
 				logos = data;
 			});
 
+			socket.on('clocktime', function(data) {
+				var time = new Date(data);
+				var hr = time.getHours();
+				var min = time.getMinutes();
+				$('#clocktime').text((hr < 10 ? '0' : '') + hr + ':' + (min < 10 ? '0' : '') + min);
+			});
+
 			$(function() {
 				$('#select').click(function() {
 					showtables = [-1, -1];
@@ -185,6 +192,8 @@
 					$('.tablename').fitText(1.1);
 					$('.teamname').fitText(1.2);
 				});
+
+				$('#clocktime').fitText(0.25);
 			})
 		</script>
 	</head>
@@ -236,8 +245,19 @@
 				<td id="rightteam" class="teamname"></td>
 			</tr>
 			<tr id="tablelogos" class="minimize-row">
-				<td id="leftlogo" class="tablelogo text-center"><img src="/img/hitsa.png"></img></td>
-				<td id="rightlogo" class="tablelogo text-center"><img src="/img/nutilabor.jpg"></img></td>
+				<td colspan="2">
+					<div class="container-fluid">
+						<div class="row">
+							<div id="leftlogo" class="col-sm-5 text-center">
+								<img></img>
+							</div>
+							<div id="clocktime" class="col-sm-2 text-center"></div>
+							<div id="rightlogo" class="col-sm-5 text-center">
+								<img></img>
+							</div>
+						</div>
+					</div>
+				</td>
 			</tr>
 		</table>
 	</body>
