@@ -175,7 +175,7 @@ function renderRounds() {
 
 	var teams2 = [];
 	teams.forEach(function(team, ti) {
-		teams2.push({'value': ti, 'text': team});
+		teams2.push({'id': ti, 'text': team});
 	});
 
 	$('#roundlist').empty();
@@ -218,12 +218,20 @@ function renderRounds() {
 
 			match.tables.forEach(function(ti, i) {
 				var editable = $('<a></a>').editable({
-					type: 'select',
+					type: 'select2',
 					pk: {'ri': ri, 'mi': mi, 'i': i},
 					value: ti,
 					source: teams2,
-					url: editRounds
+					url: editRounds,
+					onblur: 'submit',
+					select2: {
+						width: '10vw'
+					}
 				});
+				/*editable.on('shown', function(e, edit) {
+					edit.input.$input.select2('open');
+				});*/
+
 				tr.append($('<td></td>').append(editable));
 			});
 
