@@ -117,7 +117,6 @@ function renderRounds() {
 
 		if (params.delete) {
 			rounds[params.pk.ri].matches.splice(params.pk.mi, 1);
-			renderRounds();
 		}
 		else if (params.pk.mi != -1) 
 			rounds[params.pk.ri].matches[params.pk.mi].tables[params.pk.i] = params.value;
@@ -129,8 +128,9 @@ function renderRounds() {
 				time: '00:00-00:00',
 				tables: arr
 			});
-			renderRounds();
 		}
+
+		renderRounds();
 
 		socket.emit('rounds', rounds, function() {
 			D.resolve();
