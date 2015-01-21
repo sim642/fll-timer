@@ -156,23 +156,6 @@ function renderRounds() {
 		return D.promise();
 	};
 
-	if (rounds[current.ri]) {
-		$('#currentround').text(rounds[current.ri].name);
-		$('#currenttables').empty();
-		matchesHeader.clone().appendTo($('#currenttables'));
-
-		var tr = $('<tr></tr>').addClass('success');
-
-		tr.append($('<td></td>').text(current.mi + 1));
-		tr.append($('<td></td>').text(rounds[current.ri].matches[current.mi].time));
-
-		rounds[current.ri].matches[current.mi].tables.forEach(function(ti, i) {
-			tr.append($('<td></td>').text(teams[ti]));
-		});
-
-		$('#currenttables').append(tr);
-	}
-
 	var teams2 = [];
 	teams.forEach(function(team, ti) {
 		teams2.push({'id': ti, 'text': team});
@@ -249,6 +232,38 @@ function renderRounds() {
 		panel.append(table);
 		$('#roundlist').append(panel);
 	});
+
+	if (rounds[current.ri]) {
+		$('#currentround').text(rounds[current.ri].name);
+		$('#currentmatches').empty();
+		matchesHeader.clone().appendTo($('#currentmatches'));
+
+		var tr = $('<tr></tr>').addClass('success');
+
+		tr.append($('<td></td>').text(current.mi + 1));
+		tr.append($('<td></td>').text(rounds[current.ri].matches[current.mi].time));
+
+		rounds[current.ri].matches[current.mi].tables.forEach(function(ti, i) {
+			tr.append($('<td></td>').text(teams[ti]));
+		});
+
+		$('#currenttables').append(tr);
+
+		rounds[current.ri].matches.forEach(function(match, mi) {
+			var tr = $('<tr></tr>');
+			if (mi == current.mi)
+				tr.addClass('success');
+
+			tr.append($('<td></td>').text(mi + 1));
+			tr.append($('<td></td>').text(match.time));
+
+			match.tables.forEach(function(ti, i) {
+				tr.append($('<td></td>').text(teams[ti]));
+			});
+
+			$('#currentmatches').append(tr);
+		});
+	}
 }
 
 $(function() {
