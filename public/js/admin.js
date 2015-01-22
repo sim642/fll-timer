@@ -161,8 +161,9 @@ function renderRounds() {
 		teams2.push({'id': ti, 'text': team});
 	});
 
-	$('#roundlist').empty();
-	rounds.forEach(function(round, ri) {
+	var renderRound = function(ri) {
+		var round = rounds[ri];
+
 		var panel = $('<div></div>').addClass('panel panel-default');
 		var nameeditable = $('<a></a>').editable({
 			type: 'text',
@@ -230,39 +231,16 @@ function renderRounds() {
 		table.append(addable2);
 
 		panel.append(table);
-		$('#roundlist').append(panel);
+		return panel;
+	}
+
+	$('#roundlist').empty();
+	rounds.forEach(function(round, ri) {
+		$('#roundlist').append(renderRound(ri));
 	});
 
 	if (rounds[current.ri]) {
-		$('#currentround').text(rounds[current.ri].name);
-		$('#currentmatches').empty();
-		matchesHeader.clone().appendTo($('#currentmatches'));
-
-		var tr = $('<tr></tr>').addClass('success');
-
-		tr.append($('<td></td>').text(current.mi + 1));
-		tr.append($('<td></td>').text(rounds[current.ri].matches[current.mi].time));
-
-		rounds[current.ri].matches[current.mi].tables.forEach(function(ti, i) {
-			tr.append($('<td></td>').text(teams[ti]));
-		});
-
-		$('#currenttables').append(tr);
-
-		rounds[current.ri].matches.forEach(function(match, mi) {
-			var tr = $('<tr></tr>');
-			if (mi == current.mi)
-				tr.addClass('success');
-
-			tr.append($('<td></td>').text(mi + 1));
-			tr.append($('<td></td>').text(match.time));
-
-			match.tables.forEach(function(ti, i) {
-				tr.append($('<td></td>').text(teams[ti]));
-			});
-
-			$('#currentmatches').append(tr);
-		});
+		$('#currentround').empty().append(renderRound(current.ri));
 	}
 }
 
