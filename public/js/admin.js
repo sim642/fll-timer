@@ -37,6 +37,21 @@ function renderTeams() {
 
 		if (params.delete) {
 			teams.splice(params.pk, 1);
+
+			// fix shifted teams, clean deleted team
+			rounds.forEach(function(round, ri) {
+				round.matches.forEach(function(match, mi) {
+					match.tables.forEach(function(ti, i) {
+						if (ti > params.pk)
+							rounds[ri].matches[mi].tables[i]--;
+						else if (ti == params.pk)
+							rounds[ri].matches[mi].tables[i] = null;
+					})
+				})
+			});
+
+			socket.emit('rounds', rounds, function() {});
+
 			renderTeams();
 		}
 		else if (params.pk != -1)
