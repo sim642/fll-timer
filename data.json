@@ -363,5 +363,18 @@
                 }
             ]
         }
+    ],
+    "songs": [
+        "booyah2.mp3",
+        "bullit2.mp3",
+        "cmon2.mp3",
+        "mammoth2.mp3",
+        "mario2.mp3",
+        "ready2.mp3",
+        "sandstorm2.mp3",
+        "shots2.mp3",
+        "tsunami2.mp3",
+        "turndown2.mp3",
+        "mortal2.mp3"
     ]
 }

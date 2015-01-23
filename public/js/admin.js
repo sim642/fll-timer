@@ -2,6 +2,7 @@ var teams = [];
 var tables = [];
 var rounds = [];
 var current = {ri: 0, mi: 0};
+var songs = [];
 
 var socket = io({
 	'sync disconnect on unload': true
@@ -19,7 +20,7 @@ socket.on('tables', function(newTables) {
 	tables = newTables;
 	renderTables();
 	renderRounds();
-})
+});
 
 socket.on('rounds', function(newRounds) {
 	rounds = newRounds;
@@ -29,7 +30,12 @@ socket.on('rounds', function(newRounds) {
 socket.on('current', function(newCurrent) {
 	current = newCurrent;
 	renderRounds();
-})
+});
+
+socket.on('songs', function(newSongs) {
+	songs = newSongs;
+	renderSongs();
+});
 
 function renderTeams() {
 	var emitTeams = function(params) {
@@ -257,6 +263,48 @@ function renderRounds() {
 	if (rounds[current.ri]) {
 		$('#currentround').empty().append(renderRound(current.ri));
 	}
+}
+
+function renderSongs() {
+	var emitSongs = function(params) {
+		var D = new $.Deferred;
+
+		if (params.delete) {
+			songs.splice(params.pk, 1);
+			renderSongs();
+		}
+		else if (params.pk != -1)
+			songs[params.pk] = params.value;
+		else {
+			songs.push(params.value);
+			renderSongs();
+		}
+		socket.emit('songs', songs, function() {
+			D.resolve();
+		});
+		return D.promise();
+	};
+
+	$('#songlist').empty();
+	songs.forEach(function(team, ti) {
+		var editable = $('<a></a>').text(team).editable({
+			type: 'text',
+			pk: ti,
+			url: emitSongs
+		});
+		var deletable = $('<a></a>').addClass('pull-right glyphicon glyphicon-trash').click(function() {
+			emitSongs({pk: ti, delete: true});
+		});
+
+		$('#songlist').append($('<li></li>').addClass('list-group-item').append(editable).append(deletable));
+	});
+
+	var editable = $('<a></a>').text('Lisa laul').editable({
+		type: 'text',
+		pk: -1,
+		url: emitSongs
+	});
+	$('#songlist').append($('<li></li>').addClass('list-group-item list-group-item-info').append(editable));
 }
 
 $(function() {

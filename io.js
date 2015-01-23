@@ -5,21 +5,9 @@ var teams = [];
 var tables = [];
 var rounds = [];
 var current = {ri: 0, mi: 0};
+var songs = [];
 
 var logos = ['swedbank.png', 'nutilabor.jpg', 'riigikaitse.png', 'hitsa.png'];
-var songs = [
-	'booyah2.mp3',
-	'bullit2.mp3',
-	'cmon2.mp3',
-	'mammoth2.mp3',
-	'mario2.mp3',
-	'ready2.mp3',
-	'sandstorm2.mp3',
-	'shots2.mp3',
-	'tsunami2.mp3',
-	'turndown2.mp3',
-	'mortal2.mp3'
-];
 
 /*var teams = ['Superkarud', 'Robogängstad', 'Team Villu Pillu', 'Karu põder lehm ja mäger'];
 var rounds = [
@@ -104,6 +92,13 @@ io.on('connection', function(socket) {
 		socket.broadcast.emit('current', current);
 	});
 
+	socket.on('songs', function(newSongs, fn) {
+		songs = newSongs;
+		fn();
+		socket.broadcast.emit('songs', songs);
+		saveData();
+	});
+
 	socket.on('starttimer', function() {
 		socket.broadcast.emit('starttimer');
 	});
@@ -121,17 +116,20 @@ fs.readFile('data.json', function(err, data) {
 	teams = data.teams;
 	tables = data.tables;
 	rounds = data.rounds;
+	songs = data.songs;
 
 	io.sockets.emit('teams', teams);
 	io.sockets.emit('tables', tables);
 	io.sockets.emit('rounds', rounds);
+	io.sockets.emit('songs', songs);
 });
 
 function saveData() {
 	var data = {
 		'teams': teams,
 		'tables': tables,
-		'rounds': rounds
+		'rounds': rounds,
+		'songs': songs
 	};
 	fs.writeFile('data.json', JSON.stringify(data, null, 4));
 }
