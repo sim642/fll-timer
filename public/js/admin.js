@@ -293,6 +293,8 @@ function renderSongs() {
 			songs.splice(params.pk, 1);
 			renderSongs();
 		}
+		else if (params.move)
+			renderSongs();
 		else if (params.pk != -1)
 			songs[params.pk] = params.value;
 		else {
@@ -334,6 +336,27 @@ function renderSongs() {
 		url: emitSongs
 	});
 	$('#songlist').append($('<li></li>').addClass('list-group-item list-group-item-info').append(editable));
+
+	$('#songlist').sortable({
+		axis: 'y',
+		containment: 'parent',
+		distance: $('#songlist li').first().height(),
+		items: '> li:not(.list-group-item-info)',
+		update: function(event, ui) {
+			var newSongs = [];
+			$('li', '#songlist').each(function(i, elem) {
+				if ($(elem).hasClass('list-group-item-info'))
+					return;
+
+				newSongs.push($('a.editable', elem).text());
+
+				if ($(elem).hasClass('list-group-item-success'))
+					emitSongi(i);
+			});
+			songs = newSongs;
+			emitSongs({move: true});
+		}
+	});
 
 	$('#songname').text(songs[songi]);
 }
