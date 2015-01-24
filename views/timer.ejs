@@ -55,14 +55,6 @@
 			var songs = [];
 			var songi = 0;
 
-			//+ Jonas Raoni Soares Silva
-			//@ http://jsfromhell.com/array/shuffle [v1.0]
-			function shuffle(o){ //v1.0
-				for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-				return o;
-			};
-
-
 			function tween(d) {
 				var t = 1 - d / defaulttime;
 
@@ -79,30 +71,38 @@
 				$('#timer').css('color', 'rgb(' + Math.floor(256 * r) + ', ' + Math.floor(256 * g) + ', 0)');
 			}
 
-			socket.on('resettimer', function() {
-				resetTimer(tween);
-				audio.pause();
-				audio.currentTime = 0;
-			});
-			
-			socket.on('starttimer', function() {
-				resetTimer();
+			function startAudio() {
+				stopAudio();
+				audio = new Audio('/audio/' + songs[songi]);
+				audio.play();
+			}
 
+			function stopAudio() {
 				if (audio) {
 					audio.pause();
 					audio.currentTime = 0;
 				}
+			}
+
+			socket.on('resettimer', function() {
+				resetTimer(tween);
+				stopAudio();
+			});
+			
+			socket.on('starttimer', function() {
+				resetTimer();
+				stopAudio();
 
 				startTimer(tween);
-
-				audio = new Audio('/audio/' + songs[songi]);
-				songi++;
-				songi %= songs.length;
-				audio.play();
+				startAudio();
 			});
 
 			socket.on('songs', function(data) {
-				songs = shuffle(data);
+				songs = data;
+			});
+
+			socket.on('songi', function(data) {
+				songi = data;
 			});
 
 			$(function() {

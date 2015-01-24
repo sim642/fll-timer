@@ -6,6 +6,7 @@ var tables = [];
 var rounds = [];
 var current = {ri: 0, mi: 0};
 var songs = [];
+var songi = 0;
 
 var logos = ['swedbank.png', 'nutilabor.jpg', 'riigikaitse.png', 'hitsa.png'];
 
@@ -59,6 +60,7 @@ io.on('connection', function(socket) {
 	socket.emit('current', current);
 	socket.emit('logos', logos);
 	socket.emit('songs', songs);
+	socket.emit('songi', songi);
 	socket.emit('clocktime', Date.now());
 
 	socket.on('disconnect', function() {
@@ -97,6 +99,12 @@ io.on('connection', function(socket) {
 		fn();
 		socket.broadcast.emit('songs', songs);
 		saveData();
+	});
+
+	socket.on('songi', function(newSongi, fn) {
+		songi = newSongi;
+		fn();
+		socket.broadcast.emit('songi', songi);
 	});
 
 	socket.on('starttimer', function() {

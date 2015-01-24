@@ -3,6 +3,7 @@ var tables = [];
 var rounds = [];
 var current = {ri: 0, mi: 0};
 var songs = [];
+var songi = 0;
 
 var socket = io({
 	'sync disconnect on unload': true
@@ -34,6 +35,11 @@ socket.on('current', function(newCurrent) {
 
 socket.on('songs', function(newSongs) {
 	songs = newSongs;
+	renderSongs();
+});
+
+socket.on('songi', function(newSongi) {
+	songi = newSongi;
 	renderSongs();
 });
 
@@ -265,6 +271,20 @@ function renderRounds() {
 	}
 }
 
+var emitSongi = function(params) {
+	songi = params;
+
+	socket.emit('songi', songi, function(){});
+	renderSongs();
+};
+
+//+ Jonas Raoni Soares Silva
+//@ http://jsfromhell.com/array/shuffle [v1.0]
+function shuffle(o){ //v1.0
+	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	return o;
+};
+
 function renderSongs() {
 	var emitSongs = function(params) {
 		var D = new $.Deferred;
@@ -286,17 +306,26 @@ function renderSongs() {
 	};
 
 	$('#songlist').empty();
-	songs.forEach(function(team, ti) {
-		var editable = $('<a></a>').text(team).editable({
+	songs.forEach(function(song, i) {
+		var editable = $('<a></a>').text(song).editable({
 			type: 'text',
-			pk: ti,
+			pk: i,
 			url: emitSongs
 		});
-		var deletable = $('<a></a>').addClass('pull-right glyphicon glyphicon-trash').click(function() {
-			emitSongs({pk: ti, delete: true});
+
+		var setSongi = $('<a></a>').addClass('glyphicon glyphicon-play').click(function() {
+			emitSongi(i);
 		});
 
-		$('#songlist').append($('<li></li>').addClass('list-group-item').append(editable).append(deletable));
+		var deletable = $('<a></a>').addClass('pull-right glyphicon glyphicon-trash').click(function() {
+			emitSongs({pk: i, delete: true});
+		});
+
+		var item = $('<li></li>').addClass('list-group-item').append(setSongi).append(editable).append(deletable);
+		if (i == songi)
+			item.addClass('list-group-item-success');
+
+		$('#songlist').append(item);
 	});
 
 	var editable = $('<a></a>').text('Lisa laul').editable({
@@ -305,9 +334,20 @@ function renderSongs() {
 		url: emitSongs
 	});
 	$('#songlist').append($('<li></li>').addClass('list-group-item list-group-item-info').append(editable));
+
+	$('#songname').text(songs[songi]);
 }
 
 $(function() {
+	function resetWrapper() {
+		resetTimer();
+		songi++;
+		songi %= songs.length;
+		emitSongi(songi);
+		socket.emit('resettimer');
+		$('#songtext').text('Järgmine laul:');
+	};
+
 	$('#next').click(function() {
 		current.mi++;
 		if (current.mi == rounds[current.ri].matches.length) {
@@ -317,8 +357,7 @@ $(function() {
 				current.ri = 0;
 		}
 		emitCurrent(current);
-		resetTimer();
-		socket.emit('resettimer');
+		resetWrapper();
 	});
 
 	$('#prev').click(function() {
@@ -330,17 +369,22 @@ $(function() {
 			current.mi = rounds[current.ri].matches.length - 1;
 		}
 		emitCurrent(current);
-		resetTimer();
-		socket.emit('resettimer');
+		resetWrapper();
 	});
 
 	$('#reset').click(function() {
-		resetTimer();
-		socket.emit('resettimer');
+		resetWrapper();
 	});
 
 	$('#start').click(function() {
 		startTimer();
 		socket.emit('starttimer');
+		$('#songtext').text('Praegune laul:');
+	});
+
+	$('#shuffle').click(function() {
+		songs = shuffle(songs);
+		renderSongs();
+		socket.emit('songs', songs, function() {});
 	});
 });
