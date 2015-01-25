@@ -98,7 +98,10 @@ function renderTeams() {
 		pk: -1,
 		url: emitTeams
 	});
-	$('#teamlist').append($('<li></li>').addClass('list-group-item list-group-item-info').append(editable));
+	editable.on('shown', function(e, editable) {
+		editable.input.$input.val('');
+	});
+	$('#teamlist').append($('<li></li>').addClass('list-group-item list-group-item-info add-item').append(editable));
 }
 
 function renderTables() {
@@ -335,7 +338,10 @@ function renderSongs() {
 		pk: -1,
 		url: emitSongs
 	});
-	$('#songlist').append($('<li></li>').addClass('list-group-item list-group-item-info').append(editable));
+	editable.on('shown', function(e, editable) {
+		editable.input.$input.val('');
+	});
+	$('#songlist').append($('<li></li>').addClass('list-group-item list-group-item-info add-item').append(editable));
 
 	$('#songlist').sortable({
 		axis: 'y',
