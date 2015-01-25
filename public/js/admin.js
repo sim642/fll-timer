@@ -136,11 +136,13 @@ var emitCurrent = function(params) {
 
 function renderRounds() {
 	var matchesHeader = $('<tr></tr>');
+	matchesHeader.append($('<th></th>').addClass('minimize-col')); // play
 	matchesHeader.append($('<th></th>').text('#'));
 	matchesHeader.append($('<th></th>').text('Aeg'));
 	tables.forEach(function(table) {
 		matchesHeader.append($('<th></th>').text(table));
 	});
+	matchesHeader.append($('<th></th>').addClass('minimize-col')); // delete
 
 	var editRounds = function(params) {
 		var D = new $.Deferred;
@@ -211,13 +213,11 @@ function renderRounds() {
 			if (ri == current.ri && mi == current.mi)
 				tr.addClass('success');
 
-			tr.append($('<td></td>').text(mi + 1));
-
 			var setCurrent = $('<a></a>').addClass('glyphicon glyphicon-play').click(function() {
 				emitCurrent({'ri': ri, 'mi': mi});
 			});
 
-			var deletable = $('<a></a>').addClass('pull-right glyphicon glyphicon-trash').click(function() {
+			var deletable = $('<a></a>').addClass('glyphicon glyphicon-trash').click(function() {
 				editRounds({pk: {'ri': ri, 'mi': mi}, delete: true});
 			});
 
@@ -228,7 +228,9 @@ function renderRounds() {
 				url: editTime
 			});
 
-			tr.append($('<td></td>').append(timeeditable).append(setCurrent).append(deletable));
+			tr.append($('<td></td>').append(setCurrent));
+			tr.append($('<td></td>').text(mi + 1));
+			tr.append($('<td></td>').append(timeeditable));
 
 			match.tables.forEach(function(ti, i) {
 				var editable = $('<a></a>').editable({
@@ -249,12 +251,13 @@ function renderRounds() {
 				tr.append($('<td></td>').append(editable));
 			});
 
+			tr.append($('<td></td>').append(deletable));
 
 			table.append(tr);
 		});
 
 		var addable = $('<a></a>').addClass('glyphicon glyphicon-plus');
-		var addable2 = $('<tr></tr>').addClass('info').append($('<td></td>').addClass('text-center').attr('colspan', tables.length + 2).append(addable)).click(function() {
+		var addable2 = $('<tr></tr>').addClass('info').append($('<td></td>').addClass('text-center').attr('colspan', tables.length + 4).append(addable)).click(function() {
 			editRounds({pk: {'ri': ri, 'mi': -1}});
 		});
 
