@@ -244,9 +244,9 @@ function renderRounds() {
 						width: '10vw'
 					}
 				});
-				/*editable.on('shown', function(e, edit) {
+				editable.on('shown', function(e, edit) {
 					edit.input.$input.select2('open');
-				});*/
+				});
 
 				tr.append($('<td></td>').append(editable));
 			});
