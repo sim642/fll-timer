@@ -112,8 +112,11 @@
 				if ($('#teamnames').is(':visible')) {
 					var ri = current.ri;
 					var mi = current.mi;
-					$('#leftteam').text(teams[rounds[ri].matches[mi].tables[showtables[0]]]);
-					$('#rightteam').text(teams[rounds[ri].matches[mi].tables[showtables[1]]]);
+					$('.teamname span').fadeOut(400, function() {
+						$('#leftteam').text(teams[rounds[ri].matches[mi].tables[showtables[0]]]);
+						$('#rightteam').text(teams[rounds[ri].matches[mi].tables[showtables[1]]]);
+						$('.teamname span').fadeIn(400);
+					});
 				}
 			}
 
@@ -241,8 +244,8 @@
 				<td id="righttable" class="tablename"></td>
 			</tr>
 			<tr id="teamnames">
-				<td id="leftteam" class="teamname"></td>
-				<td id="rightteam" class="teamname"></td>
+				<td class="teamname"><span id="leftteam"></span></td>
+				<td class="teamname"><span id="rightteam"></span></td>
 			</tr>
 			<tr id="tablelogos" class="minimize-row">
 				<td colspan="2">
