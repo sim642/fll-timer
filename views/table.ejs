@@ -97,6 +97,8 @@
 		</style>
 
 		<script>
+			var fadeTime = 400;
+
 			var teams = [];
 			var tables = [];
 			var rounds = [];
@@ -108,15 +110,21 @@
 				'sync disconnect on unload': true
 			});
 
+			function fadeText($elem, text) {
+				if ($elem.text() != text) {
+					$elem.fadeOut(fadeTime, function() {
+						$elem.text(text);
+						$elem.fadeIn(fadeTime);
+					});
+				}
+			}
+
 			function renderTeams() {
 				if ($('#teamnames').is(':visible')) {
 					var ri = current.ri;
 					var mi = current.mi;
-					$('.teamname span').fadeOut(400, function() {
-						$('#leftteam').text(teams[rounds[ri].matches[mi].tables[showtables[0]]]);
-						$('#rightteam').text(teams[rounds[ri].matches[mi].tables[showtables[1]]]);
-						$('.teamname span').fadeIn(400);
-					});
+					fadeText($('#leftteam'), teams[rounds[ri].matches[mi].tables[showtables[0]]]);
+					fadeText($('#rightteam'), teams[rounds[ri].matches[mi].tables[showtables[1]]]);
 				}
 			}
 
@@ -135,8 +143,8 @@
 			}
 
 			function renderTop() {
-				$('#matchtime').text(rounds[current.ri].matches[current.mi].time);
-				$('#roundname').text(rounds[current.ri].name);
+				fadeText($('#matchtime'), rounds[current.ri].matches[current.mi].time);
+				fadeText($('#roundname'), rounds[current.ri].name);
 			}
 
 			function renderLogos() {
