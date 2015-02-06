@@ -127,11 +127,18 @@ function renderTables() {
 }
 
 var emitCurrent = function(params) {
+	var roundchange = current.ri !== params.ri;
 	current.ri = params.ri;
 	current.mi = params.mi;
 
 	socket.emit('current', current, function(){});
-	renderRounds();
+
+	$('.panel-round tr').removeClass('success');
+	$('.panel-round[data-round="' + current.ri + '"] tr[data-match="' + current.mi + '"]').addClass('success');
+
+	if (roundchange && rounds[current.ri]) {
+		renderRounds(); // inefficient
+	}
 };
 
 function renderRounds() {
@@ -196,7 +203,7 @@ function renderRounds() {
 	var renderRound = function(ri) {
 		var round = rounds[ri];
 
-		var panel = $('<div></div>').addClass('panel panel-default');
+		var panel = $('<div></div>').addClass('panel panel-default panel-round').attr('data-round', ri);
 		var nameeditable = $('<a></a>').editable({
 			type: 'text',
 			pk: ri,
@@ -209,7 +216,7 @@ function renderRounds() {
 		matchesHeader.clone().appendTo(table);
 
 		round.matches.forEach(function(match, mi) {
-			var tr = $('<tr></tr>');
+			var tr = $('<tr></tr>').attr('data-match', mi);
 			if (ri == current.ri && mi == current.mi)
 				tr.addClass('success');
 
@@ -381,26 +388,28 @@ $(function() {
 	};
 
 	$('#next').click(function() {
-		current.mi++;
-		if (current.mi == rounds[current.ri].matches.length) {
-			current.mi = 0;
-			current.ri++;
-			if (current.ri == rounds.length)
-				current.ri = 0;
+		var params = $.extend({}, current); // hack to copy object
+		params.mi++;
+		if (params.mi == rounds[params.ri].matches.length) {
+			params.mi = 0;
+			params.ri++;
+			if (params.ri == rounds.length)
+				params.ri = 0;
 		}
-		emitCurrent(current);
+		emitCurrent(params);
 		resetWrapper();
 	});
 
 	$('#prev').click(function() {
-		current.mi--;
-		if (current.mi == -1) {
-			current.ri--;
-			if (current.ri == -1)
-				current.ri = rounds.length - 1;
-			current.mi = rounds[current.ri].matches.length - 1;
+		var params = $.extend({}, current); // hack to copy object
+		params.mi--;
+		if (params.mi == -1) {
+			params.ri--;
+			if (params.ri == -1)
+				params.ri = rounds.length - 1;
+			params.mi = rounds[params.ri].matches.length - 1;
 		}
-		emitCurrent(current);
+		emitCurrent(params);
 		resetWrapper();
 	});
 
