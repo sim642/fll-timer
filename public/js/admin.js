@@ -291,7 +291,11 @@ var emitSongi = function(params) {
 	songi = params;
 
 	socket.emit('songi', songi, function(){});
-	renderSongs();
+
+	$('#songlist li').removeClass('list-group-item-success');
+	$('#songlist li[data-song="' + songi + '"]').addClass('list-group-item-success');
+
+	$('#songname').text(songs[songi]);
 };
 
 //+ Jonas Raoni Soares Silva
@@ -339,7 +343,7 @@ function renderSongs() {
 			emitSongs({pk: i, delete: true});
 		});
 
-		var item = $('<li></li>').addClass('list-group-item').append(setSongi).append(editable).append(deletable);
+		var item = $('<li></li>').addClass('list-group-item').attr('data-song', i).append(setSongi).append(editable).append(deletable);
 		if (i == songi)
 			item.addClass('list-group-item-success');
 
@@ -383,9 +387,10 @@ function renderSongs() {
 $(function() {
 	function resetWrapper() {
 		resetTimer();
-		songi++;
-		songi %= songs.length;
-		emitSongi(songi);
+		var params = songi;
+		params++;
+		params %= songs.length;
+		emitSongi(params);
 		socket.emit('resettimer');
 		$('#songtext').text('Järgmine laul:');
 	};
