@@ -367,6 +367,7 @@ function renderSongs() {
 		items: '> li:not(.list-group-item-info)',
 		update: function(event, ui) {
 			var newSongs = [];
+			var newSongi = null;
 			$('li', '#songlist').each(function(i, elem) {
 				if ($(elem).hasClass('list-group-item-info'))
 					return;
@@ -374,10 +375,11 @@ function renderSongs() {
 				newSongs.push($('a.editable', elem).text());
 
 				if ($(elem).hasClass('list-group-item-success'))
-					emitSongi(i);
+					newSongi = i;
 			});
 			songs = newSongs;
 			emitSongs({move: true});
+			emitSongi(newSongi);
 		}
 	});
 
