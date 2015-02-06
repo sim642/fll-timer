@@ -33,6 +33,15 @@ socket.on('current', function(newCurrent) {
 	renderRounds();
 });
 
+socket.on('resettimer', function() {
+	resetTimer();
+});
+
+socket.on('starttimer', function() {
+	resetTimer();
+	startTimer();
+});
+
 socket.on('songs', function(newSongs) {
 	songs = newSongs;
 	renderSongs();
