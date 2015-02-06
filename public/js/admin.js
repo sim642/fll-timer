@@ -52,6 +52,13 @@ socket.on('songi', function(newSongi) {
 	renderSongs();
 });
 
+socket.on('clocktime', function(data) {
+	var time = new Date(data);
+	var hr = time.getHours();
+	var min = time.getMinutes();
+	$('#clocktime').text((hr < 10 ? '0' : '') + hr + ':' + (min < 10 ? '0' : '') + min);
+});
+
 function renderTeams() {
 	var emitTeams = function(params) {
 		var D = new $.Deferred;
