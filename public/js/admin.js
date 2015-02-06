@@ -169,8 +169,7 @@ function renderRounds() {
 			});
 		}
 
-		renderRounds();
-
+		renderRounds(); // inefficient
 		socket.emit('rounds', rounds, function() {
 			D.resolve();
 		});
@@ -180,6 +179,8 @@ function renderRounds() {
 	var editTime = function(params) {
 		var D = new $.Deferred;
 		rounds[params.pk.ri].matches[params.pk.mi].time = params.value;
+
+		renderRounds(); // inefficient
 		socket.emit('rounds', rounds, function() {
 			D.resolve();
 		});
@@ -189,6 +190,8 @@ function renderRounds() {
 	var editName = function(params) {
 		var D = new $.Deferred;
 		rounds[params.pk].name = params.value;
+
+		renderRounds(); // inefficient
 		socket.emit('rounds', rounds, function() {
 			D.resolve();
 		});
