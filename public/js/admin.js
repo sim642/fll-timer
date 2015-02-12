@@ -355,11 +355,14 @@ function renderSongs() {
 			emitSongi(i);
 		});
 
+
+		var movable = $('<a></a>').addClass('pull-right glyphicon glyphicon-sort move-handle');
+
 		var deletable = $('<a></a>').addClass('pull-right glyphicon glyphicon-trash').click(function() {
 			emitSongs({pk: i, delete: true});
 		});
 
-		var item = $('<li></li>').addClass('list-group-item').attr('data-song', i).append(setSongi).append(editable).append(deletable);
+		var item = $('<li></li>').addClass('list-group-item').attr('data-song', i).append(setSongi).append(editable).append(deletable).append(movable);
 		if (i == songi)
 			item.addClass('list-group-item-success');
 
@@ -379,7 +382,7 @@ function renderSongs() {
 	$('#songlist').sortable({
 		axis: 'y',
 		containment: 'parent',
-		distance: $('#songlist li').first().height(),
+		handle: '.move-handle',
 		items: '> li:not(.list-group-item-info)',
 		update: function(event, ui) {
 			var newSongs = [];
