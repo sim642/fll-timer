@@ -447,6 +447,7 @@ $(function() {
 	});
 
 	$('#start').click(function() {
+		resetTimer();
 		startTimer();
 		socket.emit('starttimer');
 		$('#songtext').text('Praegune laul:');
