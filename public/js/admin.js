@@ -311,7 +311,7 @@ var emitSongi = function(params) {
 	$('#songlist li').removeClass('list-group-item-success');
 	$('#songlist li[data-song="' + songi + '"]').addClass('list-group-item-success');
 
-	$('#songname').text(songs[songi]);
+	$('#songname').text((songi + 1) + ". " + songs[songi]);
 };
 
 //+ Jonas Raoni Soares Silva
@@ -402,7 +402,7 @@ function renderSongs() {
 		}
 	});
 
-	$('#songname').text(songs[songi]);
+	$('#songname').text((songi + 1) + ". " + songs[songi]);
 }
 
 $(function() {
