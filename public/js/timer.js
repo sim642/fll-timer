@@ -8,7 +8,7 @@ function displayTime(d, func) {
 	if (d > 0) {
 		var dd = d;
 		
-		ms = Math.floor(d % 1000 / 100);
+		ms = Math.floor(d % 1000 / 10);
 		d = Math.floor(d / 1000);
 		sec = d % 60;
 		d = Math.floor(d / 60);
@@ -24,7 +24,7 @@ function displayTime(d, func) {
 
 	$('#timer #min').text(min);
 	$('#timer #sec').text((sec < 10 ? '0' : '') + sec);
-	$('#timer #ms').text(ms);
+	$('#timer #ms').text((ms < 10 ? '0' : '') + ms);
 
 	(func || function(){})(d);
 }
@@ -34,7 +34,7 @@ function startTimer(func) {
 
 	stepper = setInterval(function() {
 		displayTime(endtime - Date.now(), func);
-	}, 100);
+	}, 10);
 }
 
 function resetTimer(func) {
