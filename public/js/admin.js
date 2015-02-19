@@ -297,7 +297,7 @@ function renderRounds() {
 		});
 
 		var addable = $('<a></a>').addClass('glyphicon glyphicon-plus');
-		var addable2 = $('<tr></tr>').addClass('info').append($('<td></td>').addClass('text-center').attr('colspan', tables.length + 4).append(addable)).click(function() {
+		var addable2 = $('<tr></tr>').addClass('info add-item').append($('<td></td>').addClass('text-center').attr('colspan', tables.length + 4).append(addable)).click(function() {
 			editRounds({pk: {'ri': ri, 'mi': -1}});
 		});
 
