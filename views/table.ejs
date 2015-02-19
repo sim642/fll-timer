@@ -37,6 +37,10 @@
 				border-right: solid white 1vw;
 			}
 
+			.no-show {
+				opacity: 0.5;
+				font-size: 1.2em;
+			}
 
 			.tablename {
 				width: 50%;
@@ -111,8 +115,12 @@
 			});
 
 			function fadeText($elem, text) {
+				var noshow = /^-/.test(text);
+				text = noshow ? 'VABA' : text;
+
 				if ($elem.text() != text) {
 					$elem.fadeOut(fadeTime, function() {
+						$elem.toggleClass('no-show', noshow);
 						$elem.text(text);
 						$elem.fadeIn(fadeTime);
 					});

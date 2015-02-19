@@ -59,6 +59,17 @@ socket.on('clocktime', function(data) {
 	$('#clocktime').text((hr < 10 ? '0' : '') + hr + ':' + (min < 10 ? '0' : '') + min);
 });
 
+function teamsDisplay(value, response) {
+	var noshow = /^-/.test(value);
+	$(this).toggleClass('no-show', noshow).text(value);
+}
+
+function roundsDisplay(value, sourceData, response) {
+	value = teams[value];
+	var noshow = /^-/.test(value);
+	$(this).toggleClass('no-show', noshow).text(noshow ? 'VABA' : value);
+}
+
 function renderTeams() {
 	var emitTeams = function(params) {
 		var D = new $.Deferred;
@@ -100,7 +111,8 @@ function renderTeams() {
 		var editable = $('<a></a>').text(team).editable({
 			type: 'text',
 			pk: ti,
-			url: emitTeams
+			url: emitTeams,
+			display: teamsDisplay
 		});
 		var deletable = $('<a></a>').addClass('pull-right glyphicon glyphicon-trash').click(function() {
 			emitTeams({pk: ti, delete: true});
@@ -112,7 +124,8 @@ function renderTeams() {
 	var editable = $('<a></a>').text('Lisa meeskond').editable({
 		type: 'text',
 		pk: -1,
-		url: emitTeams
+		url: emitTeams,
+		display: teamsDisplay
 	});
 	editable.on('shown', function(e, editable) {
 		editable.input.$input.val('');
@@ -268,7 +281,8 @@ function renderRounds() {
 					onblur: 'submit',
 					select2: {
 						width: '10vw'
-					}
+					},
+					display: roundsDisplay
 				});
 				/*editable.on('shown', function(e, edit) {
 					edit.input.$input.select2('open');
