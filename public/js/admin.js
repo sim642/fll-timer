@@ -112,6 +112,7 @@ function renderTeams() {
 			type: 'text',
 			pk: ti,
 			url: emitTeams,
+			onblur: 'submit',
 			display: teamsDisplay
 		});
 		var deletable = $('<a></a>').addClass('pull-right glyphicon glyphicon-trash').click(function() {
@@ -149,7 +150,8 @@ function renderTables() {
 		var editable = $('<a></a>').text(table).editable({
 			type: 'text',
 			pk: i,
-			url: emitTables
+			url: emitTables,
+			onblur: 'submit'
 		});
 		$('#tablelist').append($('<li></li>').addClass('list-group-item').append(editable));
 	});
@@ -240,7 +242,8 @@ function renderRounds() {
 			type: 'text',
 			pk: ri,
 			value: round.name,
-			url: editName
+			url: editName,
+			onblur: 'submit'
 		});
 		panel.append($('<div></div>').addClass('panel-heading').append(nameeditable));
 
@@ -264,7 +267,8 @@ function renderRounds() {
 				type: 'text',
 				pk: {'ri': ri, 'mi': mi},
 				value: match.time,
-				url: editTime
+				url: editTime,
+				onblur: 'submit'
 			});
 
 			tr.append($('<td></td>').append(setCurrent));
@@ -362,13 +366,13 @@ function renderSongs() {
 		var editable = $('<a></a>').text(song).editable({
 			type: 'text',
 			pk: i,
-			url: emitSongs
+			url: emitSongs,
+			onblur: 'submit'
 		});
 
 		var setSongi = $('<a></a>').addClass('glyphicon glyphicon-play').click(function() {
 			emitSongi(i);
 		});
-
 
 		var movable = $('<a></a>').addClass('pull-right glyphicon glyphicon-sort move-handle');
 
