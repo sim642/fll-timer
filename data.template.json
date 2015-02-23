@@ -1,0 +1,32 @@
+{
+    "teams": [],
+    "tables": [
+        "Laud 1",
+        "Laud 2",
+        "Laud 3",
+        "Laud 4"
+    ],
+    "rounds": [
+        {
+            "name": "Robotidisain",
+            "matches": []
+        },
+        {
+            "name": "1. voor",
+            "matches": []
+        },
+        {
+            "name": "2. voor",
+            "matches": []
+        },
+        {
+            "name": "3. voor",
+            "matches": []
+        },
+        {
+            "name": "Robotimängude lõpp",
+            "matches": []
+        }
+    ],
+    "songs": []
+}
