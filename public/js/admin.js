@@ -424,6 +424,8 @@ function renderSongs() {
 }
 
 $(function() {
+	resetTimer();
+
 	function resetWrapper() {
 		resetTimer();
 		var params = songi;
