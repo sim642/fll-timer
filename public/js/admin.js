@@ -272,7 +272,8 @@ function renderRounds() {
 	var renderRound = function(ri) {
 		var round = rounds[ri];
 
-		var panel = $('<div></div>').addClass('panel panel-default panel-round table-responsive').attr('data-round', ri);
+		var panel = $('<div></div>').addClass('panel panel-round table-responsive').attr('data-round', ri);
+		panel.addClass('panel-' + (ri == current.ri ? 'success' : 'default'));
 		var nameeditable = $('<a></a>').editable({
 			type: 'text',
 			pk: ri,
