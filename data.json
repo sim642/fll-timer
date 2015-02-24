@@ -40,6 +40,12 @@
         "Riigikaitseõpetus",
         "HITSA"
     ],
+    "logos": [
+        "swedbank.png",
+        "nutilabor.jpg",
+        "riigikaitse.png",
+        "hitsa.png"
+    ],
     "rounds": [
         {
             "name": "Robotidisain",

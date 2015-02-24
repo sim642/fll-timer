@@ -107,10 +107,10 @@
 
 			var teams = [];
 			var tables = [];
+			var logos = [];
 			var rounds = [];
 			var current = {ri: 0, mi: 0};
 			var showtables = null;
-			var logos = [];
 
 			var socket = io({
 				'sync disconnect on unload': true
@@ -175,6 +175,12 @@
 					$('#tableselect').show();
 			});
 
+			socket.on('logos', function(data) {
+				logos = data;
+				if (showtables !== null)
+					renderLogos();
+			});
+
 			socket.on('rounds', function(data) {
 				rounds = data;
 				renderTop();
@@ -185,10 +191,6 @@
 				current = data;
 				renderTop();
 				renderTeams();
-			});
-
-			socket.on('logos', function(data) {
-				logos = data;
 			});
 
 			socket.on('clocktime', function(data) {

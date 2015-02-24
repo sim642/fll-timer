@@ -3,50 +3,11 @@ var fs = require('fs');
 
 var teams = [];
 var tables = [];
+var logos = [];
 var rounds = [];
 var current = {ri: 0, mi: 0};
 var songs = [];
 var songi = 0;
-
-var logos = ['swedbank.png', 'nutilabor.jpg', 'riigikaitse.png', 'hitsa.png'];
-
-/*var teams = ['Superkarud', 'Robogängstad', 'Team Villu Pillu', 'Karu põder lehm ja mäger'];
-var rounds = [
-	{
-		name: '1. voor',
-		matches: [
-			{
-				time: '12:00-12:10',
-				tables: [1, 0, 2, 3]
-			},
-			{
-				time: '12:10-12:20',
-				tables: [1, 3, 2, 0]
-			},
-			{
-				time: '12:20-12:30',
-				tables: [3, 1, 2, 0]
-			}
-		]
-	},
-	{
-		name: '2. voor',
-		matches: [
-			{
-				time: '13:00-13:10',
-				tables: [1, 0, 2, 3]
-			},
-			{
-				time: '13:10-13:20',
-				tables: [1, 3, 2, 0]
-			},
-			{
-				time: '13:20-13:30',
-				tables: [3, 1, 2, 0]
-			}
-		]
-	}
-];*/
 
 setInterval(function() {
 	io.sockets.emit('clocktime', Date.now());
@@ -54,18 +15,20 @@ setInterval(function() {
 
 io.on('connection', function(socket) {
 	console.log('client connected');
-	socket.emit('teams', teams);
-	socket.emit('tables', tables);
-	socket.emit('rounds', rounds);
-	socket.emit('current', current);
-	socket.emit('logos', logos);
-	socket.emit('songs', songs);
-	socket.emit('songi', songi);
-	socket.emit('clocktime', Date.now());
 
 	socket.on('disconnect', function() {
 		console.log('client disconnected');
 	});
+
+
+	socket.emit('teams', teams);
+	socket.emit('tables', tables);
+	socket.emit('logos', logos);
+	socket.emit('rounds', rounds);
+	socket.emit('current', current);
+	socket.emit('songs', songs);
+	socket.emit('songi', songi);
+	socket.emit('clocktime', Date.now());
 
 	socket.on('teams', function(newTeams, fn) {
 		teams = newTeams;
@@ -78,6 +41,13 @@ io.on('connection', function(socket) {
 		tables = newTables;
 		fn();
 		socket.broadcast.emit('tables', tables);
+		saveData();
+	});
+
+	socket.on('logos', function(newLogos, fn) {
+		logos = newLogos;
+		fn();
+		socket.broadcast.emit('logos', logos);
 		saveData();
 	});
 
@@ -123,11 +93,13 @@ fs.readFile('data.json', function(err, data) {
 	data = JSON.parse(data);
 	teams = data.teams;
 	tables = data.tables;
+	logos = data.logos;
 	rounds = data.rounds;
 	songs = data.songs;
 
 	io.sockets.emit('teams', teams);
 	io.sockets.emit('tables', tables);
+	io.sockets.emit('logos', logos);
 	io.sockets.emit('rounds', rounds);
 	io.sockets.emit('songs', songs);
 });
@@ -136,6 +108,7 @@ function saveData() {
 	var data = {
 		'teams': teams,
 		'tables': tables,
+		'logos': logos,
 		'rounds': rounds,
 		'songs': songs
 	};

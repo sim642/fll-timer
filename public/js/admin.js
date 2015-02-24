@@ -1,5 +1,6 @@
 var teams = [];
 var tables = [];
+var logos = [];
 var rounds = [];
 var current = {ri: 0, mi: 0};
 var songs = [];
@@ -21,6 +22,11 @@ socket.on('tables', function(newTables) {
 	tables = newTables;
 	renderTables();
 	renderRounds();
+});
+
+socket.on('logos', function(newLogos) {
+	logos = newLogos;
+	renderTables();
 });
 
 socket.on('rounds', function(newRounds) {
@@ -145,15 +151,44 @@ function renderTables() {
 		return D.promise();
 	};
 
+	var emitLogos = function(params) {
+		var D = new $.Deferred;
+		logos[params.pk] = params.value;
+		socket.emit('logos', logos, function() {
+			D.resolve();
+		});
+		return D.promise();
+	};
+
 	$('#tablelist').empty();
+	var tablesHeader = $('<tr></tr>');
+	tablesHeader.append($('<th></th>').addClass('minimize-col').text('#'));
+	tablesHeader.append($('<th></th>').text('Nimi'));
+	tablesHeader.append($('<th></th>').text('Logo'));
+	$('#tablelist').append(tablesHeader);
+
 	tables.forEach(function(table, i) {
-		var editable = $('<a></a>').text(table).editable({
+		var tr = $('<tr></tr>');
+
+		var editableTable = $('<a></a>').text(table).editable({
 			type: 'text',
 			pk: i,
 			url: emitTables,
 			onblur: 'submit'
 		});
-		$('#tablelist').append($('<li></li>').addClass('list-group-item').append(editable));
+
+		var editableLogo = $('<a></a>').text(logos[i]).editable({
+			type: 'text',
+			pk: i,
+			url: emitLogos,
+			onblur: 'submit'
+		});
+
+		tr.append($('<td></td>').text(i + 1));
+		tr.append($('<td></td>').append(editableTable));
+		tr.append($('<td></td>').append(editableLogo));
+
+		$('#tablelist').append(tr);
 	});
 }
 
