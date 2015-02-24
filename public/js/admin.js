@@ -321,15 +321,19 @@ function renderRounds() {
 	}
 }
 
+function renderCurSong() {
+	$('#songname').text(songs.length > 0 ? (songi + 1) + ". " + songs[songi] : "---");
+}
+
 var emitSongi = function(params) {
-	songi = params;
+	songi = (params >= 0 && params < songs.length) ? params : 0;
 
 	socket.emit('songi', songi, function(){});
 
 	$('#songlist li').removeClass('list-group-item-success');
 	$('#songlist li[data-song="' + songi + '"]').addClass('list-group-item-success');
 
-	$('#songname').text((songi + 1) + ". " + songs[songi]);
+	renderCurSong();
 };
 
 //+ Jonas Raoni Soares Silva
@@ -345,12 +349,15 @@ function renderSongs() {
 
 		if (params.delete) {
 			songs.splice(params.pk, 1);
+			emitSongi(songi % songs.length);
 			renderSongs();
 		}
 		else if (params.move)
 			renderSongs();
-		else if (params.pk != -1)
+		else if (params.pk != -1) {
 			songs[params.pk] = params.value;
+			renderCurSong();
+		}
 		else {
 			songs.push(params.value);
 			renderSongs();
@@ -420,7 +427,7 @@ function renderSongs() {
 		}
 	});
 
-	$('#songname').text((songi + 1) + ". " + songs[songi]);
+	renderCurSong();
 }
 
 $(function() {

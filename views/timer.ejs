@@ -73,8 +73,10 @@
 
 			function startAudio() {
 				stopAudio();
-				audio = new Audio('/audio/' + songs[songi]);
-				audio.play();
+				if (songi >= 0 && songi < songs.length) { // don't play if no songs listed
+					audio = new Audio('/audio/' + songs[songi]);
+					audio.play();
+				}
 			}
 
 			function stopAudio() {
