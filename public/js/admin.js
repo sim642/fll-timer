@@ -521,4 +521,12 @@ $(function() {
 		renderSongs();
 		socket.emit('songs', songs, function() {});
 	});
+
+	$('#prevsong').click(function() {
+		emitSongi((songi - 1 + songs.length) % songs.length);
+	});
+
+	$('#nextsong').click(function() {
+		emitSongi((songi + 1) % songs.length);
+	});
 });
