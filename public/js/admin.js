@@ -324,9 +324,25 @@ function renderRounds() {
 					},
 					display: roundsDisplay
 				});
-				/*editable.on('shown', function(e, edit) {
-					edit.input.$input.select2('open');
-				});*/
+				editable.on('shown', function(e, edit) {
+					if (arguments.length == 2) {
+
+						setTimeout(function() {
+							edit.input.$input.select2('open');
+						}, 0);
+
+						edit.input.$input.on('select2-close', function() {
+							//edit.$element.editable('submit');
+							$('form', edit.container.$form).submit();
+						});
+					}
+					//edit.input.$input.select2('open');
+					//edit.input.$input.select2.call(edit.input.$input, 'open');
+					/*console.log(edit);
+					var asd = $('a.select2-choice', edit.container.$form);
+					console.log(asd);
+					//asd.mousedown();*/
+				});
 
 				tr.append($('<td></td>').append(editable));
 			});
