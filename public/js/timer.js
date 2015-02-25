@@ -1,46 +1,66 @@
-var endtime = null;
-var stepper = null;
-var defaulttime = (2 * 60 + 30) * 1000;
+var socket = io({
+	'sync disconnect on unload': true
+});
 
-function displayTime(d, func) {
-	var min = 0, sec = 0, ms = 0;
+var audio/* = null*/;
+var songs = [];
+var songi = 0;
 
-	if (d > 0) {
-		var dd = d;
-		
-		ms = Math.floor(d % 1000 / 100);
-		d = Math.floor(d / 1000);
-		sec = d % 60;
-		d = Math.floor(d / 60);
-		min = d;
+function tween(d) {
+	var t = 1 - d / defaulttime;
 
-		d = dd;
+	var r, g;
+	if (t < 0.5) {
+		g = 1.0;
+		r = 2 * t;
 	}
 	else {
-		endtime = null;
-		clearInterval(stepper);
-		stepper = null;
+		r = 1.0;
+		g = 1 - 2 * (t - 0.5);
 	}
 
-	$('#timer #min').text(min);
-	$('#timer #sec').text((sec < 10 ? '0' : '') + sec);
-	$('#timer #ms').text(ms);
-
-	(func || function(){})(d);
+	$('#timer').css('color', 'rgb(' + Math.floor(256 * r) + ', ' + Math.floor(256 * g) + ', 0)');
 }
 
-function startTimer(func) {
-	endtime = Date.now() + defaulttime;
-
-	stepper = setInterval(function() {
-		displayTime(endtime - Date.now(), func);
-	}, 100);
+function startAudio() {
+	stopAudio();
+	if (songi >= 0 && songi < songs.length) { // don't play if no songs listed
+		audio = new Audio('/audio/' + songs[songi]);
+		audio.play();
+	}
 }
 
-function resetTimer(func) {
-	displayTime(defaulttime, func);
-
-	endtime = null;
-	clearInterval(stepper);
-	stepper = null;
+function stopAudio() {
+	//if (audio !== null && !audio.paused) {
+	if (audio) {
+		audio.pause();
+		audio.currentTime = 0;
+		//audio = null;
+	}
 }
+
+socket.on('resettimer', function() {
+	resetTimer(tween);
+	stopAudio();
+});
+
+socket.on('starttimer', function() {
+	resetTimer();
+	stopAudio();
+
+	startTimer(tween);
+	startAudio();
+});
+
+socket.on('songs', function(data) {
+	songs = data;
+});
+
+socket.on('songi', function(data) {
+	songi = data;
+});
+
+$(function() {
+	$('#timer').fitText(0.35);
+	resetTimer(tween);
+});

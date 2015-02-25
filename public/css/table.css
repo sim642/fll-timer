@@ -1,0 +1,89 @@
+html, body, table {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.minimize-row {
+	height: 1px;
+}
+
+.teamname {
+	width: 50%;
+	text-align: center;
+
+	word-break: break-all;
+	word-break: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphers: auto;
+	hyphens: auto;
+
+	background-color: rgb(208, 216, 232);
+	color: black;
+	border-left: solid white 1vw;
+	border-right: solid white 1vw;
+}
+
+.no-show {
+	opacity: 0.5;
+	font-size: 1.2em;
+}
+
+.tablename {
+	width: 50%;
+	text-align: center;
+
+	word-break: break-all;
+	word-break: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphers: auto;
+	hyphens: auto;
+
+	background-color: rgb(79, 129, 179);
+	color: white;
+	border-left: solid white 1vw;
+	border-right: solid white 1vw;
+
+	font-variant: small-caps;
+}
+
+#tableselect {
+	display: none;
+}
+
+#tablenames {
+	display: none;
+}
+
+#teamnames {
+	display: none;
+}
+
+#tablelogos {
+	height: 20vh !important;
+}
+
+#tablelogos img {
+	height: 20vh;
+}
+
+#topbanner {
+	height: 20vh !important;
+}
+
+#topbanner .sideimg {
+	max-height: 20vh;
+	margin-top: 5vh;
+}
+
+#topbanner #midimg {
+	max-height: 15vh;
+}
+
+#matchtime {
+	font-size: 8vh;
+}
+
+#roundname {
+	font-size: 5vh;
+}

@@ -1,0 +1,57 @@
+body {
+	padding-top: 70px;
+}
+
+/* http://stackoverflow.com/a/24985857 */
+ol li.list-group-item {
+	list-style: decimal inside;
+	display: list-item;
+}
+
+ol li.add-item {
+	display: block !important;
+	position: relative;
+}
+
+ol li.add-item:before {
+	font-family: 'Glyphicons Halflings';
+	content: '\2b';
+	padding-right: 0.5em;
+}
+
+table tr.add-item {
+	cursor: pointer;
+}
+
+.minimize-col {
+	width: 1px;
+}
+
+#timer {
+	font-size: 3em;
+}
+
+a.glyphicon {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#songlist .glyphicon {
+	margin: 0 0.5em;
+}
+
+.move-handle {
+	cursor: move !important;
+}
+
+.row .btn-block {
+	margin-bottom: 1em;
+}
+
+#songname {
+	font-weight: bold;
+}
+
+.no-show {
+	opacity: 0.5;
+}

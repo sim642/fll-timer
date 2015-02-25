@@ -1,0 +1,32 @@
+html, body, table {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+body {
+	background-color: black;
+}
+
+.minimize-row {
+	height: 1px;
+}
+
+#bannerrow {
+	background-color: white;
+}
+
+.banner {
+	padding: 0.5vh;
+	max-height: 25vh;
+}
+
+#timer {
+	text-shadow: 0 0 0.1em;
+	cursor: none;
+	background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0) 10%);
+}
+
+#timer #ms {
+	font-size: 0.6em;
+}
