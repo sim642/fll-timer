@@ -6,6 +6,11 @@ var audio/* = null*/;
 var songs = [];
 var songi = 0;
 
+var cntAudio = new Audio('/audio/countdown.mp3');
+var cntOffset = -10.0 * 1000;
+var cntTimeout = null;
+var cntVolume = 0.5;
+
 function tween(d) {
 	var t = 1 - d / defaulttime;
 
@@ -26,7 +31,13 @@ function startAudio() {
 	stopAudio();
 	if (songi >= 0 && songi < songs.length) { // don't play if no songs listed
 		audio = new Audio('/audio/' + songs[songi]);
+		audio.volume = 1.0;
 		audio.play();
+
+		cntTimeout = setTimeout(function() {
+			audio.volume = cntVolume;
+			cntAudio.play();
+		}, defaulttime + cntOffset);
 	}
 }
 
@@ -36,6 +47,14 @@ function stopAudio() {
 		audio.pause();
 		audio.currentTime = 0;
 		//audio = null;
+	}
+
+	clearTimeout(cntTimeout);
+	cntTimeout = null;
+
+	if (!cntAudio.paused) {
+		cntAudio.pause();
+		cntAudio.currentTime = 0;
 	}
 }
 
