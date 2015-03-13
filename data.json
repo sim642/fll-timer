@@ -371,16 +371,19 @@
         }
     ],
     "songs": [
-        "booyah2.mp3",
-        "bullit2.mp3",
-        "cmon2.mp3",
-        "mammoth2.mp3",
-        "mario2.mp3",
-        "ready2.mp3",
-        "sandstorm2.mp3",
-        "shots2.mp3",
-        "tsunami2.mp3",
-        "turndown2.mp3",
-        "mortal2.mp3"
+        "booyah.mp3",
+        "bullit.mp3",
+        "cmon.mp3",
+        "freestyler.mp3",
+        "mammoth.mp3",
+        "mario.mp3",
+        "mortal.mp3",
+        "pirates.mp3",
+        "ready.mp3",
+        "sandstorm.mp3",
+        "shots.mp3",
+        "streisand.mp3",
+        "tsunami.mp3",
+        "turndown.mp3"
     ]
 }
