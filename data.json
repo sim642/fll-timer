@@ -241,5 +241,20 @@
             "matches": []
         }
     ],
-    "songs": []
+    "songs": [
+        "booyah.mp3",
+        "bullit.mp3",
+        "cmon.mp3",
+        "freestyler.mp3",
+        "mammoth.mp3",
+        "mario.mp3",
+        "mortal.mp3",
+        "pirates.mp3",
+        "ready.mp3",
+        "sandstorm.mp3",
+        "shots.mp3",
+        "streisand.mp3",
+        "tsunami.mp3",
+        "turndown.mp3"
+    ]
 }
