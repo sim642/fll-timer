@@ -1,38 +1,38 @@
 {
     "teams": [
-        "-Loteh",
-        "RoboCraft",
-        "Black Birds",
-        "Südalinna",
-        "TG NXT",
-        "Space Pandas",
-        "Nõmme Noortemaja",
+        "Bolt",
+        "C.H.K.",
         "GAGEV3",
-        "-Tallinna Lilleküla Gümnaasium",
-        "MASTER",
-        "VICTORY",
-        "Jakobi",
-        "-L & B",
-        "Mäetaguse",
-        "Rakke Robootikud",
-        "Vinni Roboring",
-        "Vunts",
-        "Jokker",
-        "Öökullid",
+        "Hää pää",
         "Heron",
-        "-Reaalirobootika",
-        "Triblox",
-        "TSG",
-        "Robotimehhaanikud",
-        "Kuubik",
-        "Termin@tors",
-        "Homer",
-        "Rakke Uued Tulijad",
-        "KG Paadad",
-        "-Girls & Co",
-        "Prototype",
+        "HK Robot",
+        "HuviTERA",
+        "Jokker",
         "KG Lõvid",
-        " "
+        "Kokkuhoiukamp",
+        "KONNAJALAKREEMIKOOGILABIDAVARREPIKENDUSJUHE",
+        "Kuubik",
+        "Öökullid",
+        "Põlva ÜG II",
+        "PUNKT",
+        "Rakke Robootikud",
+        "RoboCraft",
+        "Robokunnid",
+        "Robotikunnid",
+        "Rõuge Robot Team",
+        "Südalinna",
+        "Termin@tors",
+        "TG NXT",
+        "Triblox",
+        "Tulnukad tulevikust",
+        "TVK Algajad",
+        "TVK Robootikud",
+        "VICTORY",
+        "Vilexodus",
+        "VJKRobot",
+        "Team Gole",
+        "PaGALMS",
+        "RoboLords"
     ],
     "tables": [
         "Swedbank",
@@ -41,85 +41,22 @@
         "HITSA"
     ],
     "logos": [
-        "swedbank.png",
-        "nutilabor.jpg",
-        "riigikaitse.png",
-        "hitsa.png"
+        "logo1.png",
+        "logo2.png",
+        "logo3.png",
+        "logo4.png"
     ],
     "rounds": [
         {
             "name": "Robotidisain",
             "matches": [
                 {
-                    "time": "09:45-10:00",
+                    "time": "00:00-00:00",
                     "tables": [
-                        "0",
-                        "2",
-                        "1",
-                        "3"
-                    ]
-                },
-                {
-                    "time": "10:00-10:15",
-                    "tables": [
-                        "4",
-                        "6",
-                        "5",
-                        "7"
-                    ]
-                },
-                {
-                    "time": "10:15-10:30",
-                    "tables": [
-                        "8",
-                        "10",
-                        "9",
-                        "11"
-                    ]
-                },
-                {
-                    "time": "10:30-10:45",
-                    "tables": [
-                        "12",
-                        "14",
-                        "13",
-                        "15"
-                    ]
-                },
-                {
-                    "time": "10:45-11:00",
-                    "tables": [
-                        "16",
-                        "18",
-                        "17",
-                        "19"
-                    ]
-                },
-                {
-                    "time": "11:00-11:15",
-                    "tables": [
-                        "20",
-                        "22",
-                        "21",
-                        "23"
-                    ]
-                },
-                {
-                    "time": "11:15-11:30",
-                    "tables": [
-                        "24",
-                        "26",
-                        "25",
-                        "27"
-                    ]
-                },
-                {
-                    "time": "11:30-11:45",
-                    "tables": [
-                        "28",
-                        "30",
-                        "29",
-                        "31"
+                        "",
+                        null,
+                        null,
+                        null
                     ]
                 }
             ]
@@ -128,75 +65,84 @@
             "name": "1. voor",
             "matches": [
                 {
-                    "time": "12:00-12:10",
+                    "time": "00:00-00:00",
                     "tables": [
-                        "4",
-                        "6",
-                        "14",
-                        "20"
+                        "23",
+                        "29",
+                        "9",
+                        "11"
                     ]
                 },
                 {
-                    "time": "12:10-12:20",
+                    "time": "00:00-00:00",
                     "tables": [
-                        "29",
-                        "23",
-                        "26",
+                        "15",
+                        "2",
+                        "8",
+                        "28"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "31",
+                        "21",
+                        "14",
+                        "25"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "",
+                        "20",
+                        "17",
                         "3"
                     ]
                 },
                 {
-                    "time": "12:20-12:30",
-                    "tables": [
-                        "21",
-                        "16",
-                        "7",
-                        "30"
-                    ]
-                },
-                {
-                    "time": "12:30-12:40",
-                    "tables": [
-                        "11",
-                        "12",
-                        "1",
-                        "18"
-                    ]
-                },
-                {
-                    "time": "12:40-12:50",
-                    "tables": [
-                        "10",
-                        "28",
-                        "17",
-                        "2"
-                    ]
-                },
-                {
-                    "time": "12:50-13:00",
+                    "time": "00:00-00:00",
                     "tables": [
                         "0",
-                        "27",
-                        "9",
-                        "13"
+                        "18",
+                        "10",
+                        "16"
                     ]
                 },
                 {
-                    "time": "13:00-13:10",
+                    "time": "00:00-00:00",
                     "tables": [
-                        "8",
-                        "19",
-                        "31",
-                        "5"
-                    ]
-                },
-                {
-                    "time": "13:10-13:20",
-                    "tables": [
-                        "15",
-                        "22",
-                        "25",
+                        "7",
+                        "5",
+                        "13",
                         "24"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "27",
+                        "30",
+                        "4",
+                        "6"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "26",
+                        "12",
+                        "1",
+                        "19"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "22",
+                        "32",
+                        "25",
+                        "7"
                     ]
                 }
             ]
@@ -205,182 +151,95 @@
             "name": "2. voor",
             "matches": [
                 {
-                    "time": "13:20-13:30",
+                    "time": "00:00-00:00",
                     "tables": [
+                        "3",
+                        "31",
                         "2",
-                        "4",
-                        "1",
-                        "7"
+                        "0"
                     ]
                 },
                 {
-                    "time": "13:30-13:40",
+                    "time": "00:00-00:00",
                     "tables": [
-                        "26",
-                        "14",
-                        "21",
-                        "10"
+                        "12",
+                        "10",
+                        "28",
+                        "26"
                     ]
                 },
                 {
-                    "time": "13:40-13:50",
+                    "time": "00:00-00:00",
                     "tables": [
-                        "5",
-                        "11",
+                        "18",
                         "8",
+                        "16",
                         "22"
                     ]
                 },
                 {
-                    "time": "13:50-14:00",
+                    "time": "00:00-00:00",
                     "tables": [
-                        "12",
-                        "16",
-                        "28",
-                        "30"
-                    ]
-                },
-                {
-                    "time": "14:00-14:10",
-                    "tables": [
-                        "31",
-                        "9",
-                        "19",
-                        "20"
-                    ]
-                },
-                {
-                    "time": "14:10-14:20",
-                    "tables": [
-                        "15",
-                        "18",
-                        "27",
-                        "24"
-                    ]
-                },
-                {
-                    "time": "14:20-14:30",
-                    "tables": [
-                        "13",
-                        "29",
-                        "25",
-                        "3"
-                    ]
-                },
-                {
-                    "time": "14:30-14:40",
-                    "tables": [
+                        "24",
                         "23",
-                        "17",
+                        "32",
+                        ""
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "30",
+                        "1",
+                        "29",
+                        "17"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "5",
+                        "13",
+                        "20",
+                        "4"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        "11",
+                        "15",
+                        "21",
+                        "14"
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
                         "6",
-                        "0"
+                        "27",
+                        "19",
+                        "9"
                     ]
                 }
             ]
         },
         {
             "name": "3. voor",
-            "matches": [
-                {
-                    "time": "14:40-14:50",
-                    "tables": [
-                        "19",
-                        "28",
-                        "4",
-                        "9"
-                    ]
-                },
-                {
-                    "time": "14:50-15:00",
-                    "tables": [
-                        "16",
-                        "31",
-                        "0",
-                        "7"
-                    ]
-                },
-                {
-                    "time": "15:00-15:10",
-                    "tables": [
-                        "14",
-                        "2",
-                        "12",
-                        "1"
-                    ]
-                },
-                {
-                    "time": "15:10-15:20",
-                    "tables": [
-                        "24",
-                        "23",
-                        "10",
-                        "6"
-                    ]
-                },
-                {
-                    "time": "15:20-15:30",
-                    "tables": [
-                        "30",
-                        "11",
-                        "29",
-                        "26"
-                    ]
-                },
-                {
-                    "time": "15:30-15:40",
-                    "tables": [
-                        "17",
-                        "13",
-                        "18",
-                        "27"
-                    ]
-                },
-                {
-                    "time": "15:40-15:50",
-                    "tables": [
-                        "3",
-                        "21",
-                        "22",
-                        "15"
-                    ]
-                },
-                {
-                    "time": "15:50-16:00",
-                    "tables": [
-                        "5",
-                        "25",
-                        "20",
-                        "8"
-                    ]
-                }
-            ]
+            "matches": []
+        },
+        {
+            "name": "Poolfinaalid",
+            "matches": []
+        },
+        {
+            "name": "Finaal",
+            "matches": []
         },
         {
             "name": "Robotimängude lõpp",
-            "matches": [
-                {
-                    "time": "The End",
-                    "tables": [
-                        "32",
-                        "32",
-                        "32",
-                        "32"
-                    ]
-                }
-            ]
+            "matches": []
         }
     ],
-    "songs": [
-        "booyah2.mp3",
-        "bullit2.mp3",
-        "cmon2.mp3",
-        "mammoth2.mp3",
-        "mario2.mp3",
-        "ready2.mp3",
-        "sandstorm2.mp3",
-        "shots2.mp3",
-        "tsunami2.mp3",
-        "turndown2.mp3",
-        "mortal2.mp3"
-    ]
+    "songs": []
 }
