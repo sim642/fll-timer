@@ -11,7 +11,7 @@
         "KG Lõvid",
         "Kokkuhoiukamp",
         "KONNAJALAKREEMIKOOGILABIDAVARREPIKENDUSJUHE",
-        "Kuubik",
+        "-Kuubik",
         "Öökullid",
         "Põlva ÜG II",
         "PUNKT",
@@ -227,7 +227,89 @@
         },
         {
             "name": "3. voor",
-            "matches": []
+            "matches": [
+                {
+                    "time": "10:00-10:05",
+                    "tables": [
+                        "16",
+                        "9",
+                        "33",
+                        "17"
+                    ]
+                },
+                {
+                    "time": "10:10-10:15",
+                    "tables": [
+                        "28",
+                        "11",
+                        "18",
+                        "13"
+                    ]
+                },
+                {
+                    "time": "10:20-10:25",
+                    "tables": [
+                        "14",
+                        "0",
+                        "25",
+                        "23"
+                    ]
+                },
+                {
+                    "time": "10:30-10:35",
+                    "tables": [
+                        "7",
+                        "2",
+                        "29",
+                        "21"
+                    ]
+                },
+                {
+                    "time": "10:40-10:45",
+                    "tables": [
+                        "5",
+                        "3",
+                        "4",
+                        "1"
+                    ]
+                },
+                {
+                    "time": "10:50-10:55",
+                    "tables": [
+                        "10",
+                        "15",
+                        "30",
+                        "26"
+                    ]
+                },
+                {
+                    "time": "11:00-11:05",
+                    "tables": [
+                        "31",
+                        "8",
+                        "32",
+                        "12"
+                    ]
+                },
+                {
+                    "time": "11:10-11:15",
+                    "tables": [
+                        "19",
+                        "6",
+                        "20",
+                        "22"
+                    ]
+                },
+                {
+                    "time": "11:20-11:25",
+                    "tables": [
+                        "24",
+                        "27",
+                        "33",
+                        "33"
+                    ]
+                }
+            ]
         },
         {
             "name": "Poolfinaalid",
@@ -244,18 +326,18 @@
     ],
     "songs": [
         "booyah.mp3",
-        "bullit.mp3",
-        "cmon.mp3",
-        "freestyler.mp3",
         "mammoth.mp3",
-        "mario.mp3",
-        "mortal.mp3",
-        "pirates.mp3",
         "ready.mp3",
+        "pirates.mp3",
         "sandstorm.mp3",
-        "shots.mp3",
+        "bullit.mp3",
+        "turndown.mp3",
+        "freestyler.mp3",
+        "mortal.mp3",
         "streisand.mp3",
-        "tsunami.mp3",
-        "turndown.mp3"
+        "cmon.mp3",
+        "mario.mp3",
+        "shots.mp3",
+        "tsunami.mp3"
     ]
 }
