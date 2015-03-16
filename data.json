@@ -313,15 +313,54 @@
         },
         {
             "name": "Poolfinaalid",
-            "matches": []
+            "matches": [
+                {
+                    "time": "12:00-12:05",
+                    "tables": [
+                        "0",
+                        "12",
+                        "17",
+                        "23"
+                    ]
+                }
+            ]
         },
         {
             "name": "Finaal",
-            "matches": []
+            "matches": [
+                {
+                    "time": "12:30-12:35",
+                    "tables": [
+                        "17",
+                        "0",
+                        "17",
+                        "0"
+                    ]
+                },
+                {
+                    "time": "12:40-12:45",
+                    "tables": [
+                        "0",
+                        "17",
+                        "0",
+                        "17"
+                    ]
+                }
+            ]
         },
         {
             "name": "Robotimängude lõpp",
-            "matches": []
+            "matches": [
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                }
+            ]
         }
     ],
     "songs": [
@@ -338,6 +377,11 @@
         "cmon.mp3",
         "mario.mp3",
         "shots.mp3",
-        "tsunami.mp3"
+        "tsunami.mp3",
+        "dragula.mp3",
+        "littleless.mp3",
+        "narcotic.mp3",
+        "rumble.mp3",
+        "twilightzone.mp3"
     ]
 }
