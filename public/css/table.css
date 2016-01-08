@@ -63,8 +63,14 @@ html, body, table {
 	height: 20vh !important;
 }
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
 #tablelogos img {
-	height: 20vh;
+	max-height: 20vh;
 }
 
 #topbanner {
