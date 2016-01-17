@@ -31,7 +31,8 @@
         "Kehra noored",
         "Jakobi",
         "Robotimehaanikud",
-        "Vunts"
+        "Vunts",
+        " "
     ],
     "tables": [
         "Swedbank",
@@ -50,12 +51,12 @@
             "name": "Robotidisain",
             "matches": [
                 {
-                    "time": "00:00-00:00",
+                    "time": "10:30-12:30",
                     "tables": [
-                        null,
-                        null,
-                        null,
-                        null
+                        "32",
+                        "32",
+                        "32",
+                        "32"
                     ]
                 }
             ]
@@ -297,10 +298,10 @@
                 {
                     "time": "00:00-00:00",
                     "tables": [
-                        null,
-                        null,
-                        null,
-                        null
+                        "32",
+                        "32",
+                        "32",
+                        "32"
                     ]
                 }
             ]
