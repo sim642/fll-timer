@@ -18,4 +18,8 @@ router.get('/timer', function(req, res) {
 	res.render('timer');
 });
 
+router.get('/clock', function(req, res) {
+	res.render('clock');
+});
+
 module.exports = router;
