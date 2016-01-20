@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var auth = require('http-auth');
 
 var routes = require('./routes/index');
 
@@ -19,6 +20,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var basic = auth.basic({
+    realm: 'fll-timer',
+    file: 'auth.htpasswd'
+});
+app.use(auth.connect(basic));
 
 app.use('/', routes);
 
