@@ -83,7 +83,20 @@ io.on('connection', function(socket) {
 
 	socket.on('resettimer', function() {
 		socket.broadcast.emit('resettimer');
-	})
+	});
+
+	socket.on('importsongs', function(fn) {
+		fs.readdir('public/audio/music/', function(err, files) {
+			if (!err) {
+				songs = files;
+				io.emit('songs', songs);
+				saveData();
+			}
+			else {
+				console.log('importsongs error: ', err);
+			}
+		});
+	});
 });
 
 fs.readFile('data.json', function(err, data) {

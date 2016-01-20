@@ -223,7 +223,7 @@ function renderRounds() {
 		if (params.delete) {
 			rounds[params.pk.ri].matches.splice(params.pk.mi, 1);
 		}
-		else if (params.pk.mi != -1) 
+		else if (params.pk.mi != -1)
 			rounds[params.pk.ri].matches[params.pk.mi].tables[params.pk.i] = params.value;
 		else {
 			var arr = [];
@@ -544,5 +544,9 @@ $(function() {
 
 	$('#nextsong').click(function() {
 		emitSongi((songi + 1) % songs.length);
+	});
+
+	$('#importsongs').click(function() {
+		socket.emit('importsongs');
 	});
 });

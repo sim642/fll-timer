@@ -30,7 +30,7 @@ function tween(d) {
 function startAudio() {
 	stopAudio();
 	if (songi >= 0 && songi < songs.length) { // don't play if no songs listed
-		audio = new Audio('/audio/' + songs[songi]);
+		audio = new Audio('/audio/music/' + songs[songi]);
 		audio.volume = 1.0;
 		audio.play();
 
