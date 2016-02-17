@@ -13,7 +13,7 @@ var socket = io({
 
 function fadeText($elem, text) {
 	var noshow = /^-/.test(text);
-	text = noshow ? 'VABA' : text;
+	text = noshow ? 'FREE' : text;
 
 	if ($elem.text() != text) {
 		$elem.fadeOut(fadeTime, function() {
