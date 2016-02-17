@@ -1,18 +1,6 @@
 {
     "teams": [
-        " ",
-        "RoboTalu",
-        "Space Pandas",
-        "Minestormers",
-        "Triblox",
-        "OGEL",
-        "Öökullid",
-        "SOS",
-        "Rakke Robootikud",
-        "KNLK",
-        "Olimp",
-        "Tulnukad Tulevikust",
-        "Robootikaministeerium"
+        " "
     ],
     "tables": [
         "Swedbank",
@@ -28,7 +16,7 @@
     ],
     "rounds": [
         {
-            "name": "Robotidisain",
+            "name": "Robot Design",
             "matches": [
                 {
                     "time": "11:00-12:30",
@@ -42,7 +30,7 @@
             ]
         },
         {
-            "name": "1. voor",
+            "name": "1. round",
             "matches": [
                 {
                     "time": "12:45-12:50",
@@ -74,7 +62,7 @@
             ]
         },
         {
-            "name": "2. voor",
+            "name": "2. round",
             "matches": [
                 {
                     "time": "13:25-13:30",
@@ -106,7 +94,7 @@
             ]
         },
         {
-            "name": "3. voor",
+            "name": "3. round",
             "matches": [
                 {
                     "time": "14:05-14:10",
@@ -138,7 +126,7 @@
             ]
         },
         {
-            "name": "Robotimängude lõpp",
+            "name": "End of Robot Games",
             "matches": [
                 {
                     "time": "00:00-00:00",
