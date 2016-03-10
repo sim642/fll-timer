@@ -5,6 +5,7 @@ var rounds = [];
 var current = {ri: 0, mi: 0};
 var songs = [];
 var songi = 0;
+var automatch = false;
 
 var socket = io({
 	'sync disconnect on unload': true
@@ -62,7 +63,22 @@ socket.on('clocktime', function(data) {
 	var time = new Date(data);
 	var hr = time.getHours();
 	var min = time.getMinutes();
-	$('#clocktime').text((hr < 10 ? '0' : '') + hr + ':' + (min < 10 ? '0' : '') + min);
+	var text = (hr < 10 ? '0' : '') + hr + ':' + (min < 10 ? '0' : '') + min;
+	$('#clocktime').text(text);
+
+	if (automatch) {
+		automatch_ri:
+		for (var ri = current.ri; ri < rounds.length; ri++) {
+			var round = rounds[ri];
+			for (var mi = (ri == current.ri ? current.mi : 0); mi < round.matches.length; mi++) {
+				var match = round.matches[mi];
+				if (match.time.startsWith(text)) {
+					emitCurrent({'ri': ri, 'mi': mi});
+					break automatch_ri;
+				}
+			}
+		}
+	}
 });
 
 function teamsDisplay(value, response) {
@@ -548,5 +564,9 @@ $(function() {
 
 	$('#importsongs').click(function() {
 		socket.emit('importsongs');
+	});
+
+	$('#automatch').change(function() {
+		automatch = $(this).is(':checked');
 	});
 });
