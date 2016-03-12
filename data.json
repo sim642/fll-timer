@@ -19,7 +19,7 @@
         "Laagri Robotid",
         "Laulasmaa Kool",
         "Minestormers",
-        "Mutrikesed",
+        "-Mutrikesed",
         "Nimetu",
         "Olimp",
         "Öökullid",
@@ -170,7 +170,7 @@
                     "time": "14:20-14:35",
                     "tables": [
                         "8",
-                        "0",
+                        "44",
                         "41",
                         "34"
                     ]
@@ -319,8 +319,8 @@
         "twilightzone.mp3",
         "freestyler.mp3",
         "littleless.mp3",
-        "streisand.mp3",
         "turndown.mp3",
+        "streisand.mp3",
         "narcotic.mp3",
         "dragula.mp3",
         "rumble.mp3",
