@@ -491,7 +491,35 @@
         },
         {
             "name": "Finaalid",
-            "matches": []
+            "matches": [
+                {
+                    "time": "",
+                    "tables": [
+                        "8",
+                        "25",
+                        "34",
+                        "37"
+                    ]
+                },
+                {
+                    "time": "",
+                    "tables": [
+                        "37",
+                        "34",
+                        "0",
+                        "0"
+                    ]
+                },
+                {
+                    "time": "",
+                    "tables": [
+                        "34",
+                        "37",
+                        "0",
+                        "0"
+                    ]
+                }
+            ]
         },
         {
             "name": "Robotimängude lõpp",
