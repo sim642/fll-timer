@@ -92,56 +92,56 @@
                 {
                     "time": "13:10-13:15",
                     "tables": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        "11",
+                        "21",
+                        "7",
+                        "32",
+                        "19",
+                        "30"
                     ]
                 },
                 {
                     "time": "13:20-13:25",
                     "tables": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        "27",
+                        "24",
+                        "1",
+                        "14",
+                        "26",
+                        "6"
                     ]
                 },
                 {
                     "time": "13:30-13:35",
                     "tables": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        "36",
+                        "25",
+                        "33",
+                        "15",
+                        "10",
+                        "2"
                     ]
                 },
                 {
                     "time": "13:40-13:45",
                     "tables": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        "3",
+                        "29",
+                        "31",
+                        "13",
+                        "17",
+                        "16"
                     ]
                 },
                 {
                     "time": "13:50-13:55",
                     "tables": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        "5",
+                        "20",
+                        "9",
+                        "18",
+                        "8",
+                        "4"
                     ]
                 }
             ]
