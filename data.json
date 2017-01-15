@@ -7,7 +7,7 @@
         "EV3Builders",
         "HK Robot",
         "Hummel",
-        "Hunt",
+        "-Hunt",
         "HuviTERA",
         "IQ Cube",
         "Kivid",
@@ -144,7 +144,7 @@
                     "time": "12:00-12:15",
                     "tables": [
                         "23",
-                        "7",
+                        "0",
                         "26",
                         "35",
                         null,
