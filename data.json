@@ -68,7 +68,89 @@
         },
         {
             "name": "Roboti disain",
-            "matches": []
+            "matches": [
+                {
+                    "time": "10:00-10:15",
+                    "tables": [
+                        "32",
+                        "25",
+                        "31",
+                        "17"
+                    ]
+                },
+                {
+                    "time": "10:15-10:30",
+                    "tables": [
+                        "12",
+                        "37",
+                        "11",
+                        "29"
+                    ]
+                },
+                {
+                    "time": "10:30-10:45",
+                    "tables": [
+                        "24",
+                        "34",
+                        "35",
+                        "15"
+                    ]
+                },
+                {
+                    "time": "10:45-11:00",
+                    "tables": [
+                        "9",
+                        "27",
+                        "36",
+                        "8"
+                    ]
+                },
+                {
+                    "time": "11:00-11:15",
+                    "tables": [
+                        "18",
+                        "3",
+                        "4",
+                        "16"
+                    ]
+                },
+                {
+                    "time": "11:15-11:30",
+                    "tables": [
+                        "21",
+                        "13",
+                        "28",
+                        "22"
+                    ]
+                },
+                {
+                    "time": "11:30-11:45",
+                    "tables": [
+                        "10",
+                        "6",
+                        "19",
+                        "14"
+                    ]
+                },
+                {
+                    "time": "11:45-12:00",
+                    "tables": [
+                        "26",
+                        "33",
+                        "2",
+                        "7"
+                    ]
+                },
+                {
+                    "time": "12:00-12:15",
+                    "tables": [
+                        "20",
+                        "5",
+                        "30",
+                        "23"
+                    ]
+                }
+            ]
         },
         {
             "name": "1. voor",
@@ -348,30 +430,30 @@
         }
     ],
     "songs": [
-        "gorilla.mp3",
+        "tsunami.mp3",
         "cmon.mp3",
+        "mammoth.mp3",
+        "walkthemoon.mp3",
         "rumble.mp3",
-        "freestyler.mp3",
+        "littleless.mp3",
+        "twilightzone.mp3",
+        "ready.mp3",
+        "booyah.mp3",
+        "kamikaze.mp3",
         "touche.mp3",
         "turndown.mp3",
-        "twilightzone.mp3",
-        "streisand.mp3",
-        "littleless.mp3",
-        "booyah.mp3",
-        "narcotic.mp3",
-        "tsunami.mp3",
-        "dragula.mp3",
-        "cream.mp3",
-        "kamikaze.mp3",
-        "walkthemoon.mp3",
-        "pirates.mp3",
-        "mammoth.mp3",
-        "ready.mp3",
-        "heymama.mp3",
-        "mortal.mp3",
-        "sandstorm.mp3",
         "springfield.mp3",
+        "mortal.mp3",
+        "freestyler.mp3",
+        "narcotic.mp3",
+        "streisand.mp3",
+        "pirates.mp3",
+        "cream.mp3",
+        "gorilla.mp3",
+        "shots.mp3",
+        "dragula.mp3",
         "bullit.mp3",
-        "shots.mp3"
+        "sandstorm.mp3",
+        "heymama.mp3"
     ]
 }
