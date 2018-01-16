@@ -25,7 +25,7 @@ var basic = auth.basic({
     realm: 'fll-timer',
     file: 'auth.htpasswd'
 });
-// app.use(auth.connect(basic));
+app.use(auth.connect(basic));
 
 app.use('/', routes);
 
