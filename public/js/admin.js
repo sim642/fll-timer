@@ -40,13 +40,13 @@ socket.on('current', function(newCurrent) {
 	renderRounds();
 });
 
-socket.on('resettimer', function() {
-	resetTimer();
+socket.on('resettimer', function(time, totalTime) {
+	resetTimer(time, totalTime);
 });
 
-socket.on('starttimer', function() {
-	resetTimer();
-	startTimer();
+socket.on('starttimer', function(time, totalTime) {
+	resetTimer(time, totalTime);
+	startTimer(time, totalTime);
 });
 
 socket.on('songs', function(newSongs) {
@@ -498,18 +498,75 @@ function renderSongs() {
 	renderCurSong();
 }
 
+function parsePeriod(time) {
+	var m = time.match(/^(\d{2}):(\d{2})-(\d{2}):(\d{2})$/);
+
+	function makeDate(hour, minute) {
+		var startDate = new Date();
+		startDate.setHours(hour);
+		startDate.setMinutes(minute);
+		startDate.setSeconds(0);
+		startDate.setMilliseconds(0);
+		return startDate;
+	}
+
+	if (m) {
+		var startHour = parseInt(m[1]);
+		var startMinute = parseInt(m[2]);
+		var endHour = parseInt(m[3]);
+		var endMinute = parseInt(m[4]);
+
+		var startDate = makeDate(startHour, startMinute);
+		var endDate = makeDate(endHour, endMinute);
+
+		return {
+			start: startDate,
+			end: endDate,
+			duration: endDate.getTime() - startDate.getTime()
+		};
+	}
+}
+
+function getCurrentMatchTimes() {
+	var match = rounds[current.ri].matches[current.mi];
+
+	var period = parsePeriod(match.time);
+
+	var time = Math.max(0, period.start.getTime() - Date.now());
+	return {
+		time: time,
+		totalTime: period.duration
+	};
+}
+
 $(function() {
-	resetTimer();
+	resetTimer(defaulttime, defaulttime);
 
 	function resetWrapper() {
-		resetTimer();
+		var time = defaulttime;
+		resetTimer(time, time);
 		var params = songi;
 		params++;
 		params %= songs.length;
 		emitSongi(params);
-		socket.emit('resettimer');
+		socket.emit('resettimer', time, time);
 		$('#songtext').text('Järgmine laul:');
 	};
+
+	function startCurrentMatchWrapper() {
+		var times = getCurrentMatchTimes();
+		var time = times.time;
+		var totalTime = times.totalTime;
+		resetTimer(time, totalTime);
+		startTimer(time, totalTime);
+		socket.emit('starttimer', time, totalTime);
+	}
+
+	function autoTimer() {
+		var autotimer = $('#autotimer').is(':checked');
+		if (autotimer)
+			startCurrentMatchWrapper();
+	}
 
 	$('#next').click(function() {
 		var params = $.extend({}, current); // hack to copy object
@@ -522,6 +579,7 @@ $(function() {
 		}
 		emitCurrent(params);
 		resetWrapper();
+		autoTimer();
 	});
 
 	$('#prev').click(function() {
@@ -535,17 +593,31 @@ $(function() {
 		}
 		emitCurrent(params);
 		resetWrapper();
+		autoTimer();
 	});
 
-	$('#reset').click(function() {
+	$('#reset-230').click(function() {
 		resetWrapper();
 	});
 
-	$('#start').click(function() {
-		resetTimer();
-		startTimer();
-		socket.emit('starttimer');
+	$('#reset-0').click(function () {
+		var time = 0;
+		var totalTime = defaulttime;
+		resetTimer(time, totalTime);
+		socket.emit('resettimer', time, totalTime);
+		$('#songtext').text('Järgmine laul:');
+	});
+
+	$('#start-230').click(function() {
+		var time = defaulttime;
+		resetTimer(time, time);
+		startTimer(time, time);
+		socket.emit('starttimer', time, time, true);
 		$('#songtext').text('Praegune laul:');
+	});
+
+	$('#start-match').click(function () {
+		startCurrentMatchWrapper();
 	});
 
 	$('#shuffle').click(function() {

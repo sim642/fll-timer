@@ -44,8 +44,8 @@ a.glyphicon {
 	cursor: move !important;
 }
 
-.row .btn-block {
-	margin-bottom: 1em;
+.row .btn-block, .row .btn-group-justified {
+	margin-bottom: 0.5em;
 }
 
 #songname {
@@ -54,4 +54,8 @@ a.glyphicon {
 
 .no-show {
 	opacity: 0.5;
+}
+
+.btn {
+	white-space: normal;
 }

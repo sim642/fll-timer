@@ -12,7 +12,7 @@ var cntTimeout = null;
 var cntVolume = 0.5;
 
 function tween(d) {
-	var t = 1 - d / defaulttime;
+	var t = 1 - d / totaltime;
 
 	var r, g;
 	if (t < 0.5) {
@@ -58,17 +58,18 @@ function stopAudio() {
 	}
 }
 
-socket.on('resettimer', function() {
-	resetTimer(tween);
+socket.on('resettimer', function(time, totalTime) {
+	resetTimer(time, totalTime, tween);
 	stopAudio();
 });
 
-socket.on('starttimer', function() {
-	resetTimer();
+socket.on('starttimer', function(time, totalTime, audio) {
+	resetTimer(time, totalTime, tween);
 	stopAudio();
 
-	startTimer(tween);
-	startAudio();
+	startTimer(time, totalTime, tween);
+	if (audio)
+		startAudio();
 });
 
 socket.on('songs', function(data) {
@@ -81,5 +82,5 @@ socket.on('songi', function(data) {
 
 $(function() {
 	$('#timer').fitText(0.35);
-	resetTimer(tween);
+	resetTimer(defaulttime, defaulttime, tween);
 });
