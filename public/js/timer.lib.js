@@ -29,16 +29,16 @@ function displayTime(d, func) {
 	(func || function(){})(d);
 }
 
-function startTimer(func) {
-	endtime = Date.now() + defaulttime;
+function startTimer(time, func) {
+	endtime = Date.now() + time;
 
 	stepper = setInterval(function() {
 		displayTime(endtime - Date.now(), func);
 	}, 100);
 }
 
-function resetTimer(func) {
-	displayTime(defaulttime, func);
+function resetTimer(time, func) {
+	displayTime(time, func);
 
 	endtime = null;
 	clearInterval(stepper);

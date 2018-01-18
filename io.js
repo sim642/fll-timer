@@ -77,12 +77,12 @@ io.on('connection', function(socket) {
 		socket.broadcast.emit('songi', songi);
 	});
 
-	socket.on('starttimer', function() {
-		socket.broadcast.emit('starttimer');
+	socket.on('starttimer', function(time) {
+		socket.broadcast.emit('starttimer', time);
 	});
 
-	socket.on('resettimer', function() {
-		socket.broadcast.emit('resettimer');
+	socket.on('resettimer', function(time) {
+		socket.broadcast.emit('resettimer', time);
 	});
 
 	socket.on('importsongs', function(fn) {

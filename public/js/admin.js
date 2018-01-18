@@ -40,13 +40,13 @@ socket.on('current', function(newCurrent) {
 	renderRounds();
 });
 
-socket.on('resettimer', function() {
-	resetTimer();
+socket.on('resettimer', function(time) {
+	resetTimer(time);
 });
 
-socket.on('starttimer', function() {
-	resetTimer();
-	startTimer();
+socket.on('starttimer', function(time) {
+	resetTimer(time);
+	startTimer(time);
 });
 
 socket.on('songs', function(newSongs) {
@@ -499,15 +499,16 @@ function renderSongs() {
 }
 
 $(function() {
-	resetTimer();
+	resetTimer(defaulttime);
 
 	function resetWrapper() {
-		resetTimer();
+        var time = defaulttime;
+        resetTimer(time);
 		var params = songi;
 		params++;
 		params %= songs.length;
 		emitSongi(params);
-		socket.emit('resettimer');
+		socket.emit('resettimer', time);
 		$('#songtext').text('Järgmine laul:');
 	};
 
@@ -537,14 +538,15 @@ $(function() {
 		resetWrapper();
 	});
 
-	$('#reset').click(function() {
+	$('#reset-230').click(function() {
 		resetWrapper();
 	});
 
-	$('#start').click(function() {
-		resetTimer();
-		startTimer();
-		socket.emit('starttimer');
+	$('#start-230').click(function() {
+        var time = defaulttime;
+        resetTimer(time);
+		startTimer(time);
+		socket.emit('starttimer', time);
 		$('#songtext').text('Praegune laul:');
 	});
 

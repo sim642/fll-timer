@@ -58,16 +58,16 @@ function stopAudio() {
 	}
 }
 
-socket.on('resettimer', function() {
-	resetTimer(tween);
+socket.on('resettimer', function(time) {
+	resetTimer(time, tween);
 	stopAudio();
 });
 
-socket.on('starttimer', function() {
-	resetTimer();
+socket.on('starttimer', function(time) {
+	resetTimer(time);
 	stopAudio();
 
-	startTimer(tween);
+	startTimer(time, tween);
 	startAudio();
 });
 
@@ -81,5 +81,5 @@ socket.on('songi', function(data) {
 
 $(function() {
 	$('#timer').fitText(0.35);
-	resetTimer(tween);
+	resetTimer(defaulttime, tween);
 });
