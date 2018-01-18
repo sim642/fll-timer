@@ -65,8 +65,7 @@ socket.on('resettimer', function(time, totalTime) {
 
 socket.on('starttimer', function(time, totalTime, audio) {
 	resetTimer(time, totalTime, tween);
-	if (audio)
-	    stopAudio();
+    stopAudio();
 
 	startTimer(time, totalTime, tween);
 	if (audio)
