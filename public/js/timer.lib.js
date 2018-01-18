@@ -1,4 +1,5 @@
 var endtime = null;
+var totaltime = null;
 var stepper = null;
 var defaulttime = (2 * 60 + 30) * 1000;
 
@@ -16,20 +17,23 @@ function displayTime(d, func) {
 
 		d = dd;
 	}
-	else {
-		endtime = null;
-		clearInterval(stepper);
-		stepper = null;
-	}
 
 	$('#timer #min').text(min);
 	$('#timer #sec').text((sec < 10 ? '0' : '') + sec);
 	$('#timer #ms').text(ms);
 
 	(func || function(){})(d);
+
+	if (d <= 0) {
+        endtime = null;
+        totaltime = null;
+        clearInterval(stepper);
+        stepper = null;
+    }
 }
 
-function startTimer(time, func) {
+function startTimer(time, totalTime, func) {
+    totaltime = totalTime;
 	endtime = Date.now() + time;
 
 	stepper = setInterval(function() {
@@ -37,10 +41,12 @@ function startTimer(time, func) {
 	}, 100);
 }
 
-function resetTimer(time, func) {
+function resetTimer(time, totalTime, func) {
+    totaltime = totalTime;
 	displayTime(time, func);
 
 	endtime = null;
+	totaltime = null;
 	clearInterval(stepper);
 	stepper = null;
 }
