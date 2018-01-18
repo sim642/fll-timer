@@ -498,21 +498,45 @@ function renderSongs() {
 	renderCurSong();
 }
 
-function getTimeToMatchStart() {
-    var match = rounds[current.ri].matches[current.mi];
-    var matchTime = match.time;
+function parsePeriod(time) {
+    var m = time.match(/^(\d{2}):(\d{2})-(\d{2}):(\d{2})$/);
 
-    var m = matchTime.match(/^(\d{2}):(\d{2})/);
-    if (m) {
-        var date = new Date();
-        date.setHours(parseInt(m[1]));
-        date.setMinutes(parseInt(m[2]));
-        date.setSeconds(0);
-        date.setMilliseconds(0);
-
-        var time = date.getTime() - Date.now();
-        return Math.max(0, time);
+    function makeDate(hour, minute) {
+        var startDate = new Date();
+        startDate.setHours(hour);
+        startDate.setMinutes(minute);
+        startDate.setSeconds(0);
+        startDate.setMilliseconds(0);
+        return startDate;
     }
+
+    if (m) {
+        var startHour = parseInt(m[1]);
+        var startMinute = parseInt(m[2]);
+        var endHour = parseInt(m[3]);
+        var endMinute = parseInt(m[4]);
+
+        var startDate = makeDate(startHour, startMinute);
+        var endDate = makeDate(endHour, endMinute);
+
+        return {
+        	start: startDate,
+			end: endDate,
+			duration: endDate.getTime() - startDate.getTime()
+		};
+    }
+}
+
+function getCurrentMatchTimes() {
+    var match = rounds[current.ri].matches[current.mi];
+
+    var period = parsePeriod(match.time);
+
+    var time = Math.max(0, period.start.getTime() - Date.now());
+	return {
+		time: time,
+		totalTime: period.duration
+	};
 }
 
 $(function() {
@@ -529,9 +553,10 @@ $(function() {
 		$('#songtext').text('Järgmine laul:');
 	};
 
-    function startMatchStart() {
-        var time = getTimeToMatchStart();
-        var totalTime = 10 * 60 * 1000; // TODO: don't hardcode allowed prep time
+    function startCurrentMatchWrapper() {
+        var times = getCurrentMatchTimes();
+        var time = times.time;
+        var totalTime = times.totalTime;
         resetTimer(time, totalTime);
         startTimer(time, totalTime);
         socket.emit('starttimer', time, totalTime);
@@ -540,7 +565,7 @@ $(function() {
     function autoTimer() {
         var autotimer = $('#autotimer').is(':checked');
         if (autotimer)
-            startMatchStart();
+            startCurrentMatchWrapper();
     }
 
 	$('#next').click(function() {
@@ -592,7 +617,7 @@ $(function() {
 	});
 
 	$('#start-match').click(function () {
-		startMatchStart();
+		startCurrentMatchWrapper();
     });
 
 	$('#shuffle').click(function() {
