@@ -25,15 +25,15 @@ function displayTime(d, func) {
 	(func || function(){})(d);
 
 	if (d <= 0) {
-        endtime = null;
-        totaltime = null;
-        clearInterval(stepper);
-        stepper = null;
-    }
+		endtime = null;
+		totaltime = null;
+		clearInterval(stepper);
+		stepper = null;
+	}
 }
 
 function startTimer(time, totalTime, func) {
-    totaltime = totalTime;
+	totaltime = totalTime;
 	endtime = Date.now() + time;
 
 	stepper = setInterval(function() {
@@ -42,7 +42,7 @@ function startTimer(time, totalTime, func) {
 }
 
 function resetTimer(time, totalTime, func) {
-    totaltime = totalTime;
+	totaltime = totalTime;
 	displayTime(time, func);
 
 	endtime = null;

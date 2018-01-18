@@ -60,16 +60,16 @@ function stopAudio() {
 
 socket.on('resettimer', function(time, totalTime) {
 	resetTimer(time, totalTime, tween);
-    stopAudio();
+	stopAudio();
 });
 
 socket.on('starttimer', function(time, totalTime, audio) {
 	resetTimer(time, totalTime, tween);
-    stopAudio();
+	stopAudio();
 
 	startTimer(time, totalTime, tween);
 	if (audio)
-	    startAudio();
+		startAudio();
 });
 
 socket.on('songs', function(data) {
