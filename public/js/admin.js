@@ -529,6 +529,20 @@ $(function() {
 		$('#songtext').text('Järgmine laul:');
 	};
 
+    function startMatchStart() {
+        var time = getTimeToMatchStart();
+        var totalTime = 10 * 60 * 1000; // TODO: don't hardcode allowed prep time
+        resetTimer(time, totalTime);
+        startTimer(time, totalTime);
+        socket.emit('starttimer', time, totalTime);
+    }
+
+    function autoTimer() {
+        var autotimer = $('#autotimer').is(':checked');
+        if (autotimer)
+            startMatchStart();
+    }
+
 	$('#next').click(function() {
 		var params = $.extend({}, current); // hack to copy object
 		params.mi++;
@@ -540,6 +554,7 @@ $(function() {
 		}
 		emitCurrent(params);
 		resetWrapper();
+		autoTimer();
 	});
 
 	$('#prev').click(function() {
@@ -553,6 +568,7 @@ $(function() {
 		}
 		emitCurrent(params);
 		resetWrapper();
+		autoTimer();
 	});
 
 	$('#reset-230').click(function() {
@@ -564,15 +580,8 @@ $(function() {
         var totalTime = defaulttime;
         resetTimer(time, totalTime);
         socket.emit('resettimer', time, totalTime);
+        $('#songtext').text('Järgmine laul:');
     });
-
-	function startMatchStart() {
-		var time = getTimeToMatchStart();
-		var totalTime = 10 * 60 * 1000; // TODO: don't hardcode allowed prep time
-        resetTimer(time, totalTime);
-        startTimer(time, totalTime);
-        socket.emit('starttimer', time, totalTime);
-    }
 
 	$('#start-230').click(function() {
         var time = defaulttime;
