@@ -59,11 +59,15 @@ socket.on('songi', function(newSongi) {
 	renderSongs();
 });
 
-socket.on('clocktime', function(data) {
-	var time = new Date(data);
-	var hr = time.getHours();
-	var min = time.getMinutes();
+function dateToMinuteString(date) {
+	var hr = date.getHours();
+	var min = date.getMinutes();
 	var text = (hr < 10 ? '0' : '') + hr + ':' + (min < 10 ? '0' : '') + min;
+	return text;
+}
+
+socket.on('clocktime', function(data) {
+	var text = dateToMinuteString(new Date(data));
 	$('#clocktime').text(text);
 
 	if (automatch) {
@@ -236,17 +240,29 @@ function renderRounds() {
 	var editRounds = function(params) {
 		var D = new $.Deferred;
 
-		if (params.delete) {
-			rounds[params.pk.ri].matches.splice(params.pk.mi, 1);
-		}
+		var matches = rounds[params.pk.ri].matches;
+
+		if (params.delete)
+			matches.splice(params.pk.mi, 1);
 		else if (params.pk.mi != -1)
-			rounds[params.pk.ri].matches[params.pk.mi].tables[params.pk.i] = params.value;
+			matches[params.pk.mi].tables[params.pk.i] = params.value;
 		else {
+			var newTime = '00:00-00:00';
+			if (matches.length >= 1) {
+				var lastTime = matches[matches.length - 1].time;
+				var period = parsePeriod(lastTime);
+				if (period) {
+					var newStart = period.end;
+					var newEnd = new Date(newStart.getTime() + period.duration);
+					newTime = dateToMinuteString(newStart) + '-' + dateToMinuteString(newEnd);
+				}
+			}
+
 			var arr = [];
 			for (var i = 0; i < tables.length; i++)
 				arr.push(null);
-			rounds[params.pk.ri].matches.push({
-				time: '00:00-00:00',
+			matches.push({
+				time: newTime,
 				tables: arr
 			});
 		}
