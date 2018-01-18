@@ -77,8 +77,8 @@ io.on('connection', function(socket) {
 		socket.broadcast.emit('songi', songi);
 	});
 
-	socket.on('starttimer', function(time, totalTime) {
-		socket.broadcast.emit('starttimer', time, totalTime);
+	socket.on('starttimer', function(time, totalTime, audio) {
+		socket.broadcast.emit('starttimer', time, totalTime, audio);
 	});
 
 	socket.on('resettimer', function(time, totalTime) {

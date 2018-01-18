@@ -498,6 +498,23 @@ function renderSongs() {
 	renderCurSong();
 }
 
+function getTimeToMatchStart() {
+    var match = rounds[current.ri].matches[current.mi];
+    var matchTime = match.time;
+
+    var m = matchTime.match(/^(\d{2}):(\d{2})/);
+    if (m) {
+        var date = new Date();
+        date.setHours(parseInt(m[1]));
+        date.setMinutes(parseInt(m[2]));
+        date.setSeconds(0);
+        date.setMilliseconds(0);
+
+        var time = date.getTime() - Date.now();
+        return Math.max(0, time);
+    }
+}
+
 $(function() {
 	resetTimer(defaulttime, defaulttime);
 
@@ -549,13 +566,25 @@ $(function() {
         socket.emit('resettimer', time, totalTime);
     });
 
+	function startMatchStart() {
+		var time = getTimeToMatchStart();
+		var totalTime = 10 * 60 * 1000; // TODO: don't hardcode allowed prep time
+        resetTimer(time, totalTime);
+        startTimer(time, totalTime);
+        socket.emit('starttimer', time, totalTime);
+    }
+
 	$('#start-230').click(function() {
         var time = defaulttime;
         resetTimer(time, time);
 		startTimer(time, time);
-		socket.emit('starttimer', time, time);
+		socket.emit('starttimer', time, time, true);
 		$('#songtext').text('Praegune laul:');
 	});
+
+	$('#start-match').click(function () {
+		startMatchStart();
+    });
 
 	$('#shuffle').click(function() {
 		songs = shuffle(songs);
