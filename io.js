@@ -9,9 +9,26 @@ var current = {ri: 0, mi: 0};
 var songs = [];
 var songi = 0;
 
-setInterval(function() {
+// https://stackoverflow.com/a/10797177/854540
+function setIntervalExact(func, interval) {
+	// Check current time and calculate the delay until next interval
+	var now = new Date(),
+		delay = interval - now % interval;
+
+	function start() {
+		// Execute function now...
+		func();
+		// ... and every interval
+		setInterval(func, interval);
+	}
+
+	// Delay execution until it's an even interval
+	setTimeout(start, delay);
+}
+
+setIntervalExact(function() {
 	io.sockets.emit('clocktime', Date.now());
-}, 15 * 1000);
+}, 60 * 1000);
 
 io.on('connection', function(socket) {
 	console.log('client connected');
