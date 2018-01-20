@@ -3,7 +3,7 @@
         " ",
         "-VABA",
         "Aeg",
-        "RRG",
+        "-RRG",
         "CamoCube",
         "Hullud robootikud.",
         "Jõhvi Põhikool",
@@ -37,7 +37,7 @@
         "Vinni HüdroHaid",
         "VJK Robot",
         "Water Is Life",
-        "Zooloogid"
+        "-Zooloogid"
     ],
     "tables": [
         "Robomiku",
@@ -176,7 +176,7 @@
                 {
                     "time": "12:35-12:45",
                     "tables": [
-                        "3",
+                        "16",
                         "21",
                         "10",
                         "13"
@@ -430,30 +430,30 @@
         }
     ],
     "songs": [
+        "mortal.mp3",
+        "tsunami.mp3",
+        "pirates.mp3",
+        "springfield.mp3",
+        "cmon.mp3",
+        "shots.mp3",
+        "ready.mp3",
+        "touche.mp3",
+        "mammoth.mp3",
+        "booyah.mp3",
+        "turndown.mp3",
+        "twilightzone.mp3",
+        "gorilla.mp3",
+        "walkthemoon.mp3",
+        "streisand.mp3",
         "sandstorm.mp3",
         "dragula.mp3",
-        "pirates.mp3",
-        "tsunami.mp3",
-        "touche.mp3",
-        "turndown.mp3",
-        "mammoth.mp3",
-        "shots.mp3",
-        "booyah.mp3",
         "littleless.mp3",
-        "cmon.mp3",
-        "springfield.mp3",
-        "twilightzone.mp3",
-        "heymama.mp3",
-        "ready.mp3",
-        "narcotic.mp3",
-        "bullit.mp3",
         "kamikaze.mp3",
-        "gorilla.mp3",
-        "mortal.mp3",
-        "streisand.mp3",
         "cream.mp3",
-        "walkthemoon.mp3",
+        "bullit.mp3",
+        "narcotic.mp3",
+        "rumble.mp3",
         "freestyler.mp3",
-        "rumble.mp3"
+        "heymama.mp3"
     ]
 }
