@@ -30,3 +30,7 @@ body {
 #timer #ms {
 	font-size: 0.6em;
 }
+
+#timer.noaudio {
+	color: #09F !important; /* override tween set by style attribute */
+}

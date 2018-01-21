@@ -61,11 +61,18 @@ function stopAudio() {
 socket.on('resettimer', function(time, totalTime) {
 	resetTimer(time, totalTime, tween);
 	stopAudio();
+
+	$('#timer').removeClass('noaudio');
 });
 
 socket.on('starttimer', function(time, totalTime, audio) {
 	resetTimer(time, totalTime, tween);
 	stopAudio();
+
+	if (audio)
+		$('#timer').removeClass('noaudio');
+	else
+		$('#timer').addClass('noaudio');
 
 	startTimer(time, totalTime, tween);
 	if (audio)
