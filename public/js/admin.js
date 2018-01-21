@@ -558,13 +558,15 @@ function getCurrentMatchTimes() {
 $(function() {
 	resetTimer(defaulttime, defaulttime);
 
-	function resetWrapper() {
+	function resetWrapper(changeSong) {
 		var time = defaulttime;
 		resetTimer(time, time);
-		var params = songi;
-		params++;
-		params %= songs.length;
-		emitSongi(params);
+		if (changeSong) {
+			var params = songi;
+			params++;
+			params %= songs.length;
+			emitSongi(params);
+		}
 		socket.emit('resettimer', time, time);
 		$('#songtext').text('Järgmine laul:');
 	};
@@ -594,7 +596,7 @@ $(function() {
 				params.ri = 0;
 		}
 		emitCurrent(params);
-		resetWrapper();
+		resetWrapper(true);
 		autoTimer();
 	});
 
@@ -608,12 +610,12 @@ $(function() {
 			params.mi = rounds[params.ri].matches.length - 1;
 		}
 		emitCurrent(params);
-		resetWrapper();
+		resetWrapper(true);
 		autoTimer();
 	});
 
 	$('#reset-230').click(function() {
-		resetWrapper();
+		resetWrapper(false);
 	});
 
 	$('#reset-0').click(function () {
