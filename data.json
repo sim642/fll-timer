@@ -464,15 +464,43 @@
                     "tables": [
                         "20",
                         "28",
-                        "0",
-                        "0"
+                        "32",
+                        "27"
                     ]
                 }
             ]
         },
         {
             "name": "Finaalid",
-            "matches": []
+            "matches": [
+                {
+                    "time": "12:30-12:34",
+                    "tables": [
+                        "23",
+                        "25",
+                        "28",
+                        "40"
+                    ]
+                },
+                {
+                    "time": "12:38-12:42",
+                    "tables": [
+                        "0",
+                        "40",
+                        "0",
+                        "25"
+                    ]
+                },
+                {
+                    "time": "12:46-12:50",
+                    "tables": [
+                        "25",
+                        "0",
+                        "40",
+                        "0"
+                    ]
+                }
+            ]
         },
         {
             "name": "Robotimängude lõpp",
@@ -490,30 +518,30 @@
         }
     ],
     "songs": [
+        "sandstorm.mp3",
+        "tsunami.mp3",
+        "walkthemoon.mp3",
+        "ready.mp3",
         "streisand.mp3",
-        "freestyler.mp3",
+        "rumble.mp3",
+        "cmon.mp3",
         "mammoth.mp3",
         "littleless.mp3",
-        "turndown.mp3",
-        "springfield.mp3",
-        "twilightzone.mp3",
-        "dragula.mp3",
-        "sandstorm.mp3",
         "kamikaze.mp3",
-        "heymama.mp3",
-        "shots.mp3",
-        "narcotic.mp3",
-        "tsunami.mp3",
-        "pirates.mp3",
-        "cream.mp3",
-        "gorilla.mp3",
-        "walkthemoon.mp3",
-        "touche.mp3",
         "mortal.mp3",
+        "springfield.mp3",
+        "narcotic.mp3",
+        "touche.mp3",
+        "cream.mp3",
         "bullit.mp3",
         "booyah.mp3",
-        "cmon.mp3",
-        "rumble.mp3",
-        "ready.mp3"
+        "shots.mp3",
+        "freestyler.mp3",
+        "heymama.mp3",
+        "pirates.mp3",
+        "dragula.mp3",
+        "turndown.mp3",
+        "gorilla.mp3",
+        "twilightzone.mp3"
     ]
 }
