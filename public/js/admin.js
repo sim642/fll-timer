@@ -91,7 +91,7 @@ function teamsDisplay(value, response) {
 }
 
 function roundsDisplay(value, sourceData, response) {
-	value = teams[value];
+	value = teams[parseInt(value)];
 	var noshow = /^-/.test(value);
 	$(this).toggleClass('no-show', noshow).text(noshow ? 'VABA' : value);
 }
@@ -245,7 +245,7 @@ function renderRounds() {
 		if (params.delete)
 			matches.splice(params.pk.mi, 1);
 		else if (params.pk.mi != -1)
-			matches[params.pk.mi].tables[params.pk.i] = params.value;
+			matches[params.pk.mi].tables[params.pk.i] = parseInt(params.value);
 		else {
 			var newTime = '00:00-00:00';
 			if (matches.length >= 1) {
