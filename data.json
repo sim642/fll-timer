@@ -68,7 +68,7 @@
     ],
     "rounds": [
         {
-            "name": "Avamine",
+            "name": "Opening",
             "matches": [
                 {
                     "time": "",
@@ -86,11 +86,11 @@
             ]
         },
         {
-            "name": "Roboti disain",
+            "name": "Robot Design",
             "matches": []
         },
         {
-            "name": "1. voor",
+            "name": "1. round",
             "matches": [
                 {
                     "time": "00:00-00:00",
@@ -121,19 +121,19 @@
             ]
         },
         {
-            "name": "2. voor",
+            "name": "2. round",
             "matches": []
         },
         {
-            "name": "3. voor",
+            "name": "3. round",
             "matches": []
         },
         {
-            "name": "Finaalid",
+            "name": "Finals",
             "matches": []
         },
         {
-            "name": "Robotimängude lõpp",
+            "name": "End of Robot Games",
             "matches": [
                 {
                     "time": "",

@@ -142,7 +142,7 @@ function renderTeams() {
 		$('#teamlist').append($('<li></li>').addClass('list-group-item').append(editable).append(deletable));
 	});
 
-	var editable = $('<a></a>').text('Lisa meeskond').editable({
+	var editable = $('<a></a>').text('Add team').editable({
 		type: 'text',
 		pk: -1,
 		url: emitTeams,
@@ -177,7 +177,7 @@ function renderTables() {
 	$('#tablelist').empty();
 	var tablesHeader = $('<tr></tr>');
 	tablesHeader.append($('<th></th>').addClass('minimize-col').text('#'));
-	tablesHeader.append($('<th></th>').text('Nimi'));
+	tablesHeader.append($('<th></th>').text('Name'));
 	tablesHeader.append($('<th></th>').text('Logo'));
 	$('#tablelist').append(tablesHeader);
 
@@ -225,7 +225,7 @@ function renderRounds() {
 	var matchesHeader = $('<tr></tr>');
 	matchesHeader.append($('<th></th>').addClass('minimize-col')); // play
 	matchesHeader.append($('<th></th>').text('#'));
-	matchesHeader.append($('<th></th>').text('Aeg'));
+	matchesHeader.append($('<th></th>').text('Time'));
 	tables.forEach(function(table) {
 		matchesHeader.append($('<th></th>').text(table));
 	});
@@ -485,7 +485,7 @@ function renderSongs() {
 		$('#songlist').append(item);
 	});
 
-	var editable = $('<a></a>').text('Lisa laul').editable({
+	var editable = $('<a></a>').text('Add song').editable({
 		type: 'text',
 		pk: -1,
 		url: emitSongs
@@ -575,7 +575,7 @@ $(function() {
 			emitSongi(params);
 		}
 		socket.emit('resettimer', time, time);
-		$('#songtext').text('Järgmine laul:');
+		$('#songtext').text('Next song:');
 	};
 
 	function startCurrentMatchWrapper() {
@@ -638,7 +638,7 @@ $(function() {
 		resetTimer(time, time);
 		startTimer(time, time);
 		socket.emit('starttimer', time, time, true);
-		$('#songtext').text('Praegune laul:');
+		$('#songtext').text('Current song:');
 	});
 
 	$('#start-match').click(function () {
