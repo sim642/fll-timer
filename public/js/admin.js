@@ -595,13 +595,16 @@ $(function() {
 
 	$('#next').click(function() {
 		var params = $.extend({}, current); // hack to copy object
-		params.mi++;
-		if (params.mi == rounds[params.ri].matches.length) {
-			params.mi = 0;
-			params.ri++;
-			if (params.ri == rounds.length)
-				params.ri = 0;
-		}
+		do {
+			params.mi++;
+			if (params.mi >= rounds[params.ri].matches.length) {
+				params.mi = 0;
+				params.ri++;
+				if (params.ri == rounds.length)
+					params.ri = 0;
+			}
+		} while (rounds[params.ri].matches.length === 0); // skip over empty rounds
+
 		emitCurrent(params);
 		resetWrapper(true);
 		autoTimer();
@@ -609,13 +612,16 @@ $(function() {
 
 	$('#prev').click(function() {
 		var params = $.extend({}, current); // hack to copy object
-		params.mi--;
-		if (params.mi == -1) {
-			params.ri--;
-			if (params.ri == -1)
-				params.ri = rounds.length - 1;
-			params.mi = rounds[params.ri].matches.length - 1;
-		}
+		do {
+			params.mi--;
+			if (params.mi <= -1) {
+				params.ri--;
+				if (params.ri == -1)
+					params.ri = rounds.length - 1;
+				params.mi = rounds[params.ri].matches.length - 1;
+			}
+		} while (rounds[params.ri].matches.length === 0); // skip over empty rounds
+
 		emitCurrent(params);
 		resetWrapper(true);
 		autoTimer();
