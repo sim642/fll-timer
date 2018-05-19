@@ -56,6 +56,10 @@ a.glyphicon {
 	opacity: 0.5;
 }
 
+.prev:before {
+	content: '↑ ';
+}
+
 .btn {
 	white-space: normal;
 }

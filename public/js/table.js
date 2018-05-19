@@ -28,8 +28,19 @@ function renderTeams() {
 	if ($('#teamnames').is(':visible')) {
 		var ri = current.ri;
 		var mi = current.mi;
-		fadeText($('#leftteam'), teams[rounds[ri].matches[mi].tables[showtables[0]]]);
-		fadeText($('#rightteam'), teams[rounds[ri].matches[mi].tables[showtables[1]]]);
+
+		var getRealTeam = function(i) {
+			var value = teams[rounds[ri].matches[mi].tables[i]];
+
+			for (var mmi = mi - 1; value === "+PREV" && mmi >= 0; mmi--) {
+				value = teams[rounds[ri].matches[mmi].tables[i]];
+			}
+
+			return value;
+		};
+
+		fadeText($('#leftteam'), getRealTeam(showtables[0]));
+		fadeText($('#rightteam'), getRealTeam(showtables[1]));
 	}
 }
 

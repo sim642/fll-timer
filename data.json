@@ -3,6 +3,7 @@
         " ",
         "-VABA",
         "-EXTRA",
+        "+PREV",
         "Crusaders",
         "Helendavad seened",
         "Hullud robootikud",
@@ -94,14 +95,27 @@
                 {
                     "time": "00:00-00:00",
                     "tables": [
+                        12,
+                        8,
+                        10,
+                        10,
+                        10,
+                        10,
+                        10,
+                        10
+                    ]
+                },
+                {
+                    "time": "00:00-00:00",
+                    "tables": [
                         3,
                         3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 }
             ]

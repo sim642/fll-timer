@@ -90,12 +90,6 @@ function teamsDisplay(value, response) {
 	$(this).toggleClass('no-show', noshow).text(value);
 }
 
-function roundsDisplay(value, sourceData, response) {
-	value = teams[parseInt(value)];
-	var noshow = /^-/.test(value);
-	$(this).toggleClass('no-show', noshow).text(noshow ? 'VABA' : value);
-}
-
 function renderTeams() {
 	var emitTeams = function(params) {
 		var D = new $.Deferred;
@@ -344,6 +338,19 @@ function renderRounds() {
 			tr.append($('<td></td>').append(timeeditable));
 
 			match.tables.forEach(function(ti, i) {
+				var roundsDisplay = function(value, sourceData, response) {
+					value = teams[parseInt(value)];
+
+					var prev = false;
+					for (var mmi = mi - 1; value === "+PREV" && mmi >= 0; mmi--) {
+						value = teams[rounds[ri].matches[mmi].tables[i]];
+						prev = true;
+					}
+
+					var noshow = /^-/.test(value);
+					$(this).toggleClass('no-show', noshow).toggleClass('prev', prev).text(noshow ? 'VABA' : value);
+				};
+
 				var editable = $('<a></a>').editable({
 					type: 'select2',
 					pk: {'ri': ri, 'mi': mi, 'i': i},
