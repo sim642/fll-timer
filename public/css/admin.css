@@ -63,3 +63,7 @@ a.glyphicon {
 .btn {
 	white-space: normal;
 }
+
+.navbar-right:last-child {
+    margin-right: 0;
+}
