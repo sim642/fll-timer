@@ -56,6 +56,10 @@ a.glyphicon {
 	opacity: 0.5;
 }
 
+.prev {
+	opacity: 0.65;
+}
+
 .prev:before {
 	content: '↑ ';
 }
