@@ -586,14 +586,35 @@ $(function() {
 		startTimer(time, totalTime);
 		socket.emit('starttimer', time, totalTime);
 	}
+	
+	function start230Wrapper() {
+		var time = defaulttime;
+		resetTimer(time, time);
+		startTimer(time, time, function (d) {
+			var countDownNext = $('#countdown-next').is(':checked');
+			if (d <= 0 && countDownNext) {
+				// counted down
+				setTimeout(function () {
+					next();
+				}, 0);
+			}
+		});
+		socket.emit('starttimer', time, time, true);
+		$('#songtext').text('Current song:');
+	}
 
 	function autoTimer() {
 		var autotimer = $('#autotimer').is(':checked');
-		if (autotimer)
-			startCurrentMatchWrapper();
+		var autotimer230 = $('#autotimer-230').is(':checked');
+		if (autotimer) {
+			if (!autotimer230)
+				startCurrentMatchWrapper();
+			else
+				start230Wrapper();
+		}
 	}
 
-	$('#next').click(function() {
+	function next() {
 		var params = $.extend({}, current); // hack to copy object
 		do {
 			params.mi++;
@@ -608,6 +629,10 @@ $(function() {
 		emitCurrent(params);
 		resetWrapper(true);
 		autoTimer();
+	}
+
+	$('#next').click(function() {
+		next();
 	});
 
 	$('#prev').click(function() {
@@ -640,11 +665,7 @@ $(function() {
 	});
 
 	$('#start-230').click(function() {
-		var time = defaulttime;
-		resetTimer(time, time);
-		startTimer(time, time);
-		socket.emit('starttimer', time, time, true);
-		$('#songtext').text('Current song:');
+		start230Wrapper();
 	});
 
 	$('#start-match').click(function () {

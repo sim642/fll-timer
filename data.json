@@ -93,29 +93,133 @@
             "name": "1. round",
             "matches": [
                 {
-                    "time": "00:00-00:00",
+                    "time": "setup empty",
                     "tables": [
+                        10,
+                        11,
+                        0,
+                        0,
                         12,
-                        8,
-                        10,
-                        10,
-                        10,
-                        10,
-                        10,
-                        10
+                        13,
+                        0,
+                        0
                     ]
                 },
                 {
-                    "time": "00:00-00:00",
+                    "time": "game empty",
                     "tables": [
                         3,
                         3,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        0,
+                        0,
+                        3,
+                        3,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "time": "score setup",
+                    "tables": [
+                        3,
+                        3,
+                        14,
+                        15,
+                        3,
+                        3,
+                        16,
+                        17
+                    ]
+                },
+                {
+                    "time": "cleanup game",
+                    "tables": [
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3
+                    ]
+                },
+                {
+                    "time": "setup score",
+                    "tables": [
+                        18,
+                        19,
+                        3,
+                        3,
+                        20,
+                        21,
+                        3,
+                        3
+                    ]
+                },
+                {
+                    "time": "game cleanup",
+                    "tables": [
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3
+                    ]
+                },
+                {
+                    "time": "score setup",
+                    "tables": [
+                        3,
+                        3,
+                        22,
+                        23,
+                        3,
+                        3,
+                        24,
+                        25
+                    ]
+                },
+                {
+                    "time": "cleanup game",
+                    "tables": [
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3
+                    ]
+                },
+                {
+                    "time": "empty score",
+                    "tables": [
+                        0,
+                        0,
+                        3,
+                        3,
+                        0,
+                        0,
+                        3,
+                        3
+                    ]
+                },
+                {
+                    "time": "empty cleanup",
+                    "tables": [
+                        0,
+                        0,
+                        3,
+                        3,
+                        0,
+                        0,
+                        3,
+                        3
                     ]
                 }
             ]
