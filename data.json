@@ -93,133 +93,172 @@
             "name": "1. round",
             "matches": [
                 {
-                    "time": "setup empty",
+                    "time": "11:00-11:05",
                     "tables": [
-                        10,
-                        11,
-                        0,
-                        0,
-                        12,
-                        13,
-                        0,
-                        0
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 },
                 {
-                    "time": "game empty",
+                    "time": "11:10-11:15",
                     "tables": [
-                        3,
-                        3,
-                        0,
-                        0,
-                        3,
-                        3,
-                        0,
-                        0
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 },
                 {
-                    "time": "score setup",
+                    "time": "11:20-11:25",
                     "tables": [
-                        3,
-                        3,
-                        14,
-                        15,
-                        3,
-                        3,
-                        16,
-                        17
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 },
                 {
-                    "time": "cleanup game",
+                    "time": "11:30-11:35",
                     "tables": [
-                        3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 },
                 {
-                    "time": "setup score",
+                    "time": "11:40-11:45",
                     "tables": [
-                        18,
-                        19,
-                        3,
-                        3,
-                        20,
-                        21,
-                        3,
-                        3
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 },
                 {
-                    "time": "game cleanup",
+                    "time": "11:50-11:55",
                     "tables": [
-                        3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 },
                 {
-                    "time": "score setup",
+                    "time": "12:00-12:05",
                     "tables": [
-                        3,
-                        3,
-                        22,
-                        23,
-                        3,
-                        3,
-                        24,
-                        25
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 },
                 {
-                    "time": "cleanup game",
+                    "time": "12:10-12:15",
                     "tables": [
-                        3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3,
-                        3
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 },
                 {
-                    "time": "empty score",
+                    "time": "12:20-12:25",
                     "tables": [
-                        0,
-                        0,
-                        3,
-                        3,
-                        0,
-                        0,
-                        3,
-                        3
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 },
                 {
-                    "time": "empty cleanup",
+                    "time": "12:30-12:35",
                     "tables": [
-                        0,
-                        0,
-                        3,
-                        3,
-                        0,
-                        0,
-                        3,
-                        3
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                },
+                {
+                    "time": "12:40-12:45",
+                    "tables": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                },
+                {
+                    "time": "12:50-12:55",
+                    "tables": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                },
+                {
+                    "time": "13:00-13:05",
+                    "tables": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                     ]
                 }
             ]

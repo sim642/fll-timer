@@ -247,6 +247,15 @@ function renderRounds() {
 				var period = parsePeriod(lastTime);
 				if (period) {
 					var newStart = period.end;
+
+					if (matches.length >= 2) {
+						var lastTime2 = matches[matches.length - 2].time;
+						var period2 = parsePeriod(lastTime2);
+						if (period2) {
+							newStart = new Date(newStart.getTime() + (period.start.getTime() - period2.end.getTime()));
+						}
+					}
+
 					var newEnd = new Date(newStart.getTime() + period.duration);
 					newTime = dateToMinuteString(newStart) + '-' + dateToMinuteString(newEnd);
 				}
