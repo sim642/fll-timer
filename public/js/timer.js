@@ -9,7 +9,7 @@ var songi = 0;
 var cntAudio = new Audio('/audio/countdown.mp3');
 var cntOffset = -10.0 * 1000;
 var cntTimeout = null;
-var cntVolume = 0.5;
+var cntVolume = 0.25;
 
 function tween(d) {
 	var t = 1 - d / totaltime;
