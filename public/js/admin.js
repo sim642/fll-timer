@@ -595,7 +595,13 @@ $(function() {
 		startTimer(time, totalTime);
 		socket.emit('starttimer', time, totalTime);
 	}
-	
+
+	function startMatchWrapper(time) {
+		resetTimer(time, time);
+		startTimer(time, time);
+		socket.emit('starttimer', time, time);
+	}
+
 	function start230Wrapper() {
 		var time = defaulttime;
 		resetTimer(time, time);
@@ -679,6 +685,14 @@ $(function() {
 
 	$('#start-match').click(function () {
 		startCurrentMatchWrapper();
+	});
+
+	$('#start-100').click(function() {
+		startMatchWrapper((1 * 60 + 0) * 1000);
+	});
+
+	$('#start-200').click(function() {
+		startMatchWrapper((2 * 60 + 0) * 1000);
 	});
 
 	$('#shuffle').click(function() {
