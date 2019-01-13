@@ -676,7 +676,7 @@ $(function() {
 		var totalTime = defaulttime;
 		resetTimer(time, totalTime);
 		socket.emit('resettimer', time, totalTime);
-		$('#songtext').text('Järgmine laul:');
+		$('#songtext').text('Next song:');
 	});
 
 	$('#start-230').click(function() {
