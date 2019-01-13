@@ -24,7 +24,7 @@ body {
 #timer {
 	text-shadow: 0 0 0.1em;
 	cursor: none;
-	background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0) 10%);
+	background: linear-gradient(to bottom, white 0%, rgba(0, 0, 0, 0.25) 10%), url('../img/SPACE.png') center center / cover no-repeat;
 }
 
 #timer #ms {
