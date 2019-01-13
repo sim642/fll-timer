@@ -142,7 +142,7 @@ function saveData() {
 		'rounds': rounds,
 		'songs': songs
 	};
-	fs.writeFile('data.json', JSON.stringify(data, null, 4));
+	fs.writeFileSync('data.json', JSON.stringify(data, null, 4));
 }
 
 module.exports = io;
