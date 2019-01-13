@@ -6,6 +6,7 @@ var current = {ri: 0, mi: 0};
 var songs = [];
 var songi = 0;
 var automatch = false;
+var texts = {};
 
 var socket = io({
 	'sync disconnect on unload': true
@@ -57,6 +58,11 @@ socket.on('songs', function(newSongs) {
 socket.on('songi', function(newSongi) {
 	songi = newSongi;
 	renderSongs();
+});
+
+socket.on('texts', function(newTexts) {
+	texts = newTexts;
+	renderRounds();
 });
 
 function dateToMinuteString(date) {
@@ -357,7 +363,7 @@ function renderRounds() {
 					}
 
 					var noshow = /^-/.test(value);
-					$(this).toggleClass('no-show', noshow).toggleClass('prev', prev).text(noshow ? 'VABA' : value);
+					$(this).toggleClass('no-show', noshow).toggleClass('prev', prev).text(noshow ? texts.free : value);
 				};
 
 				var editable = $('<a></a>').editable({

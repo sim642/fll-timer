@@ -106,5 +106,8 @@
         "booyah.mp3",
         "dragula.mp3",
         "pirates.mp3"
-    ]
+    ],
+    "texts": {
+        "free": "VABA"
+    }
 }

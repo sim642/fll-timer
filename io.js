@@ -8,6 +8,7 @@ var rounds = [];
 var current = {ri: 0, mi: 0};
 var songs = [];
 var songi = 0;
+var texts = {};
 
 // https://stackoverflow.com/a/10797177/854540
 function setIntervalExact(func, interval) {
@@ -46,6 +47,7 @@ io.on('connection', function(socket) {
 	socket.emit('songs', songs);
 	socket.emit('songi', songi);
 	socket.emit('clocktime', Date.now());
+	socket.emit('texts', texts);
 
 	socket.on('teams', function(newTeams, fn) {
 		teams = newTeams;
@@ -126,12 +128,14 @@ fs.readFile('data.json', function(err, data) {
 	logos = data.logos;
 	rounds = data.rounds;
 	songs = data.songs;
+	texts = data.texts;
 
 	io.sockets.emit('teams', teams);
 	io.sockets.emit('tables', tables);
 	io.sockets.emit('logos', logos);
 	io.sockets.emit('rounds', rounds);
 	io.sockets.emit('songs', songs);
+	io.sockets.emit('texts', texts);
 });
 
 function saveData() {
@@ -140,7 +144,8 @@ function saveData() {
 		'tables': tables,
 		'logos': logos,
 		'rounds': rounds,
-		'songs': songs
+		'songs': songs,
+		'texts': texts
 	};
 	fs.writeFileSync('data.json', JSON.stringify(data, null, 4));
 }

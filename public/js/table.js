@@ -6,6 +6,7 @@ var logos = [];
 var rounds = [];
 var current = {ri: 0, mi: 0};
 var showtables = null;
+var texts = {};
 
 var socket = io({
 	'sync disconnect on unload': true
@@ -13,7 +14,7 @@ var socket = io({
 
 function fadeText($elem, text) {
 	var noshow = /^-/.test(text);
-	text = noshow ? 'FREE' : text;
+	text = noshow ? texts.free : text;
 
 	if ($elem.text() != text) {
 		$elem.fadeOut(fadeTime, function() {
@@ -96,6 +97,11 @@ socket.on('rounds', function(data) {
 socket.on('current', function(data) {
 	current = data;
 	renderTop();
+	renderTeams();
+});
+
+socket.on('texts', function(newTexts) {
+	texts = newTexts;
 	renderTeams();
 });
 
