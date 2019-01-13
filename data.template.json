@@ -1,5 +1,10 @@
 {
-    "teams": [],
+    "teams": [
+        " ",
+        "-VABA",
+        "-EXTRA",
+        "+PREV"
+    ],
     "tables": [
         "Laud 1",
         "Laud 2",
@@ -7,14 +12,32 @@
         "Laud 4"
     ],
     "logos": [
-        "logo1.png",
-        "logo2.png",
-        "logo3.png",
-        "logo4.png"
+        "Suur_3_robomiku_final.png",
+        "Suur_3_robomiku_final.png",
+        "Suur_3_robomiku_final.png",
+        "Suur_3_robomiku_final.png"
     ],
     "rounds": [
         {
-            "name": "Robotidisain",
+            "name": "Avamine",
+            "matches": [
+                {
+                    "time": "",
+                    "tables": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Roboti disain",
+            "matches": []
+        },
+        {
+            "name": "0. voor",
             "matches": []
         },
         {
@@ -22,7 +45,15 @@
             "matches": []
         },
         {
+            "name": "1./2. voor",
+            "matches": []
+        },
+        {
             "name": "2. voor",
+            "matches": []
+        },
+        {
+            "name": "2./3. voor",
             "matches": []
         },
         {
@@ -30,9 +61,50 @@
             "matches": []
         },
         {
-            "name": "Robotimängude lõpp",
+            "name": "Finaalid",
             "matches": []
+        },
+        {
+            "name": "Robotimängude lõpp",
+            "matches": [
+                {
+                    "time": "",
+                    "tables": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
         }
     ],
-    "songs": []
+    "songs": [
+        "cmon.mp3",
+        "streisand.mp3",
+        "heymama.mp3",
+        "orinoco.mp3",
+        "freestyler.mp3",
+        "tsunami.mp3",
+        "cream.mp3",
+        "rumble.mp3",
+        "twilightzone.mp3",
+        "walkthemoon.mp3",
+        "mammoth.mp3",
+        "springfield.mp3",
+        "gorilla.mp3",
+        "shots.mp3",
+        "bullit.mp3",
+        "ready.mp3",
+        "littleless.mp3",
+        "narcotic.mp3",
+        "touche.mp3",
+        "mortal.mp3",
+        "kamikaze.mp3",
+        "sandstorm.mp3",
+        "turndown.mp3",
+        "booyah.mp3",
+        "dragula.mp3",
+        "pirates.mp3"
+    ]
 }
