@@ -5,21 +5,23 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var auth = require('http-auth');
+var process = require('process');
 
 var routes = require('./routes/index');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(process.cwd(), 'views')); // process.cwd() instead of __dirname for pkg
 app.set('view engine', 'ejs');
+require('ejs'); // require so pkg would package ejs
 
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(process.cwd(), 'public'))); // process.cwd() instead of __dirname for pkg
 
 var basic = auth.basic({
     realm: 'fll-timer',
