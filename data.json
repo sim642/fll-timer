@@ -4,42 +4,41 @@
         "-VABA",
         "-EXTRA",
         "+PREV",
-        "Aliens from the Earth",
-        "Apollo 19",
-        "Apolon12",
-        "Ar.Bootika",
-        "Elisa robootikaring",
-        "Gagarini",
-        "Granaat",
-        "Haikalamasin",
-        "iSmart Paldiski",
-        "iSmart Storm",
-        "Jakobi",
-        "Kehra Noored",
-        "KoseR",
-        "Kosmilised sõbrad",
-        "KosmoTeam",
-        "Kuubikud",
-        "Laagri Hexagon",
-        "Laagri kosmose draakonid",
-        "Laagri Laju",
-        "LEIUTAJAD",
-        "MNT Ring",
-        "Mõtleme veel",
-        "Mõttevälk",
-        "MP NutiLabor",
-        "Nõmmekad",
-        "OMEGA TEAM",
-        "Öökullid",
-        "Pernova",
-        "-Põhjalikud tüdrukud",
-        "RuutER",
-        "Sõbrad",
-        "Superlego",
-        "TLG",
-        "UNISTAJAD",
-        "VICTORY",
-        "Viirus"
+        ". (punkt)",
+        "A kuubis",
+        "Brix",
+        "Cipe",
+        "COLLEGIUM ERUDITIONIS",
+        "Enter Space",
+        "Error 404",
+        "ESA",
+        "Fireball",
+        "Geeniused",
+        "Komeet",
+        "KOSMOSE TÄHE KULGURID",
+        "Kosmosekoristajad",
+        "Laagri Bright Side of the Moon",
+        "Laagri Unicorns",
+        "Laveg",
+        "Mahlapress",
+        "Moonlights",
+        "Nimetud",
+        "Odinn's Team",
+        "Orbiidi algus",
+        "OwO",
+        "Pikavere",
+        "PiRoo",
+        "Rainbow",
+        "Rakett 100",
+        "Rakke Robootikud",
+        "Real Leib",
+        "ROBOGO",
+        "Roboseidon",
+        "TetraHexaHedron",
+        "UFO",
+        "Vaikus",
+        "VMT",
+        "Kosmozaitzi"
     ],
     "tables": [
         "Tartu Ülikool 1",
@@ -80,67 +79,67 @@
                 {
                     "time": "10:00-10:20",
                     "tables": [
-                        8,
-                        9,
-                        12,
                         13,
-                        19,
-                        16
+                        30,
+                        4,
+                        31,
+                        26,
+                        37
                     ]
                 },
                 {
                     "time": "10:20-10:40",
                     "tables": [
                         22,
-                        33,
-                        11,
-                        17,
-                        5,
-                        21
+                        34,
+                        12,
+                        16,
+                        27,
+                        24
                     ]
                 },
                 {
                     "time": "10:40-11:00",
                     "tables": [
-                        25,
+                        5,
                         15,
-                        35,
-                        28,
-                        29,
-                        30
+                        10,
+                        6,
+                        2,
+                        29
                     ]
                 },
                 {
                     "time": "11:00-11:20",
                     "tables": [
-                        10,
-                        31,
-                        27,
-                        4,
-                        36,
-                        7
+                        14,
+                        18,
+                        7,
+                        9,
+                        8,
+                        23
                     ]
                 },
                 {
                     "time": "11:20-11:40",
                     "tables": [
-                        24,
-                        39,
+                        32,
                         38,
-                        34,
-                        6,
-                        37
+                        35,
+                        36,
+                        11,
+                        20
                     ]
                 },
                 {
                     "time": "11:40-12:00",
                     "tables": [
-                        20,
-                        18,
-                        23,
-                        32,
-                        14,
-                        26
+                        21,
+                        25,
+                        17,
+                        33,
+                        19,
+                        28
                     ]
                 }
             ]
@@ -156,66 +155,66 @@
                     "time": "12:15-12:25",
                     "tables": [
                         35,
-                        30,
+                        34,
                         31,
-                        9,
-                        14,
-                        4
+                        18,
+                        29,
+                        30
                     ]
                 },
                 {
                     "time": "12:25-12:35",
                     "tables": [
-                        27,
-                        29,
+                        24,
+                        13,
                         5,
-                        34,
-                        20,
-                        23
+                        9,
+                        36,
+                        4
                     ]
                 },
                 {
                     "time": "12:35-12:45",
                     "tables": [
-                        39,
-                        22,
-                        12,
-                        13,
-                        7,
-                        11
+                        10,
+                        25,
+                        28,
+                        27,
+                        14,
+                        32
                     ]
                 },
                 {
                     "time": "12:45-12:55",
                     "tables": [
-                        18,
-                        28,
+                        2,
                         16,
-                        33,
-                        19,
-                        25
+                        17,
+                        15,
+                        12,
+                        37
                     ]
                 },
                 {
                     "time": "12:55-13:05",
                     "tables": [
-                        26,
-                        24,
-                        32,
-                        38,
-                        6,
-                        8
+                        23,
+                        19,
+                        20,
+                        8,
+                        33,
+                        22
                     ]
                 },
                 {
                     "time": "13:05-13:15",
                     "tables": [
-                        36,
-                        37,
-                        17,
-                        15,
-                        10,
-                        21
+                        6,
+                        11,
+                        38,
+                        7,
+                        21,
+                        26
                     ]
                 }
             ]
@@ -230,67 +229,67 @@
                 {
                     "time": "13:20-13:30",
                     "tables": [
-                        5,
-                        9,
-                        8,
-                        36,
                         10,
-                        31
+                        34,
+                        30,
+                        36,
+                        17,
+                        18
                     ]
                 },
                 {
                     "time": "13:30-13:40",
                     "tables": [
-                        15,
-                        32,
-                        38,
-                        14,
-                        6,
-                        34
+                        8,
+                        12,
+                        4,
+                        27,
+                        9,
+                        11
                     ]
                 },
                 {
                     "time": "13:40-13:50",
                     "tables": [
-                        12,
-                        16,
                         28,
-                        26,
-                        11,
-                        27
+                        33,
+                        37,
+                        35,
+                        38,
+                        23
                     ]
                 },
                 {
                     "time": "13:50-14:00",
                     "tables": [
-                        18,
+                        25,
+                        31,
+                        2,
                         24,
-                        39,
-                        30,
-                        7,
-                        19
+                        16,
+                        5
                     ]
                 },
                 {
                     "time": "14:00-14:10",
                     "tables": [
-                        17,
-                        20,
-                        25,
-                        35,
-                        13,
+                        7,
+                        15,
+                        26,
+                        14,
+                        19,
                         22
                     ]
                 },
                 {
                     "time": "14:10-14:20",
                     "tables": [
-                        23,
+                        20,
                         21,
                         29,
-                        4,
-                        33,
-                        37
+                        13,
+                        6,
+                        32
                     ]
                 }
             ]
@@ -305,67 +304,67 @@
                 {
                     "time": "14:30-14:40",
                     "tables": [
-                        30,
                         31,
-                        11,
-                        28,
-                        19,
-                        16
+                        14,
+                        7,
+                        33,
+                        34,
+                        2
                     ]
                 },
                 {
                     "time": "14:40-14:50",
                     "tables": [
-                        29,
-                        35,
+                        12,
+                        38,
+                        5,
                         9,
-                        26,
-                        33,
-                        12
+                        24,
+                        30
                     ]
                 },
                 {
                     "time": "14:50-15:00",
                     "tables": [
-                        21,
-                        17,
+                        18,
                         8,
-                        7,
-                        4,
-                        18
+                        35,
+                        17,
+                        13,
+                        10
                     ]
                 },
                 {
                     "time": "15:00-15:10",
                     "tables": [
                         15,
-                        6,
-                        34,
-                        23,
-                        32,
-                        25
+                        29,
+                        25,
+                        28,
+                        22,
+                        4
                     ]
                 },
                 {
                     "time": "15:10-15:20",
                     "tables": [
-                        36,
-                        10,
-                        22,
-                        14,
-                        20,
-                        13
+                        11,
+                        16,
+                        32,
+                        37,
+                        27,
+                        19
                     ]
                 },
                 {
                     "time": "15:20-15:30",
                     "tables": [
-                        38,
-                        27,
-                        24,
-                        39,
-                        37,
-                        5
+                        21,
+                        6,
+                        23,
+                        26,
+                        36,
+                        20
                     ]
                 }
             ]
