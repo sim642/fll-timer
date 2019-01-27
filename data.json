@@ -152,7 +152,7 @@
             "name": "1. voor",
             "matches": [
                 {
-                    "time": "12:15-12:25",
+                    "time": "12:00-12:05",
                     "tables": [
                         35,
                         34,
@@ -163,7 +163,7 @@
                     ]
                 },
                 {
-                    "time": "12:25-12:35",
+                    "time": "12:10-12:15",
                     "tables": [
                         24,
                         13,
@@ -174,7 +174,7 @@
                     ]
                 },
                 {
-                    "time": "12:35-12:45",
+                    "time": "12:20-12:25",
                     "tables": [
                         10,
                         25,
@@ -185,7 +185,7 @@
                     ]
                 },
                 {
-                    "time": "12:45-12:55",
+                    "time": "12:30-12:35",
                     "tables": [
                         2,
                         16,
@@ -196,7 +196,7 @@
                     ]
                 },
                 {
-                    "time": "12:55-13:05",
+                    "time": "12:40-12:45",
                     "tables": [
                         23,
                         19,
@@ -207,7 +207,7 @@
                     ]
                 },
                 {
-                    "time": "13:05-13:15",
+                    "time": "12:50-12:55",
                     "tables": [
                         6,
                         11,
@@ -227,7 +227,7 @@
             "name": "2. voor",
             "matches": [
                 {
-                    "time": "13:20-13:30",
+                    "time": "13:00-13:05",
                     "tables": [
                         10,
                         34,
@@ -238,7 +238,7 @@
                     ]
                 },
                 {
-                    "time": "13:30-13:40",
+                    "time": "13:10-13:15",
                     "tables": [
                         8,
                         12,
@@ -249,7 +249,7 @@
                     ]
                 },
                 {
-                    "time": "13:40-13:50",
+                    "time": "13:20-13:25",
                     "tables": [
                         28,
                         33,
@@ -260,7 +260,7 @@
                     ]
                 },
                 {
-                    "time": "13:50-14:00",
+                    "time": "13:30-13:35",
                     "tables": [
                         25,
                         31,
@@ -271,7 +271,7 @@
                     ]
                 },
                 {
-                    "time": "14:00-14:10",
+                    "time": "13:40-13:45",
                     "tables": [
                         7,
                         15,
@@ -282,7 +282,7 @@
                     ]
                 },
                 {
-                    "time": "14:10-14:20",
+                    "time": "13:50-13:55",
                     "tables": [
                         20,
                         21,
@@ -302,7 +302,7 @@
             "name": "3. voor",
             "matches": [
                 {
-                    "time": "14:30-14:40",
+                    "time": "14:00-14:05",
                     "tables": [
                         31,
                         14,
@@ -313,7 +313,7 @@
                     ]
                 },
                 {
-                    "time": "14:40-14:50",
+                    "time": "14:10-14:15",
                     "tables": [
                         12,
                         38,
@@ -324,7 +324,7 @@
                     ]
                 },
                 {
-                    "time": "14:50-15:00",
+                    "time": "14:30-14:35",
                     "tables": [
                         18,
                         8,
@@ -335,7 +335,7 @@
                     ]
                 },
                 {
-                    "time": "15:00-15:10",
+                    "time": "14:40-14:45",
                     "tables": [
                         15,
                         29,
@@ -346,7 +346,7 @@
                     ]
                 },
                 {
-                    "time": "15:10-15:20",
+                    "time": "14:50-14:55",
                     "tables": [
                         11,
                         16,
@@ -357,7 +357,7 @@
                     ]
                 },
                 {
-                    "time": "15:20-15:30",
+                    "time": "15:00-15:05",
                     "tables": [
                         21,
                         6,
@@ -391,34 +391,34 @@
         }
     ],
     "songs": [
-        "pirates.mp3",
-        "Robotimänguks2.mp3",
-        "touche.mp3",
-        "dragula.mp3",
-        "streisand.mp3",
-        "twilightzone.mp3",
-        "tsunami.mp3",
-        "turndown.mp3",
-        "Robotimänguks.mp3",
-        "gorilla.mp3",
-        "cmon.mp3",
-        "freestyler.mp3",
-        "littleless.mp3",
-        "bullit.mp3",
-        "booyah.mp3",
-        "kamikaze.mp3",
         "walkthemoon.mp3",
-        "mortal.mp3",
-        "orinoco.mp3",
-        "cream.mp3",
-        "springfield.mp3",
-        "heymama.mp3",
+        "Robotimänguks2.mp3",
+        "pirates.mp3",
+        "bullit.mp3",
         "sandstorm.mp3",
-        "ready.mp3",
+        "mammoth.mp3",
+        "heymama.mp3",
+        "gorilla.mp3",
+        "tsunami.mp3",
+        "kamikaze.mp3",
+        "touche.mp3",
+        "twilightzone.mp3",
+        "Robotimänguks.mp3",
+        "booyah.mp3",
+        "littleless.mp3",
         "rumble.mp3",
-        "narcotic.mp3",
+        "dragula.mp3",
+        "freestyler.mp3",
+        "ready.mp3",
+        "turndown.mp3",
         "shots.mp3",
-        "mammoth.mp3"
+        "mortal.mp3",
+        "cmon.mp3",
+        "narcotic.mp3",
+        "orinoco.mp3",
+        "streisand.mp3",
+        "springfield.mp3",
+        "cream.mp3"
     ],
     "texts": {
         "free": "VABA"
