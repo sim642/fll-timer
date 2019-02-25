@@ -28,7 +28,7 @@ function tween(d) {
 }
 
 function startAudio() {
-	stopAudio();
+	stopAudio(false);
 	if (songi >= 0 && songi < songs.length) { // don't play if no songs listed
 		audio = new Audio('/audio/music/' + songs[songi]);
 		audio.volume = 1.0;
@@ -36,12 +36,13 @@ function startAudio() {
 
 		cntTimeout = setTimeout(function() {
 			audio.volume = cntVolume;
+			cntAudio.currentTime = 0;
 			cntAudio.play();
 		}, defaulttime + cntOffset);
 	}
 }
 
-function stopAudio() {
+function stopAudio(stopCnt) {
 	//if (audio !== null && !audio.paused) {
 	if (audio) {
 		audio.pause();
@@ -52,22 +53,21 @@ function stopAudio() {
 	clearTimeout(cntTimeout);
 	cntTimeout = null;
 
-	if (!cntAudio.paused) {
+	if (stopCnt && !cntAudio.paused) {
 		cntAudio.pause();
-		cntAudio.currentTime = 0;
 	}
 }
 
 socket.on('resettimer', function(time, totalTime) {
 	resetTimer(time, totalTime, tween);
-	stopAudio();
+	stopAudio(true);
 
 	$('#timer').removeClass('noaudio');
 });
 
 socket.on('starttimer', function(time, totalTime, audio) {
 	resetTimer(time, totalTime, tween);
-	stopAudio();
+	stopAudio(false);
 
 	if (audio)
 		$('#timer').removeClass('noaudio');
