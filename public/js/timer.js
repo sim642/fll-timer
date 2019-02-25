@@ -33,13 +33,15 @@ function startAudio() {
 		audio = new Audio('/audio/music/' + songs[songi]);
 		audio.volume = 1.0;
 		audio.play();
-
-		cntTimeout = setTimeout(function() {
-			audio.volume = cntVolume;
-			cntAudio.currentTime = 0;
-			cntAudio.play();
-		}, defaulttime + cntOffset);
 	}
+
+	cntTimeout = setTimeout(function() {
+		if (audio)
+			audio.volume = cntVolume;
+
+		cntAudio.currentTime = 0;
+		cntAudio.play();
+	}, defaulttime + cntOffset);
 }
 
 function stopAudio(stopCnt) {
