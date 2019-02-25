@@ -6,7 +6,7 @@ var audio/* = null*/;
 var songs = [];
 var songi = 0;
 
-var cntAudio = new Audio('/audio/nasa_countdown2.wav');
+var cntAudio = new Audio('/audio/nasa_countdown3.wav');
 var cntOffset = -11.2 * 1000;
 var cntTimeout = null;
 var cntVolume = 0.2;
