@@ -52,16 +52,16 @@
     ],
     "tables": [
         "Tartu Ülikool 1",
-        "Tartu Ülikool 2",
         "Robomiku 1",
         "Robomiku 2",
+        "Tartu Ülikool 2",
         "Robomiku 3"
     ],
     "logos": [
         "TÜ_logod_17122015_horisontaal_est_sinine.png",
+        "Suur_3_robomiku_final.png",
+        "Suur_3_robomiku_final.png",
         "TÜ_logod_17122015_horisontaal_est_sinine.png",
-        "Suur_3_robomiku_final.png",
-        "Suur_3_robomiku_final.png",
         "Suur_3_robomiku_final.png"
     ],
     "rounds": [
@@ -82,7 +82,98 @@
         },
         {
             "name": "Roboti disain",
-            "matches": []
+            "matches": [
+                {
+                    "time": "12:30-12:50",
+                    "tables": [
+                        6,
+                        16,
+                        34,
+                        43,
+                        7
+                    ]
+                },
+                {
+                    "time": "12:50-13:10",
+                    "tables": [
+                        24,
+                        44,
+                        12,
+                        20,
+                        47
+                    ]
+                },
+                {
+                    "time": "13:10-13:30",
+                    "tables": [
+                        45,
+                        29,
+                        17,
+                        33,
+                        37
+                    ]
+                },
+                {
+                    "time": "13:30-13:50",
+                    "tables": [
+                        42,
+                        18,
+                        21,
+                        22,
+                        9
+                    ]
+                },
+                {
+                    "time": "14:20-14:40",
+                    "tables": [
+                        30,
+                        15,
+                        28,
+                        4,
+                        48
+                    ]
+                },
+                {
+                    "time": "14:40-15:00",
+                    "tables": [
+                        31,
+                        46,
+                        5,
+                        38,
+                        13
+                    ]
+                },
+                {
+                    "time": "15:00-15:20",
+                    "tables": [
+                        11,
+                        10,
+                        41,
+                        39,
+                        27
+                    ]
+                },
+                {
+                    "time": "15:20-15:40",
+                    "tables": [
+                        14,
+                        35,
+                        19,
+                        25,
+                        8
+                    ]
+                },
+                {
+                    "time": "15:40-16:00",
+                    "tables": [
+                        23,
+                        26,
+                        40,
+                        32,
+                        36
+                    ]
+                }
+            ]
         },
         {
             "name": "0. voor",
