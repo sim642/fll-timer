@@ -555,7 +555,38 @@
         },
         {
             "name": "Finaalid",
-            "matches": []
+            "matches": [
+                {
+                    "time": "",
+                    "tables": [
+                        29,
+                        46,
+                        25,
+                        35,
+                        null
+                    ]
+                },
+                {
+                    "time": "",
+                    "tables": [
+                        46,
+                        0,
+                        0,
+                        35,
+                        null
+                    ]
+                },
+                {
+                    "time": "",
+                    "tables": [
+                        35,
+                        0,
+                        0,
+                        46,
+                        null
+                    ]
+                }
+            ]
         },
         {
             "name": "Robotimängude lõpp",
