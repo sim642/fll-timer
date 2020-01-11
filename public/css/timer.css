@@ -27,7 +27,7 @@ body {
 	background: linear-gradient(to bottom, white 0%, rgba(0, 0, 0, 0.6) 10%), url('../img/city-shaper-back-2.png') center center / cover no-repeat;
 }
 
-#timer #ms {
+#timer #ms, #timer #msdot {
 	font-size: 0.6em;
 }
 
