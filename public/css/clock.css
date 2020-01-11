@@ -24,7 +24,7 @@ body {
 #clock {
 	text-shadow: 0 0 0.1em;
 	cursor: none;
-	background: linear-gradient(to bottom, white 0%, rgba(0, 0, 0, 0.25) 10%), url('../img/SPACE.png') center center / cover no-repeat;
+	background: linear-gradient(to bottom, white 0%, rgba(0, 0, 0, 0.6) 10%), url('../img/city-shaper-back-2.png') center center / cover no-repeat;
 
 	color: white;
 }
