@@ -6,10 +6,10 @@ var audio/* = null*/;
 var songs = [];
 var songi = 0;
 
-var cntAudio = new Audio('/audio/62282main_countdown_launch_10_corrected_2.wav');
-var cntOffset = -10.1 * 1000;
+var cntAudio = new Audio('/audio/countdown.mp3');
+var cntOffset = -10.0 * 1000;
 var cntTimeout = null;
-var cntVolume = 0.1;
+var cntVolume = 0.25;
 
 function tween(d) {
 	var t = 1 - d / totaltime;
