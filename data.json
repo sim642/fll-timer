@@ -4,11 +4,11 @@
         "-VABA",
         "-EXTRA",
         "+PREV",
-        "444",
+        "Stardust Crusaders",
         "= (Võrdub)",
         "Alma",
         "AR Team",
-        "Arengurühm",
+        "Arendus meeskond Development team",
         "Baby Yodas",
         "Bad Boys",
         "City of heroes",
@@ -18,7 +18,7 @@
         "Heroes Of Tomorrow",
         "iSmart Storm",
         "Katusetramm",
-        "Kosmilised sõbrad",
+        "TTRK-Reversed",
         "Laagri Error",
         "Laagri Linnaloojad",
         "Laagri Robo Pall",
@@ -32,8 +32,8 @@
         "RP Robotid",
         "RUUTer v2",
         "Swedbot 2.0",
-        "TTRK-öökull",
-        "TTRK-Terminator",
+        "TTRK-Kosmiline öökull",
+        "TTRK-Urbanistid",
         "Valgus",
         "Vallutajad",
         "Vetika Jäätis",
@@ -76,7 +76,96 @@
         },
         {
             "name": "Roboti disain",
-            "matches": []
+            "matches": [
+                {
+                    "time": "10:00-10:15",
+                    "tables": [
+                        5,
+                        21,
+                        10,
+                        32,
+                        39,
+                        0
+                    ]
+                },
+                {
+                    "time": "10:20-10:35",
+                    "tables": [
+                        17,
+                        27,
+                        6,
+                        38,
+                        9,
+                        0
+                    ]
+                },
+                {
+                    "time": "10:40-10:55",
+                    "tables": [
+                        12,
+                        16,
+                        36,
+                        14,
+                        8,
+                        0
+                    ]
+                },
+                {
+                    "time": "11:00-11:15",
+                    "tables": [
+                        35,
+                        4,
+                        18,
+                        29,
+                        31,
+                        0
+                    ]
+                },
+                {
+                    "time": "11:20-11:35",
+                    "tables": [
+                        11,
+                        24,
+                        25,
+                        23,
+                        22,
+                        0
+                    ]
+                },
+                {
+                    "time": "11:40-11:55",
+                    "tables": [
+                        20,
+                        26,
+                        19,
+                        30,
+                        28,
+                        0
+                    ]
+                },
+                {
+                    "time": "12:00-12:15",
+                    "tables": [
+                        13,
+                        7,
+                        15,
+                        34,
+                        33,
+                        0
+                    ]
+                },
+                {
+                    "time": "12:20-12:35",
+                    "tables": [
+                        37,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
         },
         {
             "name": "0. voor",
