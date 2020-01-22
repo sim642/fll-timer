@@ -580,17 +580,21 @@ function getCurrentMatchTimes() {
 $(function() {
 	resetTimer(defaulttime, defaulttime);
 
+	function nextSong() {
+		var params = songi;
+		params++;
+		params %= songs.length;
+		emitSongi(params);
+		$('#songtext').text('Next song:');
+	}
+
 	function resetWrapper(changeSong) {
 		var time = defaulttime;
 		resetTimer(time, time);
 		if (changeSong) {
-			var params = songi;
-			params++;
-			params %= songs.length;
-			emitSongi(params);
+			nextSong();
 		}
 		socket.emit('resettimer', time, time);
-		$('#songtext').text('Next song:');
 	};
 
 	function startCurrentMatchWrapper() {
@@ -628,10 +632,14 @@ $(function() {
 		var autotimer = $('#autotimer').is(':checked');
 		var autotimer230 = $('#autotimer-230').is(':checked');
 		if (autotimer) {
+			nextSong();
 			if (!autotimer230)
 				startCurrentMatchWrapper();
 			else
 				start230Wrapper();
+		}
+		else {
+			resetWrapper(true);
 		}
 	}
 
@@ -648,7 +656,6 @@ $(function() {
 		} while (rounds[params.ri].matches.length === 0); // skip over empty rounds
 
 		emitCurrent(params);
-		resetWrapper(true);
 		autoTimer();
 	}
 
@@ -669,7 +676,6 @@ $(function() {
 		} while (rounds[params.ri].matches.length === 0); // skip over empty rounds
 
 		emitCurrent(params);
-		resetWrapper(true);
 		autoTimer();
 	});
 

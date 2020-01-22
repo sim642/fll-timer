@@ -6,10 +6,10 @@ var audio/* = null*/;
 var songs = [];
 var songi = 0;
 
-var cntAudio = new Audio('/audio/nasa_countdown2.wav');
-var cntOffset = -11.2 * 1000;
+var cntAudio = new Audio('/audio/countdown.mp3');
+var cntOffset = -10.0 * 1000;
 var cntTimeout = null;
-var cntVolume = 0.2;
+var cntVolume = 0.25;
 
 function tween(d) {
 	var t = 1 - d / totaltime;
@@ -28,20 +28,23 @@ function tween(d) {
 }
 
 function startAudio() {
-	stopAudio();
+	stopAudio(false);
 	if (songi >= 0 && songi < songs.length) { // don't play if no songs listed
 		audio = new Audio('/audio/music/' + songs[songi]);
 		audio.volume = 1.0;
 		audio.play();
-
-		cntTimeout = setTimeout(function() {
-			audio.volume = cntVolume;
-			cntAudio.play();
-		}, defaulttime + cntOffset);
 	}
+
+	cntTimeout = setTimeout(function() {
+		if (audio)
+			audio.volume = cntVolume;
+
+		cntAudio.currentTime = 0;
+		cntAudio.play();
+	}, defaulttime + cntOffset);
 }
 
-function stopAudio() {
+function stopAudio(stopCnt) {
 	//if (audio !== null && !audio.paused) {
 	if (audio) {
 		audio.pause();
@@ -52,22 +55,21 @@ function stopAudio() {
 	clearTimeout(cntTimeout);
 	cntTimeout = null;
 
-	if (!cntAudio.paused) {
+	if (stopCnt && !cntAudio.paused) {
 		cntAudio.pause();
-		cntAudio.currentTime = 0;
 	}
 }
 
 socket.on('resettimer', function(time, totalTime) {
 	resetTimer(time, totalTime, tween);
-	stopAudio();
+	stopAudio(true);
 
 	$('#timer').removeClass('noaudio');
 });
 
 socket.on('starttimer', function(time, totalTime, audio) {
 	resetTimer(time, totalTime, tween);
-	stopAudio();
+	stopAudio(false);
 
 	if (audio)
 		$('#timer').removeClass('noaudio');
