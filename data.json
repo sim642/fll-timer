@@ -553,7 +553,28 @@
         },
         {
             "name": "Finaalid",
-            "matches": []
+            "matches": [
+                {
+                    "time": "",
+                    "tables": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                },
+                {
+                    "time": "",
+                    "tables": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                }
+            ]
         },
         {
             "name": "Robotimängude lõpp",
@@ -580,9 +601,9 @@
         "touche.mp3",
         "rumble.mp3",
         "mortal.mp3",
+        "sandstorm.mp3",
         "cream.mp3",
         "littleless.mp3",
-        "sandstorm.mp3",
         "bullit.mp3",
         "streisand.mp3",
         "Robotimänguks2.mp3",
